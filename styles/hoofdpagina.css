@@ -16,3 +16,11 @@
 .hoofdpagina h1 {
     text-align: center;
 }
+
+.oefenpaginas {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    min-height: 100vh;
+    place-content: center;
+}

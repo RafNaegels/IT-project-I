@@ -5,20 +5,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ceb2d04b-09a3-43ab-ba7e-5bb568c96003" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/IT-project-I.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scripts/code.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/styles/hoofdpagina.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webpaginas/Hoofdpagina.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webpaginas/foutdetectie.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webpaginas/getalvaardigheid.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webpaginas/plaatsbepaling.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webpaginas/reactiesnelheid.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webpaginas/redeneer.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webpaginas/woordgeheugen.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/scripts/foutdetectie.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/scripts/getalvaardigheid.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/scripts/plaatsbepaling.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/scripts/reactiesnelheid.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/scripts/redeneer.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/scripts/woordgeheugen.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/styles/oefenpaginas.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/code.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/styles/hoofdpagina.css" beforeDir="false" afterPath="$PROJECT_DIR$/styles/hoofdpagina.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webpaginas/foutdetectie.html" beforeDir="false" afterPath="$PROJECT_DIR$/webpaginas/foutdetectie.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webpaginas/getalvaardigheid.html" beforeDir="false" afterPath="$PROJECT_DIR$/webpaginas/getalvaardigheid.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webpaginas/plaatsbepaling.html" beforeDir="false" afterPath="$PROJECT_DIR$/webpaginas/plaatsbepaling.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webpaginas/reactiesnelheid.html" beforeDir="false" afterPath="$PROJECT_DIR$/webpaginas/reactiesnelheid.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webpaginas/redeneer.html" beforeDir="false" afterPath="$PROJECT_DIR$/webpaginas/redeneer.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webpaginas/woordgeheugen.html" beforeDir="false" afterPath="$PROJECT_DIR$/webpaginas/woordgeheugen.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,8 +31,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="JavaScript File" />
-        <option value="CSS File" />
         <option value="HTML File" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -66,6 +68,7 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\rafNa\GitHub\IT-project-I" />
       <recent name="C:\Users\rafNa\GitHub\IT-project-I\webpaginas" />
       <recent name="C:\Users\rafNa\GitHub\IT-project-I\scripts" />
     </key>
@@ -86,7 +89,7 @@
       <option name="presentableId" value="Default" />
       <updated>1776109245230</updated>
       <workItem from="1776109246413" duration="734000" />
-      <workItem from="1777401914734" duration="7383000" />
+      <workItem from="1777401914734" duration="9022000" />
     </task>
     <servers />
   </component>
