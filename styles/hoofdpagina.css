@@ -1,0 +1,18 @@
+.btn-military {
+    background-color: #556b2f;
+    color: white;
+    border: none;
+}
+
+.btn-military:hover {
+    background-color: #3e4f22;
+}
+
+.hoofdpagina {
+    width: 80%;
+    margin: auto;
+}
+
+.hoofdpagina h1 {
+    text-align: center;
+}
