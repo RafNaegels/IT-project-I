@@ -1,29 +1,49 @@
-const setup = () => {
-    createStrings();
+const global = {
+    AANTAL_MUTATIES: 0,
 }
 
-window.addEventListener("load", setup);
-import stringPool from "./stringPool.js";
+
+const setup = () => {
+    nieuwOefening();
+}
+
+const nieuwOefening = () => {
+    global.AANTAL_MUTATIES = Math.floor(Math.random() * 5);
+    let stringPaar = createStrings();
+    displayStrings(stringPaar);
+    deleteContents(document.getElementById("oefeningInhoud"));
+}
+
+
+const displayStrings = (stringPaar) => {
+    let baseString = createElement("div", stringPaar[0],"baseString");
+    let mutatedString = createElement("div", stringPaar[1],"mutatedString");
+
+    let string1 = document.getElementById("string1");
+    let string2 = document.getElementById("string2");
+    deleteContents(string1);
+    deleteContents(string2);
+    string1.appendChild(baseString);
+    string2.appendChild(mutatedString);
+}
+
 
 const createStrings = () => {
-
     let baseString = selectRandomString();
 
-    let mutatedString = createMutatedString(baseString);
+    let mutatedString = createMutatedString(baseString, global.AANTAL_MUTATIES);
 
-
+    return [baseString, mutatedString];
 }
 
 const createMutatedString = (baseString) => {
-    const mutatedString = "";
-    const posities = getPosities(baseString);
+    const posities = getPosities(baseString, global.AANTAL_MUTATIES);
     return mutate(baseString, posities);
 }
 
 const getPosities = (baseString) => {
     let posities = new Set();
-    const aantalMutaties = Math.floor(Math.random() * 5);
-    while (posities.size < aantalMutaties) {
+    while (posities.size < global.AANTAL_MUTATIES) {
         let positie = Math.floor(Math.random() * baseString.length);
         let char = baseString.charAt(positie);
         if (!" :/.@".includes(char)) {
@@ -37,6 +57,22 @@ const selectRandomString = () => {
     return stringPool[Math.floor(Math.random() * stringPool.length)];
 }
 
+const deleteContents = (el) => {
+    if (el.firstChild) {
+        el.firstChild.remove();
+    }
+}
+
+const createElement = (el, content, className) => {
+    let element = document.createElement(el);
+    if (className) {
+        element.className = className;
+    }
+    if (content) {
+        element.appendChild(document.createTextNode(content));
+    }
+    return element;
+}
 
 // string muteren
 const mutate = (baseString, posities) => {
@@ -55,7 +91,6 @@ const mutate = (baseString, posities) => {
 
     return chars.join("");
 }
-
 function randomChar(c) {
 
     if (c >= '0' && c <= '9') {
@@ -78,3 +113,7 @@ function randomChar(c) {
 
     return c;
 }
+
+
+import stringPool from "./stringPool.js";
+window.addEventListener("load", setup);

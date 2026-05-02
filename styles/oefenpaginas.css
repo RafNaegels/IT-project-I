@@ -1,0 +1,56 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    padding-top: 20VH;
+}
+
+.oefeningDisplayFD {
+    display: flex;
+    flex-wrap: wrap;
+    width: 60%;
+    margin: auto;
+    min-height: 350px;
+    padding: 20px 50px;
+    border: 1px solid black;
+    border-radius: 5px;
+    justify-content: space-around;
+    flex-direction: column;
+    text-align: center;
+}
+
+.oefeningDisplayFD h1 {
+    text-align: center;
+    font-size: 1.5em;
+}
+
+.oefeningInhoud {
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: space-between;
+}
+
+.string {
+    text-align: center;
+    margin: 20px 80px;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    font-size: 1.5em;
+}
+
+.volgendePagina {
+    background-color: #5fa363;
+    color: white;
+    border: none;
+    padding: 12px 18px;
+    font-size: 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    align-self: center;
+}
+
+.volgendePagina:hover {
+    background-color: #549858;
+}
+
