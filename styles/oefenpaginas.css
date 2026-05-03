@@ -3,7 +3,7 @@ body {
     padding-top: 20VH;
 }
 
-.oefeningDisplayFD {
+.flex {
     display: flex;
     flex-wrap: wrap;
     width: 60%;
@@ -17,9 +17,29 @@ body {
     text-align: center;
 }
 
+.resultaat {
+    display: block;
+    width: 60%;
+    margin: auto;
+    min-height: 350px;
+    padding: 20px 50px;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+.resultaatRegel {
+    margin: 8px 0;
+}
+
+.resultaatParameter {
+    display: inline-block;
+    width: 12em;
+}
+
 .oefeningDisplayFD h1 {
     text-align: center;
-    font-size: 1.5em;
+    font-size: 1.7em;
+
 }
 
 .oefeningInhoud {
@@ -52,5 +72,47 @@ body {
 
 .volgendePagina:hover {
     background-color: #549858;
+}
+
+.hidden {
+    display: none;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f6f8;
+}
+
+/* algemene layout */
+.container {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin: 25px 0;
+}
+
+/* basis knop */
+button {
+    padding: 12px 18px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    color: white;
+}
+
+.variant1 {
+    padding-top: 5em;
+    padding-bottom: 2em;
+    margin-bottom: 0;
+
+}
+/* 🔹 Variant 1: simpel modern */
+.variant1 button {
+    background-color: #5f7a8a;
+    border-radius: 6px;
+}
+
+.variant1 button:hover {
+    background-color: #4c6675;
 }
 

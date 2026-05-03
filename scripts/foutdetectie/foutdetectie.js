@@ -1,19 +1,57 @@
 const global = {
     AANTAL_MUTATIES: 0,
+    AANTAL_PUNTEN: 0,
+    AANTAL_FOUTEN: 0,
+    AANTAL_OEFENINGEN: 0,
+    TIMER_ID: 0,
+    DUUR_OEFENING: 4*60*1000
 }
 
-
 const setup = () => {
+    addEventListeners();
+    toonScherm("startScherm");
+}
+
+const addEventListeners = () => {
+    document.getElementById("volgendePagina").addEventListener('click', () => {
+        toonScherm("antwoordPaneel");
+    });
+    document.querySelectorAll(".variant1 > button").forEach(el => {
+        el.addEventListener('click', verwerkAntwoord);
+    })
+    document.getElementById("startOefening").addEventListener('click', () => {
+        startTest();
+    })
+}
+
+const startTest = () => {
+    global.TIMER_ID = setTimeout(eindeOefening, global.DUUR_OEFENING);
     nieuwOefening();
 }
 
 const nieuwOefening = () => {
     global.AANTAL_MUTATIES = Math.floor(Math.random() * 5);
+    toonScherm("oefeningDisplayFD");
+    markCorrectAnswer();
     let stringPaar = createStrings();
     displayStrings(stringPaar);
-    deleteContents(document.getElementById("oefeningInhoud"));
 }
 
+const eindeOefening = () => {
+    document.getElementById("aantalOefeningen").appendChild(document.createTextNode(global.AANTAL_OEFENINGEN));
+    document.getElementById("aantalFouten").appendChild(document.createTextNode(global.AANTAL_FOUTEN));
+    document.getElementById("aantalPunten").appendChild(document.createTextNode(global.AANTAL_PUNTEN));
+    toonScherm("resultaat");
+}
+
+const verwerkAntwoord = () => {
+    (event.target.classList.contains("correct")) ? global.AANTAL_PUNTEN++ : global.AANTAL_FOUTEN++;
+    global.AANTAL_OEFENINGEN++;
+    nieuwOefening();
+    console.log("punten: " + global.AANTAL_PUNTEN);
+    console.log("fouten " + global.AANTAL_FOUTEN);
+    console.log("totaal pogingen "+ global.AANTAL_OEFENINGEN);
+}
 
 const displayStrings = (stringPaar) => {
     let baseString = createElement("div", stringPaar[0],"baseString");
@@ -27,6 +65,19 @@ const displayStrings = (stringPaar) => {
     string2.appendChild(mutatedString);
 }
 
+const toonScherm = (id) => {
+    document.querySelectorAll(".oefeningDisplayFD").forEach(el => {
+        el.classList.toggle("hidden", el.id !== id);
+    });
+};
+
+const markCorrectAnswer = () => {
+    document.querySelectorAll(".variant1 > button").forEach(el => {
+        const id = Number(el.dataset.id);
+
+        el.classList.toggle("correct", id === global.AANTAL_MUTATIES);
+    });
+};
 
 const createStrings = () => {
     let baseString = selectRandomString();
@@ -81,12 +132,7 @@ const mutate = (baseString, posities) => {
     let chars = baseString.split("");
 
     for (let i of posities) {
-
-        let c = chars[i];
-
-        let nieuw = randomChar(c);
-
-        chars[i] = nieuw;
+        chars[i] = randomChar(chars[i]);
     }
 
     return chars.join("");
@@ -116,4 +162,5 @@ function randomChar(c) {
 
 
 import stringPool from "./stringPool.js";
+
 window.addEventListener("load", setup);

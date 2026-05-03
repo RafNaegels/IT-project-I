@@ -8,17 +8,66 @@
     <title>Title</title>
 </head>
 <body>
-    <div class="oefeningDisplayFD">
+    <div class="oefeningDisplayFD flex" id="startScherm">
         <h1>
             Foutdetectie test
         </h1>
-        <div class="oefeningInhoud" id="oefeningInhoud">
+        <p>
+            In deze oefening zul je twee reeksen zien.
+            Enkele karakters zullen niet overeenkomen.
+            U dient z.s.m. het aantal afwijkingen aan te geven op het tweede scherm.
+            Het juiste antwoord op het voorbeeld hieronder is 4.
+        </p>
+        <div class="oefeningInhoud" >
+            <div class="strings">
+                <div class="string" >PVL 097</div>
+                <div class="string" >ZIL 437</div>
+            </div>
+            <button class="volgendePagina" id="startOefening">start oefening</button>
+        </div>
+    </div>
+
+
+    <div class="oefeningDisplayFD flex" id="oefeningDisplayFD">
+        <h1>
+            Foutdetectie test
+        </h1>
+        <div class="oefeningInhoud" id="oefening">
             <div class="strings">
                 <div class="string" id="string1"></div>
                 <div class="string" id="string2"></div>
             </div>
             <button class="volgendePagina" id="volgendePagina">volgende pagina <span>→</span></button>
         </div>
+
     </div>
+
+
+    <div class="oefeningDisplayFD flex" id="antwoordPaneel">
+
+        <h1>
+            Geef het aantal fouten in
+        </h1>
+        <div class="container variant1">
+            <button data-id="0">0</button>
+            <button data-id="1">1</button>
+            <button data-id="2">2</button>
+            <button data-id="3">3</button>
+            <button data-id="4">4</button>
+        </div>
+    </div>
+
+<div class="oefeningDisplayFD resultaat" id="resultaat">
+    <h1>Resultaat</h1>
+    <div class="resultaatRegel">
+        <span class="resultaatParameter">gemaakte oefeningen:</span> <span id="aantalOefeningen"></span>
+    </div>
+    <div class="resultaatRegel">
+        <span class="resultaatParameter">aantal fouten:</span> <span id="aantalFouten" style="color: red"></span>
+    </div>
+    <div class="resultaatRegel">
+        <span class="resultaatParameter">aantal punten:</span> <span id="aantalPunten" style="color: green"></span>
+    </div>
+</div>
 </body>
 </html>
