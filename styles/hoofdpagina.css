@@ -13,8 +13,18 @@
     margin: auto;
 }
 
-.hoofdpagina h1 {
+.hoofdpaginaHeader {
+    background-color: #0b1a12; /* donkergroen militair */
+    color: #d4d4d4;
     text-align: center;
+    padding: 30px 0;
+    border-bottom: 2px solid #3a5f3a;
+}
+
+.hoofdpaginaHeader h1 {
+    font-size: 28px;
+    letter-spacing: 4px;
+    font-weight: 600;
 }
 
 .oefenpaginas {
@@ -24,3 +34,4 @@
     min-height: 100vh;
     place-content: center;
 }
+

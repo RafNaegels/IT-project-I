@@ -1,0 +1,162 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+}
+
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 150px);
+
+}
+
+.flex {
+    display: flex;
+    flex-wrap: wrap;
+    width: 60%;
+    margin: auto;
+    min-height: 350px;
+    padding: 20px 50px;
+    border: 1px solid black;
+    border-radius: 5px;
+    justify-content: space-around;
+    flex-direction: column;
+    text-align: center;
+}
+
+.resultaat {
+    display: block;
+    width: 60%;
+    margin: auto;
+    min-height: 350px;
+    padding: 20px 50px;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+.fout {
+    color: red;
+}
+
+.resultaatRegel {
+    margin: 8px 0;
+}
+
+.resultaatParameter {
+    display: inline-block;
+    width: 12em;
+}
+
+.oefeningDisplayFD h1 {
+    text-align: center;
+    font-size: 1.7em;
+
+}
+
+.oefeningInhoud {
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: space-between;
+}
+
+.string {
+    text-align: center;
+    margin: 20px 80px;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    font-size: 1.5em;
+}
+
+.volgendePagina {
+    background-color: #5fa363;
+    color: white;
+    border: none;
+    padding: 12px 18px;
+    font-size: 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    align-self: center;
+}
+
+.volgendePagina:hover {
+    background-color: #549858;
+}
+
+.hidden {
+    display: none;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f6f8;
+}
+
+/* algemene layout */
+.container {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin: 25px 0;
+}
+
+/* basis knop */
+button {
+    padding: 12px 18px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    color: white;
+}
+
+.variant1 {
+    padding-top: 5em;
+    padding-bottom: 2em;
+    margin-bottom: 0;
+
+}
+/* 🔹 Variant 1: simpel modern */
+.variant1 button {
+    background-color: #5f7a8a;
+    border-radius: 6px;
+}
+
+.variant1 button:hover {
+    background-color: #4c6675;
+}
+
+.sub-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #1c1c1c;
+    color: white;
+    padding: 15px 25px;
+    border-bottom: 2px solid #444;
+}
+
+.back-btn {
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+}
+
+.sub-header-advanced {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #0f1720;
+    color: #e0e0e0;
+    padding: 15px 30px;
+    border-bottom: 1px solid #2a3a4a;
+}
+
+.label {
+    font-size: 12px;
+    color: #8aa0b3;
+    letter-spacing: 2px;
+}

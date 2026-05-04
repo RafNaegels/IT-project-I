@@ -2,12 +2,22 @@
 <html lang="nl">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="../styles/foutdetectie.css">
     <link rel="stylesheet" href="../styles/oefenpaginas.css">
     <script type="module" charset="utf-8"
             src="../scripts/foutdetectie/foutdetectie.js"></script>
     <title>Title</title>
 </head>
 <body>
+<header class="sub-header-advanced">
+    <div>
+        <span class="label">MODULE 06</span>
+        <h2>Foutdetectie</h2>
+    </div>
+    <a href="Hoofdpagina.html" class="back-btn">◀ OVERZICHT</a>
+</header>
+
+<main>
     <div class="oefeningDisplayFD flex" id="startScherm">
         <h1>
             Foutdetectie test
@@ -18,10 +28,10 @@
             U dient z.s.m. het aantal afwijkingen aan te geven op het tweede scherm.
             Het juiste antwoord op het voorbeeld hieronder is 4.
         </p>
-        <div class="oefeningInhoud" >
+        <div class="oefeningInhoud">
             <div class="strings">
-                <div class="string" >PVL 097</div>
-                <div class="string" >ZIL 437</div>
+                <div class="string">PVL 097</div>
+                <div class="string"><span class="fout">Z</span><span class="fout">I</span>L <span class="fout">4</span><span class="fout">3</span>7</div>
             </div>
             <button class="volgendePagina" id="startOefening">start oefening</button>
         </div>
@@ -57,17 +67,18 @@
         </div>
     </div>
 
-<div class="oefeningDisplayFD resultaat" id="resultaat">
-    <h1>Resultaat</h1>
-    <div class="resultaatRegel">
-        <span class="resultaatParameter">gemaakte oefeningen:</span> <span id="aantalOefeningen"></span>
+    <div class="oefeningDisplayFD resultaat" id="resultaat">
+        <h1>Resultaat</h1>
+        <div class="resultaatRegel">
+            <span class="resultaatParameter">gemaakte oefeningen:</span> <span id="aantalOefeningen"></span>
+        </div>
+        <div class="resultaatRegel">
+            <span class="resultaatParameter">aantal fouten:</span> <span id="aantalFouten" style="color: red"></span>
+        </div>
+        <div class="resultaatRegel">
+            <span class="resultaatParameter">aantal punten:</span> <span id="aantalPunten" style="color: green"></span>
+        </div>
     </div>
-    <div class="resultaatRegel">
-        <span class="resultaatParameter">aantal fouten:</span> <span id="aantalFouten" style="color: red"></span>
-    </div>
-    <div class="resultaatRegel">
-        <span class="resultaatParameter">aantal punten:</span> <span id="aantalPunten" style="color: green"></span>
-    </div>
-</div>
+</main>
 </body>
 </html>

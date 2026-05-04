@@ -100,7 +100,7 @@ const createMutatedString = (baseString) => {
     return mutate(baseString, posities);
 }
 
-const getPosities = (baseString) => {
+const getPosities = (baseString) => { //risico op infinite-loop nakijken
     let posities = new Set();
     while (posities.size < global.AANTAL_MUTATIES) {
         let positie = Math.floor(Math.random() * baseString.length);
