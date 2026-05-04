@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ceb2d04b-09a3-43ab-ba7e-5bb568c96003" name="Changes" comment="" />
+    <list default="true" id="ceb2d04b-09a3-43ab-ba7e-5bb568c96003" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/foutdetectie/foutdetectie.js" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/foutdetectie/foutdetectie.js" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -78,6 +81,7 @@
       <workItem from="1777719599150" duration="10817000" />
       <workItem from="1777796024621" duration="11282000" />
       <workItem from="1777811288697" duration="9000" />
+      <workItem from="1777912058287" duration="889000" />
     </task>
     <servers />
   </component>

@@ -3,8 +3,10 @@ const global = {
     AANTAL_PUNTEN: 0,
     AANTAL_FOUTEN: 0,
     AANTAL_OEFENINGEN: 0,
+    AANTAL_ANTWOORDEN: 5,
     TIMER_ID: 0,
-    DUUR_OEFENING: 4*60*1000
+    DUUR_OEFENING: 4*60*1000,
+    DEBUGGING: true
 }
 
 const setup = () => {
@@ -30,9 +32,9 @@ const startTest = () => {
 }
 
 const nieuwOefening = () => {
-    global.AANTAL_MUTATIES = Math.floor(Math.random() * 5);
-    toonScherm("oefeningDisplayFD");
+    global.AANTAL_MUTATIES = Math.floor(Math.random() * global.AANTAL_ANTWOORDEN);
     markCorrectAnswer();
+    toonScherm("oefeningDisplayFD");
     let stringPaar = createStrings();
     displayStrings(stringPaar);
 }
@@ -44,13 +46,19 @@ const eindeOefening = () => {
     toonScherm("resultaat");
 }
 
-const verwerkAntwoord = () => {
+const verwerkAntwoord = (event) => {
     (event.target.classList.contains("correct")) ? global.AANTAL_PUNTEN++ : global.AANTAL_FOUTEN++;
     global.AANTAL_OEFENINGEN++;
+    if(global.DEBUGGING) {
+        console.log("geselecteerd antwoord: ", event.target.dataset.id);
+        console.log("juiste antwoord: ", global.AANTAL_MUTATIES);
+        console.log("punten: " + global.AANTAL_PUNTEN);
+
+        console.log("fouten " + global.AANTAL_FOUTEN);
+        console.log("totaal pogingen " + global.AANTAL_OEFENINGEN);
+        console.log();
+    }
     nieuwOefening();
-    console.log("punten: " + global.AANTAL_PUNTEN);
-    console.log("fouten " + global.AANTAL_FOUTEN);
-    console.log("totaal pogingen "+ global.AANTAL_OEFENINGEN);
 }
 
 const displayStrings = (stringPaar) => {
