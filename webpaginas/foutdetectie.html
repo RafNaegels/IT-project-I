@@ -20,7 +20,7 @@
 <main>
     <div class="oefeningDisplayFD flex" id="startScherm">
         <h1>
-            Foutdetectie test
+            Foutdetectietest
         </h1>
         <p>
             In deze oefening zul je twee reeksen zien.
@@ -68,16 +68,21 @@
     </div>
 
     <div class="oefeningDisplayFD resultaat" id="resultaat">
-        <h1>Resultaat</h1>
-        <div class="resultaatRegel">
-            <span class="resultaatParameter">gemaakte oefeningen:</span> <span id="aantalOefeningen"></span>
+        <div class="resultaatDisplay">
+            <h1>Resultaat</h1>
+            <div class="resultaatRegel">
+                <span class="resultaatParameter">gemaakte oefeningen:</span> <span id="aantalOefeningen"></span>
+            </div>
+            <div class="resultaatRegel">
+                <span class="resultaatParameter">aantal fouten:</span> <span id="aantalFouten"
+                                                                             style="color: red"></span>
+            </div>
+            <div class="resultaatRegel">
+                <span class="resultaatParameter">aantal punten:</span> <span id="aantalPunten"
+                                                                             style="color: green"></span>
+            </div>
         </div>
-        <div class="resultaatRegel">
-            <span class="resultaatParameter">aantal fouten:</span> <span id="aantalFouten" style="color: red"></span>
-        </div>
-        <div class="resultaatRegel">
-            <span class="resultaatParameter">aantal punten:</span> <span id="aantalPunten" style="color: green"></span>
-        </div>
+        <button class="volgendePagina" id="opnieuw">opnieuw</button>
     </div>
 </main>
 </body>

@@ -24,9 +24,13 @@ const addEventListeners = () => {
     document.getElementById("startOefening").addEventListener('click', () => {
         startTest();
     })
+    document.getElementById("opnieuw").addEventListener('click', () => {
+        startTest();
+    })
 }
 
 const startTest = () => {
+    resetOefening();
     global.TIMER_ID = setTimeout(eindeOefening, global.DUUR_OEFENING);
     nieuwOefening();
 }
@@ -49,6 +53,7 @@ const eindeOefening = () => {
 const verwerkAntwoord = (event) => {
     (event.target.classList.contains("correct")) ? global.AANTAL_PUNTEN++ : global.AANTAL_FOUTEN++;
     global.AANTAL_OEFENINGEN++;
+
     if(global.DEBUGGING) {
         console.log("geselecteerd antwoord: ", event.target.dataset.id);
         console.log("juiste antwoord: ", global.AANTAL_MUTATIES);
@@ -82,7 +87,6 @@ const toonScherm = (id) => {
 const markCorrectAnswer = () => {
     document.querySelectorAll(".variant1 > button").forEach(el => {
         const id = Number(el.dataset.id);
-
         el.classList.toggle("correct", id === global.AANTAL_MUTATIES);
     });
 };
@@ -98,6 +102,12 @@ const createStrings = () => {
 const createMutatedString = (baseString) => {
     const posities = getPosities(baseString, global.AANTAL_MUTATIES);
     return mutate(baseString, posities);
+}
+
+const resetOefening = () => {
+        global.AANTAL_OEFENINGEN = 0;
+        global.AANTAL_PUNTEN = 0;
+        global.AANTAL_FOUTEN = 0;
 }
 
 const getPosities = (baseString) => { //risico op infinite-loop nakijken
@@ -133,10 +143,9 @@ const createElement = (el, content, className) => {
     return element;
 }
 
-// string muteren
+
 const mutate = (baseString, posities) => {
 
-    // string -> array (makkelijk aanpasbaar)
     let chars = baseString.split("");
 
     for (let i of posities) {
@@ -170,5 +179,4 @@ function randomChar(c) {
 
 
 import stringPool from "./stringPool.js";
-
 window.addEventListener("load", setup);
