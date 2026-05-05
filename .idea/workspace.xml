@@ -7,13 +7,6 @@
     <list default="true" id="ceb2d04b-09a3-43ab-ba7e-5bb568c96003" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scripts/foutdetectie/foutdetectie.js" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/foutdetectie/foutdetectie.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/getalvaardigheid.js" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/getalvaardigheid.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/styles/foutdetectie.css" beforeDir="false" afterPath="$PROJECT_DIR$/styles/foutdetectie.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/styles/getalvaardigheid.css" beforeDir="false" afterPath="$PROJECT_DIR$/styles/getalvaardigheid.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/styles/oefenpaginas.css" beforeDir="false" afterPath="$PROJECT_DIR$/styles/oefenpaginas.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webpaginas/Hoofdpagina.html" beforeDir="false" afterPath="$PROJECT_DIR$/webpaginas/Hoofdpagina.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webpaginas/foutdetectie.html" beforeDir="false" afterPath="$PROJECT_DIR$/webpaginas/foutdetectie.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webpaginas/getalvaardigheid.html" beforeDir="false" afterPath="$PROJECT_DIR$/webpaginas/getalvaardigheid.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -89,6 +82,7 @@
       <workItem from="1777796024621" duration="11282000" />
       <workItem from="1777811288697" duration="9000" />
       <workItem from="1777912058287" duration="16488000" />
+      <workItem from="1777997387148" duration="801000" />
     </task>
     <servers />
   </component>

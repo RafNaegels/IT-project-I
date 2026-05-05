@@ -154,27 +154,39 @@ const mutate = (baseString, posities) => {
 
     return chars.join("");
 }
-function randomChar(c) {
 
+
+function randomChar(c) {
     if (c >= '0' && c <= '9') {
-        return String.fromCharCode(
+        let newChar;
+        do {
+        newChar = String.fromCharCode(
             '0'.charCodeAt(0) + Math.floor(Math.random() * 10)
         );
+        } while (newChar === c);
+        return newChar;
     }
 
     if (c >= 'A' && c <= 'Z') {
-        return String.fromCharCode(
-            'A'.charCodeAt(0) + Math.floor(Math.random() * 26)
-        );
+        let newChar;
+        do {
+            newChar = String.fromCharCode(
+                'A'.charCodeAt(0) + Math.floor(Math.random() * 26)
+            );
+
+        } while (newChar === c);
+        return newChar;
     }
 
     if (c >= 'a' && c <= 'z') {
-        return String.fromCharCode(
-            'a'.charCodeAt(0) + Math.floor(Math.random() * 26)
-        );
+        let newChar;
+        do {
+            newChar = String.fromCharCode(
+                'a'.charCodeAt(0) + Math.floor(Math.random() * 26)
+            );
+        } while (newChar === c);
+        return newChar;
     }
-
-    return c;
 }
 
 
