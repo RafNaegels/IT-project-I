@@ -11,18 +11,68 @@
     justify-content: space-around;
 }
 
-.oefeningBeschrijving h1 {
-    text-align: center;
-}
-
-.oefeningBeschrijving p {
-
-}
 
 .inhoud {
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: calc(100vh - 150px);
+}
+
+.venster {
+    border: 1px solid black;
+    min-height: calc(50vh - 150px);
+    border-bottom: 1px solid #e6e6e6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.rekenopgave {
+    display: inline-block;
+    font-size: 2em;
+    vertical-align: middle;
+}
+
+.opgave {
+    min-width: 40%;
+}
+
+.onderbalk {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 16px;
+    background-color: #f1f5f9;
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;
+    border-left: 1px solid black;
+}
+
+.progressie {
+    display: flex;
+    align-items: center;
+    color: #314257;
+}
+
+#oefeningNummer {
+    font-size: .9em;
+}
+
+
+.volgende {
+    display: flex;
+    align-items: center;
+    background-color: #233b55;
+    color: #e5e7eb;
+    border: 1px solid #3a5068;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.volgende:hover {
+    background-color: #3a5068;
 }
 

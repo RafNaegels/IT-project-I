@@ -19,28 +19,46 @@
 
     <main>
         <div class="inhoud">
-            <div class="startScherm">
-                <div class="oefeningBeschrijving"><h1>
-                    Getalvaardigheidstest
-                </h1>
+            <div class="startScherm oefeningDisplay" id="startScherm">
+                <div class="oefeningBeschrijving">
+                    <h1>
+                        Getalvaardigheidstest
+                    </h1>
                     <p>
                         In deze oefening zul je met twee schermen werken.<br>
                         Op het bovenste scherm krijg je een rekenopgave. Onthoud het antwoord.<br>
                         in het onderste scherm krijg je opnieuw een wiskundige opgave. <br>
                         op de volgende pagina zul je moeten antwoorden welk antwoord het grootst is.
-                    </p></div>
+                    </p>
+                </div>
                 <button class="volgendePagina" id="startOefening">start oefening</button>
             </div>
 
-            <div class="opgave" id="opgave">
-                
+            <div class="opgave oefeningDisplay" id="opgave">
+                <div class="venster" id="bovenVenster">
+                    <div class="rekenopgave">
+
+                    </div>
+                </div>
+
+                <div class="venster" id="onderVenster">
+
+                </div>
+
+                <div class="onderbalk" id="onderbalk">
+                    <div class="progressie" id="progressie">
+                        <p>oefening <span id="oefeningNummer">01</span></p>
+                    </div>
+                    <button class="volgende" id="volgende">volgende  ▶</button>
+                </div>
+
             </div>
 
-            <div class="antwoord" id="antwoord">
+            <div class="antwoord oefeningDisplay" id="antwoord">
 
             </div>
 
-            <div class="resultaat" id="resultaat">
+            <div class="resultaat oefeningDisplay" id="resultaat">
             </div>
         </div>
     </main>

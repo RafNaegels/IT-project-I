@@ -3,8 +3,8 @@ const global = {
     ONDERSTE_UITKOMST: 0,
     OPGAVE1: "",
     OPGAVE2: "",
+    OEFENING_NUMMER: 0,
 }
-
 
 const setup = () => {
     addEventListeners();
@@ -15,20 +15,67 @@ const addEventListeners = () => {
     document.getElementById("startOefening").addEventListener("click", event => {
         startOefening();
     })
+    document.getElementById("volgende").addEventListener("click", event => {
+        volgende();
+    })
+
 }
 
 const startOefening = () => {
     resetGlobVars();
-    genereerOpgaves();
-    markCorrect();
-    toonScherm("opgave");
+    nieuwOefening();
 }
 
-const resetGlobVars = () => {
+const nieuwOefening = () => {
+    resetOefeningVars();
+    genereerOpgaves();
+    markCorrect();
+    global.OEFENING_NUMMER++
+    weergeefOefeningNummer();
+    weergeefOpgave("bovenVenster", global.OPGAVE1);
+    toonScherm("opgave")
+}
+
+const weergeefOpgave = (venster, opgave) => {
+    let vensterDiv = document.getElementById(venster);
+    vensterDiv.appendChild(createEl("div", "rekenopgave", opgave));
+}
+
+const volgende = () => {
+
+};
+
+const weergeefOefeningNummer = () => {
+    let span = document.getElementById("oefeningNummer")
+    let nummerWeergave = "";
+    if(global.OEFENING_NUMMER < 10) {
+        nummerWeergave = "0" + global.OEFENING_NUMMER;
+    } else {
+        nummerWeergave = global.OEFENING_NUMMER;
+    }
+    span.innerHTML = nummerWeergave;
+}
+
+const createEl = (el, className, text) => {
+    let element = document.createElement(el);
+    if(className) {
+        element.classList.add(className);
+    }
+    if(text) {
+        element.appendChild(document.createTextNode(text));
+    }
+    return element;
+};
+
+const resetOefeningVars = () => {
     global.BOVENSTE_UITKOMST = 0;
     global.ONDERSTE_UITKOMST = 0;
     global.OPGAVE1 = "";
     global.OPGAVE2 = "";
+}
+
+const resetGlobVars = () => {
+    global.OEFENING_NUMMER = 0;
 }
 
 const genereerOpgaves = () => {
@@ -169,7 +216,7 @@ const markCorrect = () => {
 }
 
 const toonScherm = (id) => {
-    document.querySelectorAll(".oefeningDisplayFD").forEach(el => {
+    document.querySelectorAll(".oefeningDisplay").forEach(el => {
         el.classList.toggle("hidden", el.id !== id);
     });
 };
