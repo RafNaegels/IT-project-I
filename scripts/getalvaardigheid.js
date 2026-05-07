@@ -131,10 +131,10 @@ const maakDeling = () => {
     const term2 = Math.random() < .9 ? Math.floor(Math.random() * 10) + 2 :
         Math.floor(Math.random() * 9) + 12;
     if(Math.random() < 0.8) {
-        global.BOVENSTE_UITKOMST = term1;
+        global.BOVENSTE_UITKOMST = term2;
         return term1 * term2 + " / " + term1;
     } else {
-        global.BOVENSTE_UITKOMST = term2;
+        global.BOVENSTE_UITKOMST = term1;
         return term1 * term2 + " / " + term2;
     }
 }
@@ -170,8 +170,10 @@ const maakDeling2 = () => {
     const product = factor1 * factor2;
 
     if (Math.random() < 0.5) {
+        global.ONDERSTE_UITKOMST = factor2;
         return product + " / " + factor1;
     } else {
+        global.ONDERSTE_UITKOMST = factor1;
         return product + " / " + factor2;
     }
 }
