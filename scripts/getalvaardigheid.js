@@ -101,8 +101,8 @@ const genereerOpgaves = () => {
 const maakOptelling = () => {
     let uitkomstVerdeling = Math.random();
     global.BOVENSTE_UITKOMST =
-        uitkomstVerdeling < .75 ? 5 + Math.random() * 51 :
-            51 + Math.random() * 50;
+        uitkomstVerdeling < .75 ? Math.floor(5 + Math.random() * 51) :
+            Math.floor(51 + Math.random() * 50);
     const term1 = Math.floor(Math.random() * (global.BOVENSTE_UITKOMST - 1)) + 1;
     const term2 = global.BOVENSTE_UITKOMST - term1;
     return term1 + " + " + term2;
@@ -143,7 +143,7 @@ const maakOptelling2 = () => {
     global.ONDERSTE_UITKOMST = genereerNabijgelegenUitkomst();
 
     const term1 = Math.floor(Math.random() * (global.ONDERSTE_UITKOMST - 1)) + 1;
-    const term2 = global.ONDERSTE_UITKOMST - term1;
+    const term2 = Math.floor(global.ONDERSTE_UITKOMST - term1);
 
     return term1 + " + " + term2;
 }
