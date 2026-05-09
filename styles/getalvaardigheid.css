@@ -1,4 +1,4 @@
-.startScherm {
+.startScherm, .antwoord {
     width: 60%;
     margin: auto;
     border: 1px solid black;
@@ -26,6 +26,30 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+button {
+    padding: 12px 18px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    color: white;
+}
+
+.antwoordBediening {
+    min-width: 25%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.antwoordBediening button{
+    margin-bottom: 0;
+    background-color: #5f7a8a;
+    border-radius: 6px;
+}
+
+.antwoordBediening button:hover {
+    background-color: #4c6675;
 }
 
 .rekenopgave {

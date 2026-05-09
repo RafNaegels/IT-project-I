@@ -4,6 +4,9 @@ const global = {
     OPGAVE1: "",
     OPGAVE2: "",
     OEFENING_NUMMER: 0,
+    VOLGEND_SCHERM: "b",
+    CORRECT_ANTWOORD: null,
+    AANTAL_FOUTEN: 0
 }
 
 const setup = () => {
@@ -12,36 +15,56 @@ const setup = () => {
 }
 
 const addEventListeners = () => {
-    document.getElementById("startOefening").addEventListener("click", event => {
-        startOefening();
+    document.getElementById("startOefening").addEventListener("click", startTest)
+    document.getElementById("volgende").addEventListener("click", volgende);
+    document.querySelectorAll(".antwoordBediening button").forEach((button) => {
+        button.addEventListener("click", verwerkAntwoord);
     })
-    document.getElementById("volgende").addEventListener("click", event => {
-        volgende();
-    })
-
 }
 
-const startOefening = () => {
+const startTest = () => {
     resetGlobVars();
+    nieuwOefenreeks();
+}
+
+
+const nieuwOefenreeks = () => {
     nieuwOefening();
+    weergeefOpgave("bovenVenster", global.OPGAVE1);
 }
 
 const nieuwOefening = () => {
+    global.OEFENING_NUMMER++;
     resetOefeningVars();
     genereerOpgaves();
     markCorrect();
-    global.OEFENING_NUMMER++
     weergeefOefeningNummer();
     weergeefOpgave("bovenVenster", global.OPGAVE1);
-    toonScherm("opgave")
+    global.VOLGEND_SCHERM = "o";
+    toonScherm("opgave");
 }
 
 const weergeefOpgave = (venster, opgave) => {
+    wisInhoudVensters();
     let vensterDiv = document.getElementById(venster);
     vensterDiv.appendChild(createEl("div", "rekenopgave", opgave));
 }
 
 const volgende = () => {
+    if(global.VOLGEND_SCHERM === "b") {
+        console.log("bovenVenster")
+        weergeefOpgave("bovenVenster", global.OPGAVE1);
+        global.VOLGEND_SCHERM = "o";
+    } else if (global.VOLGEND_SCHERM === 'o') {
+        console.log("onderVenster");
+        weergeefOpgave("onderVenster", global.OPGAVE2);
+        global.VOLGEND_SCHERM = "a";
+
+    } else if (global.VOLGEND_SCHERM === 'a') {
+        console.log("antwoord venster")
+        toonScherm("antwoord");
+        global.VOLGEND_SCHERM = "b";
+    }
 
 };
 
@@ -76,6 +99,41 @@ const resetOefeningVars = () => {
 
 const resetGlobVars = () => {
     global.OEFENING_NUMMER = 0;
+    global.VOLGEND_SCHERM = "o";
+}
+
+const verwerkAntwoord = (event) => {
+    let antwoord = event.target.dataset.id;
+    let correct = global.CORRECT_ANTWOORD;
+    wisInhoudVensters();
+    global.VOLGEND_SCHERM = "b";
+    if (antwoord === correct) {
+        nieuwOefening();
+    } else {
+        global.AANTAL_FOUTEN++;
+        nieuwOefening();
+
+    }
+}
+
+const markCorrect = () => {
+    if (global.BOVENSTE_UITKOMST > global.ONDERSTE_UITKOMST) {
+        global.CORRECT_ANTWOORD = "boven"
+    } else if (global.ONDERSTE_UITKOMST > global.BOVENSTE_UITKOMST) {
+        global.CORRECT_ANTWOORD = "onder"
+    } else {
+        global.CORRECT_ANTWOORD = "gelijk"
+    }
+}
+
+const wisInhoudVensters = () => {
+    let schermen = Array.from(document.getElementsByClassName("venster"));
+    // = [...document.getElementsByClassName("venster")] korte notatie om array te maken HTMLcollection
+    schermen.forEach(el => {
+        while (el.firstChild) {
+            el.removeChild(el.firstChild);
+        }
+    })
 }
 
 const genereerOpgaves = () => {
@@ -166,16 +224,12 @@ const maakProduct2 = () => {
 }
 
 const maakDeling2 = () => {
-    const { factor1, factor2 } = genereerFactoren();
-    const product = factor1 * factor2;
+    const { factor, quotient } = genereerFactoren();
+    const product = factor * quotient;
 
-    if (Math.random() < 0.5) {
-        global.ONDERSTE_UITKOMST = factor2;
-        return product + " / " + factor1;
-    } else {
-        global.ONDERSTE_UITKOMST = factor1;
-        return product + " / " + factor2;
-    }
+    global.ONDERSTE_UITKOMST = quotient;
+    return product + " / " + factor;
+
 }
 
 const genereerNabijgelegenUitkomst = () => {
@@ -205,32 +259,16 @@ const genereerFactoren = () => {
 
     const factor = Math.floor(Math.random() * 10) + 1;
 
-    global.ONDERSTE_UITKOMST = quotient;
-
     return {
         factor,
         quotient
     };
 };
 
-const markCorrect = () => {
-
-}
-
 const toonScherm = (id) => {
     document.querySelectorAll(".oefeningDisplay").forEach(el => {
         el.classList.toggle("hidden", el.id !== id);
     });
 };
-
-
-
-
-
-
-
-
-
-
 
 window.addEventListener("load", setup);
