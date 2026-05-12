@@ -8,6 +8,7 @@
             src="../scripts/getalvaardigheid.js"></script>
     <title>Title</title>
 </head>
+
 <body>
 <header class="sub-header-advanced">
     <div>
@@ -61,8 +62,19 @@
             </div>
 
             <div class="resultaat oefeningDisplay" id="resultaat">
+
+                <h1>Resultaat</h1>
+                <div class="resultaatRegel">
+                    <span class="resultaatParameter">gemaakte oefeningen:</span> <span id="aantalOefeningen"></span>
+                </div>
+                <div class="resultaatRegel">
+                    <span class="resultaatParameter">aantal fouten:</span> <span class="fout" id="aantalFouten"></span>
+                </div>
+                <div class="resultaatRegel">
+                    <span class="resultaatParameter">aantal punten:</span> <span class="juist" id="aantalPunten"></span>
+                </div>
+                <button class="volgendePagina" id="opnieuw">opnieuw</button>
             </div>
-        </div>
     </main>
 
 </body>

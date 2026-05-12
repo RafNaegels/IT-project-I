@@ -6,7 +6,7 @@ const global = {
     AANTAL_ANTWOORDEN: 5,
     TIMER_ID: 0,
     DUUR_OEFENING: 4*60*1000,
-    DEBUGGING: true
+    DEBUGGING: false
 }
 
 const setup = () => {

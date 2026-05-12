@@ -6,42 +6,6 @@ main {
 
 }
 
-.flex {
-    display: flex;
-    flex-wrap: wrap;
-    width: 60%;
-    margin: auto;
-    min-height: 350px;
-    padding: 20px 50px;
-    border: 1px solid black;
-    border-radius: 5px;
-    justify-content: space-around;
-    flex-direction: column;
-    text-align: center;
-}
-
-.resultaat {
-    display: block;
-    width: 60%;
-    margin: auto;
-    min-height: 350px;
-    padding: 20px 50px;
-    border: 1px solid black;
-    border-radius: 5px;
-}
-
-.fout {
-    color: red;
-}
-
-.resultaatRegel {
-    margin: 8px 0;
-}
-
-.resultaatParameter {
-    display: inline-block;
-    width: 12em;
-}
 
 .oefeningDisplayFD h1 {
     text-align: center;

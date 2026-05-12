@@ -4,6 +4,91 @@ body {
     font-family: Arial, Helvetica, sans-serif;
 }
 
+.flex {
+    display: flex;
+    flex-wrap: wrap;
+    width: 60%;
+    margin: auto;
+    min-height: 350px;
+    padding: 20px 50px;
+    border: 1px solid black;
+    border-radius: 5px;
+    justify-content: space-around;
+    flex-direction: column;
+    text-align: center;
+}
+
+
+.startScherm, .antwoord, .resultaat {
+    width: 60%;
+    margin: auto;
+    border: 1px solid black;
+    min-height: 50vh;
+    padding: 1.5em;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.inhoud {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 150px);
+}
+
+.volgende {
+    display: flex;
+    align-items: center;
+    background-color: #233b55;
+    color: #e5e7eb;
+    border: 1px solid #3a5068;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.volgende:hover {
+    background-color: #3a5068;
+}
+
+.antwoordBediening {
+    min-width: 25%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.antwoordBediening button{
+    margin-bottom: 0;
+    background-color: #5f7a8a;
+    border-radius: 6px;
+}
+
+.antwoordBediening button:hover {
+    background-color: #4c6675;
+}
+
+.venster {
+    border: 1px solid black;
+    min-height: calc(50vh - 150px);
+    border-bottom: 1px solid #e6e6e6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+button {
+    padding: 12px 18px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    color: white;
+}
+
+
 .sub-header-advanced h2 {
     margin: 0;
     font-size: 20px;
@@ -29,6 +114,37 @@ body {
     text-decoration: none;
     color: white;
     font-size: 20px;
+}
+
+.resultaat {
+    display: block;
+    width: 60%;
+    margin: auto;
+    min-height: 350px;
+    padding: 20px 50px;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+.fout {
+    color: red;
+}
+
+.juist {
+    color: #01b501;
+}
+
+.resultaatRegel {
+    margin: 8px 0;
+}
+
+.resultaatParameter {
+    display: inline-block;
+    width: 12em;
+}
+
+.resultaatRegel span:nth-child(2) {
+    font-weight: bold;
 }
 
 .sub-header-advanced {

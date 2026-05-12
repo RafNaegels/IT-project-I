@@ -6,12 +6,15 @@ const global = {
     OEFENING_NUMMER: 0,
     VOLGEND_SCHERM: "b",
     CORRECT_ANTWOORD: null,
+    TIMER_ID: 0,
+    DUUR_OEFENING: 4*6000,
     AANTAL_FOUTEN: 0
 }
 
 const setup = () => {
     addEventListeners();
     toonScherm("startScherm")
+
 }
 
 const addEventListeners = () => {
@@ -19,16 +22,19 @@ const addEventListeners = () => {
     document.getElementById("volgende").addEventListener("click", volgende);
     document.querySelectorAll(".antwoordBediening button").forEach((button) => {
         button.addEventListener("click", verwerkAntwoord);
-    })
+    });
+    document.getElementById("opnieuw").addEventListener("click", startTest);
 }
 
 const startTest = () => {
-    resetGlobVars();
     nieuwOefenreeks();
+    clearTimeout(global.TIMER_ID);
+    global.TIMER_ID = setTimeout(eindeOefening, global.DUUR_OEFENING);
 }
 
 
 const nieuwOefenreeks = () => {
+    resetGlobVars();
     nieuwOefening();
     weergeefOpgave("bovenVenster", global.OPGAVE1);
 }
@@ -52,21 +58,25 @@ const weergeefOpgave = (venster, opgave) => {
 
 const volgende = () => {
     if(global.VOLGEND_SCHERM === "b") {
-        console.log("bovenVenster")
         weergeefOpgave("bovenVenster", global.OPGAVE1);
         global.VOLGEND_SCHERM = "o";
     } else if (global.VOLGEND_SCHERM === 'o') {
-        console.log("onderVenster");
         weergeefOpgave("onderVenster", global.OPGAVE2);
         global.VOLGEND_SCHERM = "a";
 
     } else if (global.VOLGEND_SCHERM === 'a') {
-        console.log("antwoord venster")
         toonScherm("antwoord");
         global.VOLGEND_SCHERM = "b";
     }
 
 };
+
+const eindeOefening = () => {
+    document.getElementById("aantalOefeningen").textContent = (global.OEFENING_NUMMER);
+    document.getElementById("aantalFouten").textContent = (global.AANTAL_FOUTEN);
+    document.getElementById("aantalPunten").textContent = (global.OEFENING_NUMMER - global.AANTAL_FOUTEN);
+    toonScherm("resultaat");
+}
 
 const weergeefOefeningNummer = () => {
     let span = document.getElementById("oefeningNummer")
@@ -95,11 +105,13 @@ const resetOefeningVars = () => {
     global.ONDERSTE_UITKOMST = 0;
     global.OPGAVE1 = "";
     global.OPGAVE2 = "";
+    global.CORRECT_ANTWOORD = null;
 }
 
 const resetGlobVars = () => {
     global.OEFENING_NUMMER = 0;
     global.VOLGEND_SCHERM = "o";
+    global.TIMER_ID = 0;
 }
 
 const verwerkAntwoord = (event) => {
@@ -159,7 +171,7 @@ const genereerOpgaves = () => {
 const maakOptelling = () => {
     let uitkomstVerdeling = Math.random();
     global.BOVENSTE_UITKOMST =
-        uitkomstVerdeling < .75 ? Math.floor(5 + Math.random() * 51) :
+        uitkomstVerdeling < .85 ? Math.floor(5 + Math.random() * 51) :
             Math.floor(51 + Math.random() * 50);
     const term1 = Math.floor(Math.random() * (global.BOVENSTE_UITKOMST - 1)) + 1;
     const term2 = global.BOVENSTE_UITKOMST - term1;
@@ -169,7 +181,7 @@ const maakOptelling = () => {
 const maakVerschil = () => {
     let uitkomstVerdeling = Math.random();
     global.BOVENSTE_UITKOMST =
-        uitkomstVerdeling < .75 ? 5 + Math.floor(Math.random() * 61) :
+        uitkomstVerdeling < .85 ? 5 + Math.floor(Math.random() * 61) :
             66 + Math.floor(Math.random() * 50);
     const term1 = Math.floor(Math.random() * (global.BOVENSTE_UITKOMST - 1)) + 1;
     const term2 = global.BOVENSTE_UITKOMST + term1;
@@ -177,18 +189,18 @@ const maakVerschil = () => {
 }
 
 const maakProduct = () => {
-    const product1 = Math.floor(Math.random() * 10) + 1;
-    const product2 = Math.random() < .9 ? Math.floor(Math.random() * 10) + 1 :
+    const product1 = Math.floor(Math.random() * 9) + 2;
+    const product2 = Math.random() < .9 ? Math.floor(Math.random() * 9) + 2 :
         Math.floor(Math.random() * 5) + 11;
     global.BOVENSTE_UITKOMST = product1 * product2;
     return product1 + " x " + product2;
 }
 
 const maakDeling = () => {
-    const term1 = Math.floor(Math.random() * 10) + 2;
-    const term2 = Math.random() < .9 ? Math.floor(Math.random() * 10) + 2 :
-        Math.floor(Math.random() * 9) + 12;
-    if(Math.random() < 0.8) {
+    const term1 = Math.floor(Math.random() * 9) + 2;
+    const term2 = Math.random() < .9 ? Math.floor(Math.random() * 9) + 2 :
+        Math.floor(Math.random() * 10) + 11;
+    if(Math.random() < 0.7) {
         global.BOVENSTE_UITKOMST = term2;
         return term1 * term2 + " / " + term1;
     } else {
@@ -216,7 +228,7 @@ const maakVerschil2 = () => {
 }
 
 const maakProduct2 = () => {
-    const term1 = Math.floor(Math.random() * (10 - 1)) + 1;
+    const term1 = Math.floor(Math.random() * (15 - 1)) + 1;
     const term2 = genereerFactor(term1);
     global.ONDERSTE_UITKOMST = term1 * term2;
 
@@ -251,13 +263,13 @@ const genereerFactor = (term1) => {
 }
 
 const genereerFactoren = () => {
-    const minQuotient = Math.max(1, global.BOVENSTE_UITKOMST - 5);
+    const minQuotient = Math.max(2, global.BOVENSTE_UITKOMST - 5);
     const maxQuotient = global.BOVENSTE_UITKOMST + 5;
 
     const quotient =
         Math.floor(Math.random() * (maxQuotient - minQuotient + 1)) + minQuotient;
 
-    const factor = Math.floor(Math.random() * 10) + 1;
+    const factor = Math.floor(Math.random() * 11) + 2;
 
     return {
         factor,

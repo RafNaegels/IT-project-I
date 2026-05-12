@@ -5,11 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ceb2d04b-09a3-43ab-ba7e-5bb568c96003" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/styles/woordgeheugen.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/foutdetectie/foutdetectie.js" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/foutdetectie/foutdetectie.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scripts/getalvaardigheid.js" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/getalvaardigheid.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/woordgeheugen.js" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/woordgeheugen.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/styles/foutdetectie.css" beforeDir="false" afterPath="$PROJECT_DIR$/styles/foutdetectie.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/styles/getalvaardigheid.css" beforeDir="false" afterPath="$PROJECT_DIR$/styles/getalvaardigheid.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/styles/oefenpaginas.css" beforeDir="false" afterPath="$PROJECT_DIR$/styles/oefenpaginas.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/webpaginas/getalvaardigheid.html" beforeDir="false" afterPath="$PROJECT_DIR$/webpaginas/getalvaardigheid.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webpaginas/woordgeheugen.html" beforeDir="false" afterPath="$PROJECT_DIR$/webpaginas/woordgeheugen.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -89,7 +94,9 @@
       <workItem from="1778134536858" duration="11014000" />
       <workItem from="1778152175301" duration="217000" />
       <workItem from="1778162350904" duration="425000" />
-      <workItem from="1778312434356" duration="12202000" />
+      <workItem from="1778312434356" duration="13090000" />
+      <workItem from="1778420390629" duration="5697000" />
+      <workItem from="1778515136377" duration="9225000" />
     </task>
     <servers />
   </component>
