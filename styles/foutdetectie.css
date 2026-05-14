@@ -45,19 +45,3 @@ button {
     color: white;
 }
 
-.variant1 {
-    padding-top: 5em;
-    padding-bottom: 2em;
-    margin-bottom: 0;
-}
-
-
-.variant1 button {
-    background-color: #5f7a8a;
-    border-radius: 6px;
-}
-
-.variant1 button:hover {
-    background-color: #4c6675;
-}
-

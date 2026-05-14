@@ -15,7 +15,7 @@ const Weergeef = {
 }
 
 const setup = () => {
-    toonScherm("instructie");
+    toonScherm("antwoord");
     addEventListeners();
 }
 

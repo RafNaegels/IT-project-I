@@ -31,6 +31,23 @@ body {
     justify-content: space-around;
 }
 
+.bediening {
+    padding-top: 5em;
+    padding-bottom: 2em;
+    margin-bottom: 0;
+}
+
+
+.bediening button {
+    background-color: #5f7a8a;
+    border-radius: 6px;
+}
+
+.bediening button:hover {
+    background-color: #4c6675;
+}
+
+
 .inhoud {
     display: flex;
     justify-content: center;
