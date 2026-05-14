@@ -33,19 +33,20 @@ const nieuwOefening = () => {
 
 const renderOpgave = (woordenKoppels) => {
     let categorieen = document.getElementById("categorien");
-    let woorden = document.getElementById("woord");
-    console.log(woorden);
-    console.log(categorieen);
+    let woorden = document.getElementById("woorden");
     wisInhoud(woorden);
     wisInhoud(categorieen);
     woordenKoppels.forEach((koppel) => {
         if (global.DEBUGGING) {
             console.log(koppel);
-            let categorieString = createEl("span", "woord", woordenKoppels.categorie);
-            categorieen.append(categorieString);
-            let woordString = createEl("span", "woord", woordenKoppels.woord);
-            woorden.append(woordString);
         }
+            console.log("koppel: ", koppel);
+        console.log("koppel");
+            let categorieString = createEl("span", "woord", koppel.categorie);
+            categorieen.append(categorieString);
+            let woordString = createEl("span", "woord", koppel.woord);
+            woorden.append(woordString);
+
     })
 }
 
