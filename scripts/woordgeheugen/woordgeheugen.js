@@ -2,6 +2,9 @@ const global = {
     AANTAL_PUNTEN: 0,
     AANTAL_FOUTEN: 0,
     VOLGEND_SCHERM: null,
+    AANTAL_OVEREENKOMSTEN: 0, // dit indiceert het juiste antwoord
+    TIMER: null,
+    DEBUGGING: false,
 }
 
 
@@ -17,19 +20,57 @@ const setup = () => {
 }
 
 const startTest = () => {
-    global.VOLGEND_SCHERM = Weergeef.CATEGORIE;
-    //genereerOpgave();
-    volgendeScherm();
+    nieuwOefening();
+    //timer instellen
 }
+
+const nieuwOefening = () => {
+    global.VOLGEND_SCHERM = Weergeef.CATEGORIE;
+    volgendeScherm();
+    let woordenKoppels = genereerOpgave();
+    renderOpgave(woordenKoppels);
+}
+
+const renderOpgave = (woordenKoppels) => {
+    let categorieen = document.getElementById("categorien");
+    let woorden = document.getElementById("woord");
+    console.log(woorden);
+    console.log(categorieen);
+    wisInhoud(woorden);
+    wisInhoud(categorieen);
+    woordenKoppels.forEach((koppel) => {
+        if (global.DEBUGGING) {
+            console.log(koppel);
+            let categorieString = createEl("span", "woord", woordenKoppels.categorie);
+            categorieen.append(categorieString);
+            let woordString = createEl("span", "woord", woordenKoppels.woord);
+            woorden.append(woordString);
+        }
+    })
+}
+
+
+const wisInhoud = (parent) => {
+    while (parent.firstChild) {
+        parent.removeChild(parent.firstChild);
+    }
+}
+
+const createEl = (element, className, content) => {
+    let el = document.createElement(element);
+    if (className) el.className = className;
+    if (content) el.appendChild(document.createTextNode(content));
+    return el;
+};
 
 const genereerOpgave = () => {
 
-    let aantalOvereenKomsten = Math.floor(Math.random() * 4);
+    global.AANTAL_OVEREENKOMSTEN = Math.floor(Math.random() * 4);
     let koppels = []
     let categorieNamen = Object.keys(categorieen);
 
     //selecteren van categorie - woord koppels die overeenkomen
-    for (let i = 0; i < aantalOvereenKomsten; i++) {
+    for (let i = 0; i < global.AANTAL_OVEREENKOMSTEN; i++) {
         let willekeurigeCategorie = categorieNamen[Math.floor(Math.random() * categorieNamen.length)];
         let woordenVanCategorie = categorieen[willekeurigeCategorie];
         let willekeurigWoord = woordenVanCategorie[Math.floor(Math.random() * woordenVanCategorie.length)];
@@ -59,7 +100,8 @@ const genereerOpgave = () => {
             }
         );
     }
-    console.log(koppels);
+    koppels.sort(() => Math.random - 0.5); // zorgt ervoor dat de matching koppels niet steeds vooraan zitten
+    return koppels;
 }
 
 const volgendeScherm = () => {
