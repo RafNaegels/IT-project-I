@@ -15,7 +15,7 @@ const Weergeef = {
 }
 
 const setup = () => {
-    toonScherm("antwoord");
+    toonScherm("instructie");
     addEventListeners();
 }
 
@@ -40,8 +40,6 @@ const renderOpgave = (woordenKoppels) => {
         if (global.DEBUGGING) {
             console.log(koppel);
         }
-            console.log("koppel: ", koppel);
-        console.log("koppel");
             let categorieString = createEl("span", "woord", koppel.categorie);
             categorieen.append(categorieString);
             let woordString = createEl("span", "woord", koppel.woord);
@@ -65,7 +63,6 @@ const createEl = (element, className, content) => {
 };
 
 const genereerOpgave = () => {
-
     global.AANTAL_OVEREENKOMSTEN = Math.floor(Math.random() * 4);
     let koppels = []
     let categorieNamen = Object.keys(categorieen);
@@ -101,8 +98,17 @@ const genereerOpgave = () => {
             }
         );
     }
-    koppels.sort(() => Math.random - 0.5); // zorgt ervoor dat de matching koppels niet steeds vooraan zitten
+    koppels.sort(() => Math.random() - 0.5); // zorgt ervoor dat de matching koppels niet steeds vooraan zitten
     return koppels;
+}
+
+const verwerkAntwoord = (e) => {
+    if (global.AANTAL_OVEREENKOMSTEN === parseInt(e.target.dataset.id)) {
+        global.AANTAL_PUNTEN++;
+    } else {
+        global.AANTAL_FOUTEN++;
+    }
+    nieuwOefening();
 }
 
 const volgendeScherm = () => {
@@ -131,6 +137,9 @@ const volgendeScherm = () => {
 const addEventListeners = () => {
     document.getElementById("startOefening").addEventListener("click", startTest);
     document.getElementById("volgende").addEventListener("click", volgendeScherm);
+    document.querySelectorAll(".bedieningspaneel button").forEach(button => {
+        button.addEventListener("click", verwerkAntwoord);
+    })
 }
 
 
