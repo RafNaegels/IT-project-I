@@ -1,23 +1,7 @@
-
 .rekenopgave {
     display: inline-block;
     font-size: 2em;
     vertical-align: middle;
-}
-
-.opgave {
-    min-width: 40%;
-}
-
-.onderbalk {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 12px 16px;
-    background-color: #f1f5f9;
-    border-right: 1px solid black;
-    border-bottom: 1px solid black;
-    border-left: 1px solid black;
 }
 
 .progressie {

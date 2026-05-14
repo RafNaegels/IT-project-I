@@ -12,6 +12,11 @@
     margin: 15px 0;
 }
 
+.opgaveVenster {
+    margin: 7em 0;
+}
+
+
 .woord {
     font-family: roboto, sans-serif;
     display: inline-block;
@@ -19,4 +24,14 @@
     font-size: 1.4em;
     font-weight: lighter;
     letter-spacing: 0.8px;
+}
+
+.volgendeWoorden {
+    background-color: #233b55;
+    color: #e5e7eb;
+    border: 1px solid #3a5068;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-size: 14px;
+    cursor: pointer;
 }

@@ -13,8 +13,7 @@ const global = {
 
 const setup = () => {
     addEventListeners();
-    toonScherm("startScherm")
-
+    toonScherm("startScherm");
 }
 
 const addEventListeners = () => {

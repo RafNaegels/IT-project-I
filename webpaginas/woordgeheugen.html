@@ -5,7 +5,9 @@
     <link rel="stylesheet" href="../styles/oefenpaginas.css">
     <link rel="stylesheet" href="../styles/woordgeheugen.css">
     <script type="text/javascript" charset="utf-8"
-            src="../scripts/woordgeheugen.js"></script>
+            src="../scripts/woordgeheugen/woordgeheugen.js"></script>
+    <script type="text/javascript" charset="utf-8"
+            src="../scripts/woordgeheugen/categorieen.js"></script>
     <title>Title</title>
 </head>
 
@@ -20,79 +22,63 @@
 
 <main>
     <div class="inhoud">
-        <div class="startScherm oefeningDisplay flex" id="startScherm">
-            <div class="oefeningBeschrijving">
-                <h1>
-                    Woordgeheugen
-                </h1>
+        <div class="test flex">
+            <div class="oefeningBeschrijving oefeningDisplay" id="instructie">
+                <h1>Woordgeheugen</h1>
                 <p>
                     Op het eerste scherm zult 3 categorien te zien krijgen.<br>
                     Op het tweede scherm krijgt u 3 woorden.<br>
                     U moet selecteren hoeveel woorden overeenkomen met de categoriën op dezelfde positie.<br>
                     Het onderstaand voorbeeld heeft 2 overeenkomsten.<br>
                 </p>
+
                 <div class="oefeningInhoud">
                     <div class="strings">
-                        <div class="string"><span class="woord">Vis</span> <span class="woord">Metaal</span> <span class="woord">Vis</span></div>
-                        <div class="string"><span class="fout woord">Vrachtwagen</span> <span class="juist woord">Arseen</span>
-                            <span class="juist woord">Heilbot</span></div>
+                        <div class="string">
+                            <span class="woord">Vis</span>
+                            <span class="woord">Metaal</span>
+                            <span class="woord">Vis</span>
+                        </div>
+                        <div class="string">
+                            <span class="fout woord">Vrachtwagen</span>
+                            <span class="juist woord">Arseen</span>
+                            <span class="juist woord">Heilbot</span>
+                        </div>
                     </div>
                 </div>
                 <button class="volgendePagina" id="startOefening">start oefening</button>
             </div>
 
 
+            <div class="opgave oefeningDisplay" id="opgave"><!--hier weergave togglen -->
 
-
-        <div class="opgave oefeningDisplay" id="opgave">
-
-            <div class="opgaveVenster" id="categorie">
-                <div class="strings" id="categorien">
-
+                <div class="opgaveVenster" id="categorie"> <!--hier weergave togglen -->
+                    <div class="strings" id="categorien"> <!--dynamisch vullen-->
+                        <span class="woord">Vis</span>
+                        <span class="woord">Metaal</span>
+                        <span class="woord">Vis</span>
+                    </div>
                 </div>
+
+                <div class="opgaveVenster" id="woord"> <!--hier weergave togglen -->
+                    <div class="strings" id="woorden"> <!--Hier dynamisch vullen -->
+                        <span class="woord">heilbot</span>
+                        <span class="woord">lithium</span>
+                        <span class="woord">haai</span>
+                    </div>
+                </div>
+
+                    <button class="volgendeWoorden" id="volgende">volgende ▶</button>
             </div>
 
-            <div class="opgaveVenster" id="antwoord">
-                <div class="strings" id="instanties">
-
-                </div>
-
-                <div class="antwoordBediening">
-                    <button data-id="0">0</button>
-                    <button data-id="1">1</button>
-                    <button data-id="2">2</button>
-                    <button data-id="3">3</button>
-                </div>
+            <div class="antwoord oefeningDisplay" id="antwoord">
+                <div class="strings" id="instanties"></div>
             </div>
 
-
-            <div class="onderbalk" id="onderbalk">
-                <div class="progressie" id="progressie">
-                    <p>oefening <span id="oefeningNummer">01</span></p>
-                </div>
-                <button class="volgende" id="volgende">volgende ▶</button>
-            </div>
         </div>
+    </div>
 
-
-
-
-        <div class="resultaat oefeningDisplay" id="resultaat">
-
-            <h1>Resultaat</h1>
-            <div class="resultaatRegel">
-                <span class="resultaatParameter">gemaakte oefeningen:</span> <span id="aantalOefeningen"></span>
-            </div>
-            <div class="resultaatRegel">
-                <span class="resultaatParameter">aantal fouten:</span> <span class="fout" id="aantalFouten"></span>
-            </div>
-            <div class="resultaatRegel">
-                <span class="resultaatParameter">aantal punten:</span> <span class="juist" id="aantalPunten"></span>
-            </div>
-            <button class="volgendePagina" id="opnieuw">opnieuw</button>
-        </div>
 </main>
-
 
 </body>
 </html>
