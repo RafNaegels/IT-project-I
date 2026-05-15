@@ -3,11 +3,90 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="../styles/oefenpaginas.css">
+    <link rel="stylesheet" href="../styles/plaatsbepaling.css">
     <script type="text/javascript" charset="utf-8"
-            src="../scripts/plaatsbepaling.js"></script>
+            src="../scripts/plaatsbepaling/plaatsbepaling.js"></script>
     <title>Title</title>
 </head>
 <body>
+<main>
+    <header class="sub-header-advanced">
+        <div>
+            <span class="label">MODULE 02</span>
+            <h2>Plaatsbepalingstest</h2>
+        </div>
+        <a href="Hoofdpagina.html" class="back-btn">◀ OVERZICHT</a>
+    </header>
+    <div class="inhoud">
+        <div class="startScherm oefeningDisplay" id="startScherm">
+            <div class="oefeningBeschrijving">
+                <h1>
+                    Plaatsbepaling
+                </h1>
+                <p>
+                    Onthoudt de beschrijvingen en selecteer op het volgende scherm de<br>
+                    pijltjes die voldoen aan deze beschrijving<br>
+                </p>
+                <svg class="pijl rechts-boven" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 3H11l4 4-12 12 2 2 12-12 4 4V3z"
+                          fill="black"
+                          stroke="black"
+                          stroke-width="1"
+                          stroke-linecap="round"
+                          stroke-linejoin="miter"/>
+                </svg>
 
+
+                <svg class="pijl links-boven" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 3H11l4 4-12 12 2 2 12-12 4 4V3z"
+                          fill="white"
+                          stroke="black"
+                          stroke-width="1"
+                          stroke-linecap="round"
+                          stroke-linejoin="miter"/>
+                </svg>
+
+
+
+            </div>
+            <button class="volgendePagina" id="startOefening">start oefening</button>
+        </div>
+
+        <div class="opgave oefeningDisplay" id="opgave">
+            <div class="venster" id="plaatsbepaling">
+
+            </div>
+
+            <div class="onderbalk" id="onderbalk">
+                <div class="progressie" id="progressie">
+                    <p>oefening <span id="oefeningNummer">01</span></p>
+                </div>
+                <button class="volgende" id="volgende">volgende ▶</button>
+            </div>
+
+        </div>
+
+        <div class="antwoord oefeningDisplay" id="antwoord">
+            <div class="antwoordBediening grid">
+
+            </div>
+        </div>
+
+        <div class="resultaat oefeningDisplay" id="resultaat">
+
+            <h1>Resultaat</h1>
+            <div class="resultaatRegel">
+                <span class="resultaatParameter">gemaakte oefeningen:</span> <span id="aantalOefeningen"></span>
+            </div>
+            <div class="resultaatRegel">
+                <span class="resultaatParameter">aantal fouten:</span> <span class="fout" id="aantalFouten"></span>
+            </div>
+            <div class="resultaatRegel">
+                <span class="resultaatParameter">aantal punten:</span> <span class="juist" id="aantalPunten"></span>
+            </div>
+            <button class="volgendePagina" id="opnieuw">opnieuw</button>
+        </div>
+    </div>
+</main>
 </body>
 </html>

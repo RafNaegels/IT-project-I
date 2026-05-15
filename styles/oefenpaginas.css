@@ -31,6 +31,10 @@ body {
     justify-content: space-around;
 }
 
+.resultaat button {
+    margin-top: 1em;
+}
+
 .bediening {
     padding-top: 5em;
     padding-bottom: 2em;

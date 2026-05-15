@@ -5,12 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ceb2d04b-09a3-43ab-ba7e-5bb568c96003" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/scripts/plaatsbepaling/plaatsbepaling.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/styles/plaatsbepaling.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/woordgeheugen/woordgeheugen.js" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/woordgeheugen/woordgeheugen.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/styles/getalvaardigheid.css" beforeDir="false" afterPath="$PROJECT_DIR$/styles/getalvaardigheid.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/plaatsbepaling.js" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/plaatsbepaling/pijltjes.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/styles/oefenpaginas.css" beforeDir="false" afterPath="$PROJECT_DIR$/styles/oefenpaginas.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/styles/woordgeheugen.css" beforeDir="false" afterPath="$PROJECT_DIR$/styles/woordgeheugen.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/webpaginas/getalvaardigheid.html" beforeDir="false" afterPath="$PROJECT_DIR$/webpaginas/getalvaardigheid.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webpaginas/plaatsbepaling.html" beforeDir="false" afterPath="$PROJECT_DIR$/webpaginas/plaatsbepaling.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/webpaginas/woordgeheugen.html" beforeDir="false" afterPath="$PROJECT_DIR$/webpaginas/woordgeheugen.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -59,11 +60,11 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\rafNa\GitHub\IT-project-I\scripts\plaatsbepaling" />
       <recent name="C:\Users\rafNa\GitHub\IT-project-I\scripts\woordgeheugen" />
       <recent name="C:\Users\rafNa\GitHub\IT-project-I\scripts\foutdetectie" />
       <recent name="C:\Users\rafNa\GitHub\IT-project-I" />
       <recent name="C:\Users\rafNa\GitHub\IT-project-I\webpaginas" />
-      <recent name="C:\Users\rafNa\GitHub\IT-project-I\scripts" />
     </key>
   </component>
   <component name="SharedIndexes">
@@ -97,7 +98,7 @@
       <workItem from="1778515136377" duration="28416000" />
       <workItem from="1778741262154" duration="9342000" />
       <workItem from="1778751597719" duration="3971000" />
-      <workItem from="1778828202017" duration="4420000" />
+      <workItem from="1778828202017" duration="9672000" />
     </task>
     <servers />
   </component>
