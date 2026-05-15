@@ -16,7 +16,6 @@
     margin: 7em 0;
 }
 
-
 .bedieningspaneel {
     padding-top: 5em;
     padding-bottom: 2em;
@@ -36,6 +35,14 @@
     background-color: #4c6675;
 }
 
+.WGResultaat {
+    text-align: start;
+    padding: 0 3em;
+}
+
+.WGResultaat button {
+    margin-top: 1em;
+}
 
 .woord {
     font-family: roboto, sans-serif;

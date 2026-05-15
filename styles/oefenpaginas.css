@@ -37,6 +37,10 @@ body {
     margin-bottom: 0;
 }
 
+.opgave {
+    min-width: 40%;
+}
+
 
 .bediening button {
     background-color: #5f7a8a;

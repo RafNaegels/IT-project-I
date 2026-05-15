@@ -1,34 +1,45 @@
-const global = {
-    AANTAL_PUNTEN: 0,
-    AANTAL_FOUTEN: 0,
-    VOLGEND_SCHERM: null,
-    AANTAL_OVEREENKOMSTEN: 0, // dit indiceert het juiste antwoord
-    TIMER: null,
-    DEBUGGING: false,
-}
-
-
 const Weergeef = {
     CATEGORIE: "categorie",
     WOORDEN: "woord",
     ANTWOORD: "antwoord",
 }
 
+const global = {
+    AANTAL_PUNTEN: 0,
+    AANTAL_FOUTEN: 0,
+    AANTAL_OEFENINGEN: 0,
+    VOLGEND_SCHERM: Weergeef.CATEGORIE,
+    AANTAL_OVEREENKOMSTEN: 0, // dit indiceert het juiste antwoord
+    DUUR_OEFENING: 4*60*1000,
+    TIMER: null,
+    DEBUGGING: true,
+}
+
 const setup = () => {
-    toonScherm("instructie");
+    toonScherm("resultaat"); // terug op instructie zetten!!!!!!!!
     addEventListeners();
 }
 
 const startTest = () => {
+    resetGlobVars()
     nieuwOefening();
-    //timer instellen
+    clearTimeout(global.TIMER);
+    if(global.DEBUGGING) {
+        global.TIMER = setTimeout(verwerkResultaat, 20*1000);
+    } else {
+        global.TIMER = setTimeout(verwerkResultaat, global.DUUR_OEFENING)
+    }
 }
 
 const nieuwOefening = () => {
-    global.VOLGEND_SCHERM = Weergeef.CATEGORIE;
     volgendeScherm();
     let woordenKoppels = genereerOpgave();
     renderOpgave(woordenKoppels);
+    if (global.DEBUGGING) {
+        console.log("woorden Koppels:");
+        console.log(woordenKoppels);
+        console.log(global.AANTAL_OVEREENKOMSTEN);
+    }
 }
 
 const renderOpgave = (woordenKoppels) => {
@@ -48,6 +59,20 @@ const renderOpgave = (woordenKoppels) => {
     })
 }
 
+const verwerkResultaat = () => {
+    let aantalOefeningen = document.getElementById("aantalOefeningen");
+    let aantalFouten = document.getElementById("aantalFouten");
+    let punten = document.getElementById("aantalPunten");
+    wisInhoud(aantalOefeningen);
+    wisInhoud(punten);
+    wisInhoud(aantalFouten);
+    aantalOefeningen.appendChild(document.createTextNode(global.AANTAL_PUNTEN + global.AANTAL_FOUTEN));
+    aantalFouten.appendChild(document.createTextNode(global.AANTAL_FOUTEN));
+    punten.appendChild(document.createTextNode(global.AANTAL_PUNTEN));
+
+    toonScherm("resultaat");
+}
+
 
 const wisInhoud = (parent) => {
     while (parent.firstChild) {
@@ -61,6 +86,13 @@ const createEl = (element, className, content) => {
     if (content) el.appendChild(document.createTextNode(content));
     return el;
 };
+
+const resetGlobVars = () => {
+        global.AANTAL_PUNTEN = 0;
+        global.AANTAL_FOUTEN = 0;
+        global.AANTAL_OEFENINGEN = 0;
+        global.VOLGEND_SCHERM = Weergeef.CATEGORIE;
+}
 
 const genereerOpgave = () => {
     global.AANTAL_OVEREENKOMSTEN = Math.floor(Math.random() * 4);
@@ -108,6 +140,7 @@ const verwerkAntwoord = (e) => {
     } else {
         global.AANTAL_FOUTEN++;
     }
+    global.AANTAL_OEFENINGEN++;
     nieuwOefening();
 }
 
@@ -140,6 +173,7 @@ const addEventListeners = () => {
     document.querySelectorAll(".bedieningspaneel button").forEach(button => {
         button.addEventListener("click", verwerkAntwoord);
     })
+    document.getElementById("opnieuw").addEventListener("click", startTest);
 }
 
 
