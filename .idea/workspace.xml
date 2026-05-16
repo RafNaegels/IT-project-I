@@ -5,14 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ceb2d04b-09a3-43ab-ba7e-5bb568c96003" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/scripts/plaatsbepaling/plaatsbepaling.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/styles/plaatsbepaling.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/plaatsbepaling.js" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/plaatsbepaling/pijltjes.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/styles/oefenpaginas.css" beforeDir="false" afterPath="$PROJECT_DIR$/styles/oefenpaginas.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webpaginas/getalvaardigheid.html" beforeDir="false" afterPath="$PROJECT_DIR$/webpaginas/getalvaardigheid.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/styles/plaatsbepaling.css" beforeDir="false" afterPath="$PROJECT_DIR$/styles/plaatsbepaling.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/webpaginas/plaatsbepaling.html" beforeDir="false" afterPath="$PROJECT_DIR$/webpaginas/plaatsbepaling.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webpaginas/woordgeheugen.html" beforeDir="false" afterPath="$PROJECT_DIR$/webpaginas/woordgeheugen.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -98,7 +93,8 @@
       <workItem from="1778515136377" duration="28416000" />
       <workItem from="1778741262154" duration="9342000" />
       <workItem from="1778751597719" duration="3971000" />
-      <workItem from="1778828202017" duration="9672000" />
+      <workItem from="1778828202017" duration="10424000" />
+      <workItem from="1778949166826" duration="4689000" />
     </task>
     <servers />
   </component>

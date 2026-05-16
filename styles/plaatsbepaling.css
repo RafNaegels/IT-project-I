@@ -4,6 +4,35 @@
     transform-origin: center;
 }
 
+.pijlPrentjes{
+    display:grid;
+    grid-template-columns:repeat(2, 1fr);
+
+    width:100%;
+    margin-top:2rem;
+    column-gap:clamp(1rem, 8vw, 8rem);
+}
+
+.beschrijving {
+    text-align: center;
+    line-height: 1.7em;
+
+}
+
+.combo{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    border-radius:20px;
+}
+
+.pijlen{
+    display: inline-flex;
+    flex-direction:column;
+    align-items:center;
+
+}
+
 .wit {
     background-color: white;
 }
@@ -22,4 +51,14 @@
 
 .links-onder {
     transform: rotate(180deg);
+}
+
+.opgavePlaatsbepaling {
+    width: 60%;
+    margin: auto;
+}
+
+.opgavePlaatsbepaling .venster {
+    min-height: 50vh;
+
 }
