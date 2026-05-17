@@ -16,7 +16,7 @@ const global = {
 }
 
 const setup = () => {
-    toonScherm("resultaat"); // terug op instructie zetten!!!!!!!!
+    toonScherm("instructie");
     addEventListeners();
 }
 

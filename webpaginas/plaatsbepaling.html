@@ -6,6 +6,8 @@
     <link rel="stylesheet" href="../styles/plaatsbepaling.css">
     <script type="text/javascript" charset="utf-8"
             src="../scripts/plaatsbepaling/plaatsbepaling.js"></script>
+    <script type="text/javascript" charset="utf-8"
+            src="../scripts/plaatsbepaling/pijltjes.js"></script>
     <title>Title</title>
 </head>
 <body>
@@ -17,6 +19,7 @@
         </div>
         <a href="Hoofdpagina.html" class="back-btn">◀ OVERZICHT</a>
     </header>
+
     <div class="inhoud">
         <div class="startScherm oefeningDisplay" id="startScherm">
             <div class="oefeningBeschrijving">
@@ -24,111 +27,117 @@
                     Plaatsbepaling
                 </h1>
                 <p>
-                    Onthoudt de beschrijvingen en selecteer op het volgende scherm de<br>
-                    pijltjes die voldoen aan deze beschrijving<br>
+                    Onthoudt de beschrijvingen en selecteer op het volgende scherm de
+                    pijltjes die voldoen aan deze beschrijving.
                 </p>
                     <div class="pijlPrentjes">
-                    <div class="combo">
-                        <div class="pijlen">
-                            <svg class="pijl rechts-boven" viewBox="0 0 24 24">
-                                <path d="M21 3H11l4 4-12 12 2 2 12-12 4 4V3z"
-                                      fill="black"
-                                      stroke="black"
-                                      stroke-width="1"/>
-                            </svg>
+                        <div class="combo">
+                            <div class="pijlen">
+                                <svg class="pijl rechtsOp" viewBox="0 0 24 24">
+                                    <path d="M21 3H11l4 4-12 12 2 2 12-12 4 4V3z"
+                                          fill="black"
+                                          stroke="black"
+                                          stroke-width="1"/>
+                                </svg>
 
-                            <svg class="pijl links-boven" viewBox="0 0 24 24">
-                                <path d="M21 3H11l4 4-12 12 2 2 12-12 4 4V3z"
-                                      fill="white"
-                                      stroke="black"
-                                      stroke-width="1"/>
-                            </svg>
+                                <svg class="pijl linksOp" viewBox="0 0 24 24">
+                                    <path d="M21 3H11l4 4-12 12 2 2 12-12 4 4V3z"
+                                          fill="white"
+                                          stroke="black"
+                                          stroke-width="1"/>
+                                </svg>
+                            </div>
+
+                            <p class="beschrijving">
+                                Rechts Op BOVEN Links Op<br>
+                                Zwart BOVEN wit
+                            </p>
                         </div>
 
-                        <p class="beschrijving">
-                            Rechts Op BOVEN Links Op<br>
-                            Zwart BOVEN wit
-                        </p>
-                    </div>
+                        <div class="combo">
+                            <div class="pijlen">
+                                <svg class="pijl rechtsNeer" viewBox="0 0 24 24">
+                                    <path d="M21 3H11l4 4-12 12 2 2 12-12 4 4V3z"
+                                          fill="white"
+                                          stroke="black"
+                                          stroke-width="1"/>
+                                </svg>
 
-                    <div class="combo">
-                        <div class="pijlen">
-                            <svg class="pijl rechts-onder" viewBox="0 0 24 24">
-                                <path d="M21 3H11l4 4-12 12 2 2 12-12 4 4V3z"
-                                      fill="white"
-                                      stroke="black"
-                                      stroke-width="1"/>
-                            </svg>
+                                <svg class="pijl linksNeer" viewBox="0 0 24 24">
+                                    <path d="M21 3H11l4 4-12 12 2 2 12-12 4 4V3z"
+                                          fill="black"
+                                          stroke="black"
+                                          stroke-width="1"/>
+                                </svg>
+                            </div>
 
-                            <svg class="pijl links-onder" viewBox="0 0 24 24">
-                                <path d="M21 3H11l4 4-12 12 2 2 12-12 4 4V3z"
-                                      fill="black"
-                                      stroke="black"
-                                      stroke-width="1"/>
-                            </svg>
+                            <p class="beschrijving">
+                                Wit BOVEN Zwart <br>
+                                Links Neer ONDER Rechts Neer
+                            </p>
                         </div>
 
-                        <p class="beschrijving">
-                            Wit BOVEN Zwart <br>
-                            Links Neer ONDER Rechts Neer
-                        </p>
-                    </div>
+                        <div class="combo">
+                            <div class="pijlen">
+                                <svg class="pijl linksOp" viewBox="0 0 24 24">
+                                    <path d="M21 3H11l4 4-12 12 2 2 12-12 4 4V3z"
+                                          fill="white"
+                                          stroke="black"
+                                          stroke-width="1"/>
+                                </svg>
 
-                    <div class="combo">
-                        <div class="pijlen">
-                            <svg class="pijl links-boven" viewBox="0 0 24 24">
-                                <path d="M21 3H11l4 4-12 12 2 2 12-12 4 4V3z"
-                                      fill="white"
-                                      stroke="black"
-                                      stroke-width="1"/>
-                            </svg>
+                                <svg class="pijl rechtsNeer" viewBox="0 0 24 24">
+                                    <path d="M21 3H11l4 4-12 12 2 2 12-12 4 4V3z"
+                                          fill="black"
+                                          stroke="black"
+                                          stroke-width="1"/>
+                                </svg>
+                            </div>
 
-                            <svg class="pijl rechts-onder" viewBox="0 0 24 24">
-                                <path d="M21 3H11l4 4-12 12 2 2 12-12 4 4V3z"
-                                      fill="black"
-                                      stroke="black"
-                                      stroke-width="1"/>
-                            </svg>
+                            <p class="beschrijving">
+                                Zwart ONDER Wit <br>
+                                Links Op BOVEN Rechts Neer
+                            </p>
                         </div>
 
-                        <p class="beschrijving">
-                            Zwart ONDER Wit <br>
-                            Links Op BOVEN Rechts Neer
-                        </p>
-                    </div>
+                        <div class="combo">
+                            <div class="pijlen">
+                                <svg class="pijl rechtsOp" viewBox="0 0 24 24">
+                                    <path d="M21 3H11l4 4-12 12 2 2 12-12 4 4V3z"
+                                          fill="black"
+                                          stroke="black"
+                                          stroke-width="1"/>
+                                </svg>
 
-                    <div class="combo">
-                        <div class="pijlen">
-                            <svg class="pijl rechts-boven" viewBox="0 0 24 24">
-                                <path d="M21 3H11l4 4-12 12 2 2 12-12 4 4V3z"
-                                      fill="black"
-                                      stroke="black"
-                                      stroke-width="1"/>
-                            </svg>
+                                <svg class="pijl rechtsNeer" viewBox="0 0 24 24">
+                                    <path d="M21 3H11l4 4-12 12 2 2 12-12 4 4V3z"
+                                          fill="white"
+                                          stroke="black"
+                                          stroke-width="1"/>
+                                </svg>
+                            </div>
 
-                            <svg class="pijl rechts-onder" viewBox="0 0 24 24">
-                                <path d="M21 3H11l4 4-12 12 2 2 12-12 4 4V3z"
-                                      fill="white"
-                                      stroke="black"
-                                      stroke-width="1"/>
-                            </svg>
+                            <p class="beschrijving">
+                                Rechts Neer ONDER Rechts Op <br>
+                                Zwart BOVEN Wit
+                            </p>
                         </div>
-
-                        <p class="beschrijving">
-                            Rechts Neer ONDER Rechts Op <br>
-                            Zwart Boven Wit
-                        </p>
-                    </div>
                     </div>
 
                 </div>
             <button class="volgendePagina" id="startOefening">start oefening</button>
-        </div>
-        </div>
+        </div><!--startscherm-->
 
-        <div class="opgavePlaatsbepaling oefeningDisplay" id="opgave">
-            <div class="venster" id="plaatsbepaling">
 
+
+        <div class="opgavePlaatsbepaling oefeningDisplay" id="opgave">       <!-- hier display togglen-->
+            <div class="venster" id="beschrijving">                          <!-- hier dynamisch toevoegen van beschrijving -->
+            </div>
+
+            <div class="venster" id="antwoord">               <!-- hier display togglen -->
+                <div class="antwoordBediening grid" id="antwoordOpties">          <!-- hier plaatjes van pijltjes appenden -->
+
+                </div>
             </div>
 
             <div class="onderbalk" id="onderbalk">
@@ -138,13 +147,9 @@
                 <button class="volgende" id="volgende">volgende ▶</button>
             </div>
 
-        </div>
+        </div><!-- opgave-->
 
-        <div class="antwoord oefeningDisplay" id="antwoord">
-            <div class="antwoordBediening grid">
 
-            </div>
-        </div>
 
         <div class="resultaat oefeningDisplay" id="resultaat">
 
@@ -159,8 +164,10 @@
                 <span class="resultaatParameter">aantal punten:</span> <span class="juist" id="aantalPunten"></span>
             </div>
             <button class="volgendePagina" id="opnieuw">opnieuw</button>
-        </div>
-    </div>
+        </div><!--resultaat-->
+
+
+    </div><!--inhoud-->
 </main>
 </body>
 </html>

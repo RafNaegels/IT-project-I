@@ -9,8 +9,8 @@
     grid-template-columns:repeat(2, 1fr);
 
     width:100%;
-    margin-top:2rem;
-    column-gap:clamp(1rem, 8vw, 8rem);
+    margin: 2rem 0;
+    row-gap: 2rem;
 }
 
 .beschrijving {
@@ -37,19 +37,19 @@
     background-color: white;
 }
 
-.links-boven {
+.linksOp {
     transform: rotate(270deg);
 }
 
-.rechts-boven {
+.rechtsOp {
     transform: rotate(0deg);
 }
 
-.rechts-onder {
+.rechtsNeer {
     transform: rotate(90deg);
 }
 
-.links-onder {
+.linksNeer {
     transform: rotate(180deg);
 }
 
