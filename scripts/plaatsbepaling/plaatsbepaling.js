@@ -185,10 +185,7 @@ const selecteerAntwoord = (e) => {
     });
 
     e.currentTarget.classList.add("geselecteerd");
-    global.GEKOZEN_ANTWOORD_ID = e.currentTarget.dataset.id;
-    console.log("selecteerantwoord() currentTagcet " + e.currentTarget.dataset.id);
-    console.log("selecteerantwoord() global gekozenAntwoord " + global.GEKOZEN_ANTWOORD_ID);
-    console.log("selecteerantwoord() global correct " + global.CORRECT_ANTWOORD_ID);
+    global.GEKOZEN_ANTWOORD_ID = Number(e.currentTarget.dataset.id);
 }
 
 
