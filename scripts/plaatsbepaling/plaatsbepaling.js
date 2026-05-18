@@ -9,6 +9,7 @@ const global = {
     AANTAL_OEFENINGEN: 0,
     ANTWOORD_OPTIES: 6,
     VOLGEND_SCHERM: Weergeef.BESCHRIJVING,
+    GEKOZEN_ANTWOORD_ID: null,
     DUUR_OEFENING: 4*60*1000,
     TIMER: null,
 }
@@ -20,24 +21,25 @@ const setup = () => {
 
 const startTest = () => {
     resetGlobVars();
-    nieuwOefening();
     volgendeScherm();
     //setTime-out
 }
 
 const nieuwOefening = () => {
     renderOpgave();
-    markCorrect();
 }
 
 const volgendeScherm = () => {
+    console.log("global.volgendScherm ", global.VOLGEND_SCHERM)
     switch (global.VOLGEND_SCHERM) {
         case Weergeef.BESCHRIJVING:
+            nieuwOefening();
             toonScherm("opgave", "beschrijving");
             global.VOLGEND_SCHERM = Weergeef.ANTWOORD;
             break;
 
         case Weergeef.ANTWOORD:
+            console.log("antwoordscherm moet tevoorschijn komen!!!!")
             toonScherm("opgave", "antwoord");
             global.VOLGEND_SCHERM = Weergeef.BESCHRIJVING;
             break;
@@ -60,7 +62,7 @@ const renderOpgave = () => {
 
     while (pijlParameters.length < global.ANTWOORD_OPTIES) {
         let willekeurigeIndex = Math.floor(Math.random() * pijltjes.length);
-        if (!selectedIndexes.has(willekeurigeIndex)) {
+        if (!selectedIndexes.has(willekeurigeIndex)) {  // voorkomt dat dezelfde prent wordt gekozen.
             selectedIndexes.add(willekeurigeIndex);
             pijlParameters.push(pijltjes[willekeurigeIndex]);
         }
@@ -71,19 +73,29 @@ const renderOpgave = () => {
     });
 
     let correctAntwoord = Math.floor(Math.random() * pijlParameters.length);
-    document.getElementById("beschrijving").innerHTML = genereerWillekeurigeBeschrijving(pijlParameters[correctAntwoord]);
+    let beschrijvingsDiv = document.getElementById("beschrijving");
+    beschrijvingsDiv.innerHTML = "";
+    let beschrijvingsTekst = genereerWillekeurigeBeschrijving(pijlParameters[correctAntwoord])
+    let beschrijvingEl = createEl("p", "beschrijving");
+    beschrijvingEl.innerHTML = beschrijvingsTekst;
+    beschrijvingsDiv.appendChild(beschrijvingEl);
+
     let antwoordOpties = document.getElementById("antwoordOpties");
     antwoordOpties.innerHTML = "";
     global.CORRECT_ANTWOORD = pijlParameters[correctAntwoord].ID;
 
     for (let i = 0; i < global.ANTWOORD_OPTIES; i++) {
-        let combo = createEl("div", "combo");
+        let combo = createEl("button", "combo");
         combo.dataset.id = pijlParameters[i].ID;
+        combo.type = "button";
 
         let pijlen = createEl("div", "pijlen");
         pijlen.innerHTML = pijlPrentjes[i];
-
         combo.appendChild(pijlen);
+
+        combo.addEventListener("click", selecteerAntwoord);
+
+
 
         antwoordOpties.appendChild(combo);
     }
@@ -140,6 +152,18 @@ const genereerWillekeurigeBeschrijving = (juistePijl) => {
     }
 };
 
+const selecteerAntwoord = (e) => {
+    console.log("element id ", e.currentTarget.dataset.id)
+    document.querySelectorAll(".combo").forEach(el => {
+        el.classList.remove("geselecteerd");
+    });
+
+    e.currentTarget.classList.add("geselecteerd");
+
+    global.GEKOZEN_ANTWOORD_ID = e.currentTarget.dataset.id;
+    console.log("globalID ", global.GEKOZEN_ANTWOORD_ID);
+}
+
 
 const vertaalRichting = (richting) => {
     const vertalingen = {
@@ -173,6 +197,7 @@ const toonScherm = (id, binnenscherm = null) => {
 
 const addEventListeners = () => {
     document.getElementById("startOefening").addEventListener("click", startTest);
+    document.getElementById("volgende").addEventListener("click", volgendeScherm);
 }
 
 window.addEventListener("load", setup);

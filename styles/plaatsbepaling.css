@@ -19,6 +19,18 @@
 
 }
 
+.venster .beschrijving {
+    line-height: 2em;
+    font-size: 1.6em;
+}
+
+.antwoordBediening.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    box-sizing: border-box;
+}
+
 .combo{
     display:flex;
     flex-direction:column;
@@ -26,11 +38,36 @@
     border-radius:20px;
 }
 
+.venster .combo{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    border-radius:10px;
+    border: 2px solid #ccc;
+    background-color: white;
+    cursor: pointer;
+    transition: all 0.1s ease-in-out;
+}
+
+.venster .combo:hover{
+    background-color: #afc7d5;
+    box-shadow: 0 0 2px 1px rgba(126, 186, 209, 0.3);
+}
+
+.combo.geselecteerd {
+    border-color: #406271;
+    background-color: #4c6675;
+}
+
+.combo.geselecteerd:hover {
+    border-color: #406271;
+    background-color: #4c6675;
+}
+
 .pijlen{
     display: inline-flex;
     flex-direction:column;
     align-items:center;
-
 }
 
 .wit {
