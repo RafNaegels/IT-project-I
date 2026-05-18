@@ -33,6 +33,7 @@ const nieuwOefening = () => {
 }
 
 const volgende = () => {
+    if (global.GEKOZEN_ANTWOORD_ID === null && global.VOLGEND_SCHERM === Weergeef.BESCHRIJVING) return; // geen antwoord geselecteerd. later UI bericht in onderbalk toevoegen om instructies te geven.
     if(global.VOLGEND_SCHERM === Weergeef.BESCHRIJVING) {
         verwerkAntwoord();
         updateOefeningNummerDisplay();
@@ -61,6 +62,9 @@ const verwerkAntwoord = () => {
 }
 
 const verwerkResultaat = () => {
+    clearTimeout(global.TIMER);
+    global.TIMER = null;
+
     let aantalOefeningen = document.getElementById("aantalOefeningen");
     let aantalFouten = document.getElementById("aantalFouten");
     let punten = document.getElementById("aantalPunten");
