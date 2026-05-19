@@ -11,7 +11,7 @@ const global = {
     VOLGEND_SCHERM: Weergeef.BESCHRIJVING,
     GEKOZEN_ANTWOORD_ID: null,
     CORRECT_ANTWOORD_ID: null,
-    DUUR_OEFENING: 4*60*100,
+    DUUR_OEFENING: 4*60*1000,
     TIMER: null,
 }
 

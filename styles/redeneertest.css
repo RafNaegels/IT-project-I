@@ -1,4 +1,4 @@
-.voorbeeldRedeneertest {
+.beschrijvingRedeneertest, .voorbeschrijvingRedeneertest {
     display: flex;
     justify-content: center;
     text-align: center;
@@ -7,6 +7,44 @@
 
 .vraag {
     line-height: 1.4em;
+    text-align: center;
+}
+
+.beschrijvingRedeneertest {
+    border: solid 1px black;
+    border-bottom: none;
+    min-height: 50vh;
+}
+
+.antwoordBediening {
+    margin-top: 5vh;
+    margin-right: auto;
+    margin-left: auto;
+    width: 60%;
+}
+
+.antwoordknop {
+    border: solid 4px white;
+    transition: all 0.1s ease-in-out;
+}
+
+.geselecteerd{
+    background-color: #304b59;
+    border: 4px solid #4edbb3;
+}
+
+.geselecteerd:hover{
+    background-color: #304b59;
+    border: 4px solid #4edbb3;
+}
+
+
+.correctAntwoord {
+    background-color: yellow;
+    line-height: 1.4em;
+    display: inline-block;
+    padding: 0 .4em;
+
 }
 
 .antwoorden {
@@ -15,3 +53,4 @@
     justify-content: space-between;
     flex-direction: row;
 }
+
