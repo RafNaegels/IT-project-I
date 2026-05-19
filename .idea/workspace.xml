@@ -5,8 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ceb2d04b-09a3-43ab-ba7e-5bb568c96003" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/styles/redeneertest.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/plaatsbepaling/plaatsbepaling.js" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/plaatsbepaling/plaatsbepaling.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/getalvaardigheid.js" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/getalvaardigheid.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/redeneer.js" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/redeneertest/redeneertest.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/styles/oefenpaginas.css" beforeDir="false" afterPath="$PROJECT_DIR$/styles/oefenpaginas.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webpaginas/redeneer.html" beforeDir="false" afterPath="$PROJECT_DIR$/webpaginas/redeneer.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,8 +21,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="HTML File" />
-        <option value="CSS File" />
         <option value="JavaScript File" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -96,6 +100,7 @@
       <workItem from="1778949166826" duration="5007000" />
       <workItem from="1779000822426" duration="13948000" />
       <workItem from="1779086734629" duration="13911000" />
+      <workItem from="1779179325389" duration="3601000" />
     </task>
     <servers />
   </component>

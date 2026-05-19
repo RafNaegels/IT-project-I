@@ -3,11 +3,85 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="../styles/oefenpaginas.css">
+    <link rel="stylesheet" href="../styles/redeneertest.css">
     <script type="text/javascript" charset="utf-8"
             src="../scripts/redeneer.js"></script>
     <title>Title</title>
 </head>
 <body>
+<header class="sub-header-advanced">
+    <div>
+        <span class="label">MODULE 05</span>
+        <h2>Redeneertest</h2>
+    </div>
+    <a href="Hoofdpagina.html" class="back-btn">◀ OVERZICHT</a>
+</header>
 
+<main>
+    <div class="inhoud">
+        <div class="startScherm oefeningDisplay" id="startScherm">
+            <div class="oefeningBeschrijving">
+                <h1>
+                    Redeneertest
+                </h1>
+                <p>
+                    Je krijgt twee vergelijkende zinnen. Beantwoord de vraag.
+                </p>
+
+                <div class="voorbeeldRedeneertest">
+                    <div class="vraag">
+                        Politieman is trager dan Brandweerman<br>
+                        Soldaat is vlugger dan Brandweerman<br>
+                        Wie is het traagst?
+                    </div>
+
+                    <div class="antwoorden">
+
+                    <span class="subject">
+                        Politieman
+                    </span>
+                        <span class="subject">
+                        Brandweerman
+                    </span>
+                        <span class="subject">
+                        Soldaat
+                    </span>
+                    </div>
+                </div>
+            </div>
+            <button class="volgendePagina" id="startOefening">start oefening</button>
+        </div>
+
+        <div class="opgave oefeningDisplay" id="opgave">
+            <div class="venster" id="bovenVenster">
+
+            </div>
+
+            <div class="onderbalk" id="onderbalk">
+                <div class="progressie" id="progressie">
+                    <p>oefening <span id="oefeningNummer">01</span></p>
+                </div>
+                <button class="volgende" id="volgende">volgende  ▶</button>
+            </div>
+
+        </div>
+
+
+        <div class="resultaat oefeningDisplay" id="resultaat">
+
+            <h1>Resultaat</h1>
+            <div class="resultaatRegel">
+                <span class="resultaatParameter">gemaakte oefeningen:</span> <span id="aantalOefeningen"></span>
+            </div>
+            <div class="resultaatRegel">
+                <span class="resultaatParameter">aantal fouten:</span> <span class="fout" id="aantalFouten"></span>
+            </div>
+            <div class="resultaatRegel">
+                <span class="resultaatParameter">aantal punten:</span> <span class="juist" id="aantalPunten"></span>
+            </div>
+            <button class="volgendePagina" id="opnieuw">opnieuw</button>
+        </div>
+    </div>
+</main>
 </body>
 </html>

@@ -7,7 +7,7 @@ const global = {
     VOLGEND_SCHERM: "b",
     CORRECT_ANTWOORD: null,
     TIMER_ID: 0,
-    DUUR_OEFENING: 4*6000,
+    DUUR_OEFENING: 4*60000,
     AANTAL_FOUTEN: 0
 }
 

@@ -42,7 +42,8 @@ body {
 }
 
 .opgave {
-    min-width: 40%;
+    min-width: 60%;
+    min-height: 50vh;
 }
 
 
