@@ -6,6 +6,8 @@
     <link rel="stylesheet" href="../styles/redeneertest.css">
     <script type="text/javascript" charset="utf-8"
             src="../scripts/redeneertest/redeneertest.js"></script>
+    <script type="text/javascript" charset="utf-8"
+            src="../scripts/redeneertest/vergelijkingen.js"></script>
     <title>Title</title>
 </head>
 <body>
@@ -37,15 +39,17 @@
 
                     <div class="antwoorden">
 
-                    <span class="subject correctAntwoord">
-                        Politieman
-                    </span>
+                        <span class="subject correctAntwoord">
+                            Politieman
+                        </span>
+
                         <span class="subject">
-                        Brandweerman
-                    </span>
+                            Brandweerman
+                        </span>
+
                         <span class="subject">
-                        Soldaat
-                    </span>
+                            Soldaat
+                        </span>
                     </div>
                 </div>
             </div>
@@ -54,23 +58,13 @@
 
         <div class="opgave oefeningDisplay" id="opgave">
             <div class="beschrijvingRedeneertest">
-                <div class="vraag" id="vraag">
-                    Politieman is trager dan Brandweerman<br>
-                    Soldaat is vlugger dan Brandweerman<br>
-                    Wie is het traagst?
+                <div class="vraag" id="vraagstelling">
+                    <div><span id="zin1"></span></div>
+                    <div><span id="zin2"></span></div>
+                    <div><span id="vraag"></span></div>
                 </div>
 
-                <div class="antwoordBediening">
-
-                    <button class="antwoordknop" data-id="1">
-                        Politieman
-                    </button>
-                    <button class="antwoordknop" data-id="2">
-                        Brandweerman
-                    </button>
-                    <button class="antwoordknop" data-id="3">
-                        Soldaat
-                    </button>
+                <div class="antwoordBediening" id="antwoordBediening">
                 </div>
 
             </div>

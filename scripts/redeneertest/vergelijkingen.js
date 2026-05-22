@@ -1,6 +1,6 @@
 const categorieTags = {
     voertuig:   ["kan_bewegen", "heeft_locatie"],
-    persoon:    ["kan_bewegen", "heeft_locatie", "heeft_emotie", "heeft_grootte", "heeft_lichaam"],
+    persoon:    ["kan_bewegen", "heeft_locatie", "heeft_emotie", "heeft_grootte", "heeft_lichaam", "heeft_gewicht"],
     gebouw:     ["heeft_locatie", "heeft_hoogte", "heeft_afstand"],
     landschap:  ["heeft_locatie", "heeft_afstand"],
     groep:      ["is_groep", "kan_bewegen", "heeft_locatie", "heeft_aantal"],
