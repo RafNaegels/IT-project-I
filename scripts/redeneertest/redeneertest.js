@@ -26,9 +26,6 @@ const volgende = () => {
 
 const nieuwOpgave = () => {
     let syllogisme = maakSyllogisme();
-    console.log("syllogisme in nieuwopgave ", syllogisme);
-    console.log("vraagstelling ", syllogisme.zin1, syllogisme.zin2, syllogisme.vraag);
-    console.log("antwoorden ", syllogisme.antwoorden);
     renderOpgave(syllogisme);
 }
 
@@ -38,9 +35,6 @@ const verwerkAntwoord = () => {
 }
 
 const renderOpgave = (syllogisme) => {
-    console.log("syllogisme", syllogisme);
-    console.log("vraagstelling ", syllogisme.zin1, syllogisme.zin2, syllogisme.vraag);
-    console.log("antwoorden ", syllogisme.antwoorden);
     document.getElementById("zin1").innerHTML = syllogisme.zin1;
     document.getElementById("zin2").innerHTML = syllogisme.zin2;
     document.getElementById("vraag").innerHTML = syllogisme.vraag;
@@ -52,17 +46,18 @@ const renderOpgave = (syllogisme) => {
     geschuddeAntwoorden.forEach(antwoord => {
         let button = createEl("button", "antwoordKnop", antwoord.naam);
         button.dataset.id = antwoord.naam;
+        button.addEventListener("click", geselecteerdAntwoord);
         antwoordBediening.appendChild(button);
     })
 
 }
 
 const geselecteerdAntwoord = (e) => {
-    document.querySelectorAll(".antwoordknop").forEach(el => {
+    document.querySelectorAll(".antwoordKnop").forEach(el => {
         el.classList.remove("geselecteerd");
     });
     e.currentTarget.classList.add("geselecteerd");
-    global.GEKOZEN_ANTWOORD_ID = Number(e.currentTarget.dataset.id);
+    global.GEKOZEN_ANTWOORD = e.currentTarget.dataset.id;
 }
 
 const verwerkResultaat = () => {
@@ -102,33 +97,33 @@ const maakSyllogisme = () => {
     let zin1, zin2;
     if (patroon === 1) {
         // Patroon A: 1 > 2 en 2 > 3
-        zin1 = `${willekeurigeSubjecten[0].naam} ${vergelijking.positief} ${willekeurigeSubjecten[1].naam}`; // Tram vlugger dan Veerboot
-        zin2 = `${willekeurigeSubjecten[1].naam} ${vergelijking.positief} ${willekeurigeSubjecten[2].naam}`; // Veerboot vlugger dan Helikopter
+        zin1 = `${willekeurigeSubjecten[0].naam} ${vergelijking.relaties.positief} ${willekeurigeSubjecten[1].naam}`; // Tram vlugger dan Veerboot
+        zin2 = `${willekeurigeSubjecten[1].naam} ${vergelijking.relaties.positief} ${willekeurigeSubjecten[2].naam}`; // Veerboot vlugger dan Helikopter
 
     }
     else if (patroon === 2) {
         // Patroon B: 3 < 2 en 2 < 1
-        zin1 = `${willekeurigeSubjecten[2].naam} ${vergelijking.negatief} ${willekeurigeSubjecten[1].naam}`; // Helikopter trager dan Veerboot
-        zin2 = `${willekeurigeSubjecten[1].naam} ${vergelijking.negatief} ${willekeurigeSubjecten[0].naam}`; // Veerboot trager dan Tram
+        zin1 = `${willekeurigeSubjecten[2].naam} ${vergelijking.relaties.negatief} ${willekeurigeSubjecten[1].naam}`; // Helikopter trager dan Veerboot
+        zin2 = `${willekeurigeSubjecten[1].naam} ${vergelijking.relaties.negatief} ${willekeurigeSubjecten[0].naam}`; // Veerboot trager dan Tram
     }
     else if (patroon === 3) {
         // Patroon C: 3 < 2 en 1 > 2
-        zin1 = `${willekeurigeSubjecten[2].naam} ${vergelijking.negatief} ${willekeurigeSubjecten[1].naam}`; // Helikopter trager dan Veerboot
-        zin2 = `${willekeurigeSubjecten[0].naam} ${vergelijking.positief} ${willekeurigeSubjecten[1].naam}`; // Tram vlugger dan Veerboot
+        zin1 = `${willekeurigeSubjecten[2].naam} ${vergelijking.relaties.negatief} ${willekeurigeSubjecten[1].naam}`; // Helikopter trager dan Veerboot
+        zin2 = `${willekeurigeSubjecten[0].naam} ${vergelijking.relaties.positief} ${willekeurigeSubjecten[1].naam}`; // Tram vlugger dan Veerboot
     }
     else if (patroon === 4) {
         // Patroon D: 2 > 3 en 2 < 1
-        zin1 = `${willekeurigeSubjecten[1].naam} ${vergelijking.positief} ${willekeurigeSubjecten[2].naam}`; // Veerboot vlugger dan Helikopter
-        zin2 = `${willekeurigeSubjecten[1].naam} ${vergelijking.negatief} ${willekeurigeSubjecten[0].naam}`; // Veerboot trager dan Tram
+        zin1 = `${willekeurigeSubjecten[1].naam} ${vergelijking.relaties.positief} ${willekeurigeSubjecten[2].naam}`; // Veerboot vlugger dan Helikopter
+        zin2 = `${willekeurigeSubjecten[1].naam} ${vergelijking.relaties.negatief} ${willekeurigeSubjecten[0].naam}`; // Veerboot trager dan Tram
     }
 
     let vraagType = Math.random() < 0.5 ? 'positief' : 'negatief';
     let vraagTekst = vergelijking.vragen[vraagType];
 
     if (vraagType === 'positief') {
-        global.CORRECT_ANTWOORD = willekeurigeSubjecten[0].naam; // index 0 heeft altijd de overtreffende trap: grootste, verste, etc
+        global.CORRECT_ANTWOORD = willekeurigeSubjecten[0].naam; // index 0 is altijd de overtreffende trap: grootste, verste, etc
     } else {
-        global.CORRECT_ANTWOORD = willekeurigeSubjecten[2].naam; // index 2 heeft altijd de omgekeerde overtreffende trap: kleinste, dichtste etc
+        global.CORRECT_ANTWOORD = willekeurigeSubjecten[2].naam; // index 2 is altijd de omgekeerde overtreffende trap: kleinste, dichtste etc
 
     }
 
@@ -138,14 +133,14 @@ const maakSyllogisme = () => {
         zin1: zinnen[0],
         zin2: zinnen[1],
         vraag: vraagTekst,
-        antwoorden: [willekeurigeSubjecten],
+        antwoorden: willekeurigeSubjecten,
     };
 }
 
 const shuffleAntwoorden = (arr) => {
     for (let i = arr.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [arr[i], arr[j]] = [arr[j], arr[i]]; // Destructuring swap
+        let j = Math.floor(Math.random() * (i + 1));
+        [arr[i], arr[j]] = [arr[j], arr[i]];
     }
     return arr;
 };
@@ -155,16 +150,19 @@ const selecteerGeschikteVergelijking = (categorie) => {
 
     let geschikteLijst = [];
 
-    for (let i = 0; i > vergelijkingen.length; i++) {
+    for (let i = 0; i < vergelijkingen.length; i++) {
         let vg = vergelijkingen[i];
+
         if (vg.vereisteTags.some(tag => tagsVanCategorie.includes(tag))) {
             geschikteLijst.push(vg);
         }
     }
 
     if (geschikteLijst.length === 0) {
+        console.log("geschikteLijst niet gevuld");
         return vergelijkingen[Math.floor(Math.random() * vergelijkingen.length)];
     }
+    console.log("geschikteLijst is succesvol gevuld!");
     return geschikteLijst[Math.floor(Math.random() * geschikteLijst.length)];
 };
 
@@ -187,7 +185,6 @@ const addEventListeners = () => {
     document.getElementById("opnieuw").addEventListener("click", startTest);
     document.querySelectorAll(".antwoordknop").forEach(el => {
        el.addEventListener("click", geselecteerdAntwoord);
-       console.log(el.dataset.id);
     });
 }
 
