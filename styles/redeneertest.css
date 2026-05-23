@@ -6,7 +6,8 @@
 }
 
 .vraag {
-    line-height: 1.4em;
+    line-height: 1.6em;
+    font-size: 1.2em;
     text-align: center;
 }
 
@@ -29,11 +30,11 @@
     border: solid 4px transparent;
     cursor: pointer;
     font-weight: bold;
-    transition: background-color 0.2s ease, color 0.2s ease;
+    transition: background-color 0.15s ease, color 0.15s ease;
 }
 
 .antwoordKnop:hover {
-    background-color: #4b6475; /* Iets donkerder/voller blauw */
+    background-color: #6d96b1; /* Iets donkerder/voller blauw */
 }
 
 

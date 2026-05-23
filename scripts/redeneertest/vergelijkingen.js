@@ -7,91 +7,98 @@ const categorieTags = {
     uitrusting: ["is_object", "heeft_gewicht"]
 };
 
-const subjecten = [
-    // voertuigen
-    { naam: "Helikopter", categorie: "voertuig" },
-    { naam: "Tram", categorie: "voertuig" },
-    { naam: "Truck", categorie: "voertuig" },
-    { naam: "Veerboot", categorie: "voertuig" },
-    { naam: "Trein", categorie: "voertuig" },
-    { naam: "Tank", categorie: "voertuig" },
-    { naam: "Jeep", categorie: "voertuig" },
-    { naam: "Motor", categorie: "voertuig" },
-    { naam: "Bus", categorie: "voertuig" },
-    { naam: "Fiets", categorie: "voertuig" },
-    { naam: "Onderzeeër", categorie: "voertuig" },
-    { naam: "Vliegtuig", categorie: "voertuig" },
+const subjecten = {
+    voertuig: [
+        "Helikopter",
+        "Tram",
+        "Truck",
+        "Veerboot",
+        "Trein",
+        "Tank",
+        "Jeep",
+        "Motor",
+        "Bus",
+        "Fiets",
+        "Onderzeeër",
+        "Vliegtuig"
+    ],
 
-    // uitrusting
-    { naam: "Bajonet", categorie: "uitrusting" },
-    { naam: "Helm", categorie: "uitrusting" },
-    { naam: "Geweer", categorie: "uitrusting" },
-    { naam: "Pistool", categorie: "uitrusting" },
-    { naam: "Kogelvrij vest", categorie: "uitrusting" },
-    { naam: "Rugzak", categorie: "uitrusting" },
-    { naam: "Radio", categorie: "uitrusting" },
-    { naam: "Verrekijker", categorie: "uitrusting" },
-    { naam: "Zaklamp", categorie: "uitrusting" },
-    { naam: "Munitiekist", categorie: "uitrusting" },
+    uitrusting: [
+        "Bajonet",
+        "Helm",
+        "Geweer",
+        "Pistool",
+        "Kogelvrijvest",
+        "Rugzak",
+        "Radio",
+        "Verrekijker",
+        "Zaklamp",
+        "Munitiekist"
+    ],
 
-    // personen
-    { naam: "Politieman", categorie: "persoon" },
-    { naam: "Pompier", categorie: "persoon" },
-    { naam: "Soldaat", categorie: "persoon" },
-    { naam: "Arts", categorie: "persoon" },
-    { naam: "Piloot", categorie: "persoon" },
-    { naam: "Kapitein", categorie: "persoon" },
-    { naam: "Agent", categorie: "persoon" },
-    { naam: "Verpleegkundige", categorie: "persoon" },
-    { naam: "Jager", categorie: "persoon" },
-    { naam: "Ingenieur", categorie: "persoon" },
+    persoon: [
+        "Politieman",
+        "Pompier",
+        "Soldaat",
+        "Arts",
+        "Piloot",
+        "Kapitein",
+        "Agent",
+        "Verpleegkundige",
+        "Jager",
+        "Ingenieur"
+    ],
 
-    // groepen
-    { naam: "Bataljon", categorie: "groep" },
-    { naam: "Patrouille", categorie: "groep" },
-    { naam: "Regiment", categorie: "groep" },
-    { naam: "Compagnie", categorie: "groep" },
-    { naam: "Peloton", categorie: "groep" },
-    { naam: "Eskader", categorie: "groep" },
-    { naam: "Bemanning", categorie: "groep" },
-    { naam: "Team", categorie: "groep" },
-    { naam: "Brigade", categorie: "groep" },
-    { naam: "Konvooi", categorie: "groep" },
+    groep: [
+        "Bataljon",
+        "Patrouille",
+        "Regiment",
+        "Compagnie",
+        "Peloton",
+        "Eskader",
+        "Bemanning",
+        "Team",
+        "Brigade",
+        "Konvooi"
+    ],
 
-    // landschappen
-    { naam: "Akker", categorie: "landschap" },
-    { naam: "Weide", categorie: "landschap" },
-    { naam: "Rivier", categorie: "landschap" },
-    { naam: "Vijver", categorie: "landschap" },
-    { naam: "Bos", categorie: "landschap" },
-    { naam: "Zee", categorie: "landschap" },
-    { naam: "Oceaan", categorie: "landschap" },
-    { naam: "Berg", categorie: "landschap" },
-    { naam: "Vallei", categorie: "landschap" },
-    { naam: "Moeras", categorie: "landschap" },
-    { naam: "Woestijn", categorie: "landschap" },
-    { naam: "Eiland", categorie: "landschap" },
-    { naam: "Klif", categorie: "landschap" },
-    { naam: "Strand", categorie: "landschap" },
+    landschap: [
+        "Akker",
+        "Weide",
+        "Rivier",
+        "Vijver",
+        "Bos",
+        "Zee",
+        "Oceaan",
+        "Berg",
+        "Vallei",
+        "Moeras",
+        "Woestijn",
+        "Eiland",
+        "Klif",
+        "Strand"
+    ],
 
-    // gebouwen
-    { naam: "Kerk", categorie: "gebouw" },
-    { naam: "Brug", categorie: "gebouw" },
-    { naam: "Boom", categorie: "gebouw" },
-    { naam: "Flatgebouw", categorie: "gebouw" },
-    { naam: "Wolkenkrabber", categorie: "gebouw" },
-    { naam: "Toren", categorie: "gebouw" },
-    { naam: "Kasteel", categorie: "gebouw" },
-    { naam: "School", categorie: "gebouw" },
-    { naam: "Ziekenhuis", categorie: "gebouw" },
-    { naam: "Bunker", categorie: "gebouw" },
-    { naam: "Magazijn", categorie: "gebouw" },
-    { naam: "Stadion", categorie: "gebouw" }
-];
+    gebouw: [
+        "Kerk",
+        "Brug",
+        "Boom",
+        "Flatgebouw",
+        "Wolkenkrabber",
+        "Toren",
+        "Kasteel",
+        "School",
+        "Ziekenhuis",
+        "Bunker",
+        "Magazijn",
+        "Museum",
+        "Treinstation",
+        "Stadion"
+    ]
+};
 
 const vergelijkingen = [
     {
-        dimensie: "snelheid",
         vereisteTags: ["kan_bewegen"],
         relaties: {
             positief: "vlugger dan",
@@ -103,7 +110,6 @@ const vergelijkingen = [
         },
     },
     {
-        dimensie: "ruimtelijk_horizontaal",
         vereisteTags: ["heeft_locatie"],
         relaties: {
             positief: "rechts van",
@@ -115,7 +121,6 @@ const vergelijkingen = [
         },
     },
     {
-        dimensie: "afstand",
         vereisteTags: ["heeft_afstand"],
         relaties: {
             positief: "verder dan",
@@ -127,7 +132,6 @@ const vergelijkingen = [
         },
     },
     {
-        dimensie: "hoogte",
         vereisteTags: ["heeft_hoogte"],
         relaties: {
             positief: "hoger dan",
@@ -139,7 +143,6 @@ const vergelijkingen = [
         },
     },
     {
-        dimensie: "grootte_fysiek",
         vereisteTags: ["heeft_grootte", "heeft_lichaam"],
         relaties: {
             positief: "groter dan",
@@ -151,7 +154,6 @@ const vergelijkingen = [
         },
     },
     {
-        dimensie: "gewicht",
         vereisteTags: ["heeft_gewicht"],
         relaties: {
             positief: "zwaarder dan",
@@ -163,7 +165,6 @@ const vergelijkingen = [
         },
     },
     {
-        dimensie: "groepsgrootte",
         vereisteTags: ["heeft_aantal"],
         relaties: {
             positief: "groter dan",
@@ -175,7 +176,6 @@ const vergelijkingen = [
         },
     },
     {
-        dimensie: "gemoedstoestand",
         vereisteTags: ["heeft_emotie"],
         relaties: {
             positief: "blijer dan",
@@ -187,7 +187,6 @@ const vergelijkingen = [
         },
     },
     {
-        dimensie: "leeftijd_ervaring",
         vereisteTags: ["heeft_emotie"],
         relaties: {
             positief: "ouder dan",
@@ -199,7 +198,6 @@ const vergelijkingen = [
         },
     },
     {
-        dimensie: "moderniteit",
         vereisteTags: ["is_object"],
         relaties: {
             positief: "nieuwer dan",

@@ -17,6 +17,7 @@ const startTest = () => {
     toonScherm("opgave");
     nieuwOpgave();
     global.TIMER = setTimeout(verwerkResultaat, global.DUUR_OEFENING);
+    resetOefeningVars();
 }
 
 const volgende = () => {
@@ -30,8 +31,9 @@ const nieuwOpgave = () => {
 }
 
 const verwerkAntwoord = () => {
-    global.GEKOZEN_ANTWOORD_ID === global.CORRECT_ANTWOORD_ID ? global.AANTAL_PUNTEN++ : global.AANTAL_FOUTEN++;
+    global.GEKOZEN_ANTWOORD === global.CORRECT_ANTWOORD ? global.AANTAL_PUNTEN++ : global.AANTAL_FOUTEN++;
     global.AANTAL_GEMAAKTE_OEFENINGEN++;
+    resetOefeningVars();
 }
 
 const renderOpgave = (syllogisme) => {
@@ -44,12 +46,11 @@ const renderOpgave = (syllogisme) => {
     antwoordBediening.innerHTML = "";
 
     geschuddeAntwoorden.forEach(antwoord => {
-        let button = createEl("button", "antwoordKnop", antwoord.naam);
-        button.dataset.id = antwoord.naam;
+        let button = createEl("button", "antwoordKnop", antwoord);
+        button.dataset.id = antwoord;
         button.addEventListener("click", geselecteerdAntwoord);
         antwoordBediening.appendChild(button);
     })
-
 }
 
 const geselecteerdAntwoord = (e) => {
@@ -61,9 +62,6 @@ const geselecteerdAntwoord = (e) => {
 }
 
 const verwerkResultaat = () => {
-    clearTimeout(global.TIMER);
-    global.TIMER = null;
-
     let aantalOefeningen = document.getElementById("aantalOefeningen");
     let aantalFouten = document.getElementById("aantalFouten");
     let punten = document.getElementById("aantalPunten");
@@ -73,8 +71,16 @@ const verwerkResultaat = () => {
     aantalOefeningen.textContent = global.AANTAL_GEMAAKTE_OEFENINGEN;
 
     toonScherm("resultaat");
+    resetGlobalVars();
+    resetOefeningVars();
 }
 
+
+/*
+* Eerst categorie kiezen.
+* Dan passende vergelijking via tags.
+* Dan subjecten uit diezelfde categorie.
+* */
 const maakSyllogisme = () => {
     // Kies een willekeurig patroon tussen 1 en 4
     let patroon = Math.floor(Math.random() * 4) + 1;
@@ -82,13 +88,15 @@ const maakSyllogisme = () => {
     let categorie = categorien[Math.floor(Math.random()*categorien.length)]; // bevat voertuig, persoon, gebouw
     let vergelijking = selecteerGeschikteVergelijking(categorie); // bevat { positief: "vlugger dan", negatief: "trager dan" }
     let willekeurigeSubjecten = [];
+    let subjectenVanCategorie = subjecten[categorie];
+    console.log(subjectenVanCategorie);
 
     let i = 0;
     while (i < 3) {
-        let randomIndex = Math.floor(Math.random() * subjecten.length);
-        let gekozenSubject = subjecten[randomIndex];
+        let randomIndex = Math.floor(Math.random() * subjectenVanCategorie.length);
+        let gekozenSubject = subjectenVanCategorie[randomIndex];
 
-        if (gekozenSubject.categorie === categorie && !willekeurigeSubjecten.includes(gekozenSubject)) {
+        if (!willekeurigeSubjecten.includes(gekozenSubject)) {
             willekeurigeSubjecten.push(gekozenSubject);
             i++;
         }
@@ -97,33 +105,33 @@ const maakSyllogisme = () => {
     let zin1, zin2;
     if (patroon === 1) {
         // Patroon A: 1 > 2 en 2 > 3
-        zin1 = `${willekeurigeSubjecten[0].naam} ${vergelijking.relaties.positief} ${willekeurigeSubjecten[1].naam}`; // Tram vlugger dan Veerboot
-        zin2 = `${willekeurigeSubjecten[1].naam} ${vergelijking.relaties.positief} ${willekeurigeSubjecten[2].naam}`; // Veerboot vlugger dan Helikopter
+        zin1 = `${willekeurigeSubjecten[0]} ${vergelijking.relaties.positief} ${willekeurigeSubjecten[1]}`; // Tram vlugger dan Veerboot
+        zin2 = `${willekeurigeSubjecten[1]} ${vergelijking.relaties.positief} ${willekeurigeSubjecten[2]}`; // Veerboot vlugger dan Helikopter
 
     }
     else if (patroon === 2) {
         // Patroon B: 3 < 2 en 2 < 1
-        zin1 = `${willekeurigeSubjecten[2].naam} ${vergelijking.relaties.negatief} ${willekeurigeSubjecten[1].naam}`; // Helikopter trager dan Veerboot
-        zin2 = `${willekeurigeSubjecten[1].naam} ${vergelijking.relaties.negatief} ${willekeurigeSubjecten[0].naam}`; // Veerboot trager dan Tram
+        zin1 = `${willekeurigeSubjecten[2]} ${vergelijking.relaties.negatief} ${willekeurigeSubjecten[1]}`; // Helikopter trager dan Veerboot
+        zin2 = `${willekeurigeSubjecten[1]} ${vergelijking.relaties.negatief} ${willekeurigeSubjecten[0]}`; // Veerboot trager dan Tram
     }
     else if (patroon === 3) {
         // Patroon C: 3 < 2 en 1 > 2
-        zin1 = `${willekeurigeSubjecten[2].naam} ${vergelijking.relaties.negatief} ${willekeurigeSubjecten[1].naam}`; // Helikopter trager dan Veerboot
-        zin2 = `${willekeurigeSubjecten[0].naam} ${vergelijking.relaties.positief} ${willekeurigeSubjecten[1].naam}`; // Tram vlugger dan Veerboot
+        zin1 = `${willekeurigeSubjecten[2]} ${vergelijking.relaties.negatief} ${willekeurigeSubjecten[1]}`; // Helikopter trager dan Veerboot
+        zin2 = `${willekeurigeSubjecten[0]} ${vergelijking.relaties.positief} ${willekeurigeSubjecten[1]}`; // Tram vlugger dan Veerboot
     }
     else if (patroon === 4) {
         // Patroon D: 2 > 3 en 2 < 1
-        zin1 = `${willekeurigeSubjecten[1].naam} ${vergelijking.relaties.positief} ${willekeurigeSubjecten[2].naam}`; // Veerboot vlugger dan Helikopter
-        zin2 = `${willekeurigeSubjecten[1].naam} ${vergelijking.relaties.negatief} ${willekeurigeSubjecten[0].naam}`; // Veerboot trager dan Tram
+        zin1 = `${willekeurigeSubjecten[1]} ${vergelijking.relaties.positief} ${willekeurigeSubjecten[2]}`; // Veerboot vlugger dan Helikopter
+        zin2 = `${willekeurigeSubjecten[1]} ${vergelijking.relaties.negatief} ${willekeurigeSubjecten[0]}`; // Veerboot trager dan Tram
     }
 
     let vraagType = Math.random() < 0.5 ? 'positief' : 'negatief';
     let vraagTekst = vergelijking.vragen[vraagType];
 
     if (vraagType === 'positief') {
-        global.CORRECT_ANTWOORD = willekeurigeSubjecten[0].naam; // index 0 is altijd de overtreffende trap: grootste, verste, etc
+        global.CORRECT_ANTWOORD = willekeurigeSubjecten[0]; // index 0 is altijd de overtreffende trap: grootste, verste, etc
     } else {
-        global.CORRECT_ANTWOORD = willekeurigeSubjecten[2].naam; // index 2 is altijd de omgekeerde overtreffende trap: kleinste, dichtste etc
+        global.CORRECT_ANTWOORD = willekeurigeSubjecten[2]; // index 2 is altijd de omgekeerde overtreffende trap: kleinste, dichtste etc
 
     }
 
@@ -166,6 +174,19 @@ const selecteerGeschikteVergelijking = (categorie) => {
     return geschikteLijst[Math.floor(Math.random() * geschikteLijst.length)];
 };
 
+const resetGlobalVars = () => {
+    clearTimeout(global.TIMER);
+    global.TIMER = null;
+    global.AANTAL_FOUTEN = 0;
+    global.AANTAL_PUNTEN = 0;
+    global.AANTAL_GEMAAKTE_OEFENINGEN = 0;
+}
+
+const resetOefeningVars = () => {
+    global.CORRECT_ANTWOORD = null;
+    global.GEKOZEN_ANTWOORD = null;
+}
+
 const createEl = (element, className, content) => {
     let el = document.createElement(element);
     if (className) el.className = className;
@@ -183,9 +204,6 @@ const addEventListeners = () => {
     document.getElementById("startOefening").addEventListener("click", startTest);
     document.getElementById("volgende").addEventListener("click", volgende);
     document.getElementById("opnieuw").addEventListener("click", startTest);
-    document.querySelectorAll(".antwoordknop").forEach(el => {
-       el.addEventListener("click", geselecteerdAntwoord);
-    });
 }
 
 window.addEventListener("load", setup);
