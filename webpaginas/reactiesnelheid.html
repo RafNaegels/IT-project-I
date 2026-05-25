@@ -19,7 +19,7 @@
             <a href="Hoofdpagina.html" class="back-btn">◀ OVERZICHT</a>
         </header>
         <div class="inhoud">
-            <div class="oefeningDisplayFD flex" id="startScherm">
+            <div class="oefeningDisplay flex instructie" id="startScherm">
                 <h1>
                     Reactiesnelheid
                 </h1>
@@ -32,7 +32,8 @@
                     <button class="volgendePagina" id="startOefening">start oefening</button>
             </div>
 
-            <div class="oefeningDisplayFD flex" id="oefeningDisplayFD">
+            <div class="oefeningDisplay opgaveReactiesnelheid" id="opgave">
+                <div class="wrapper">
                 <div id="rooster" class="rooster">
                     <div id="0" class="vakje"></div>
                     <div id="1" class="vakje"></div>
@@ -179,6 +180,12 @@
                     <div id="142" class="vakje"></div>
                     <div id="143" class="vakje"></div>
                 </div> <!--rooster-->
+                </div> <!--venster-->
+                <div class="onderbalkReactiesnelheid" id="onderbalk">
+                    <div class="feedback" id="liveFeedback">
+                        <p>aantal fouten: <span id="liveFeedbackFouten">0</span></p>
+                    </div>
+                </div> <!-- onderbalk -->
             </div> <!--oefenscherm-->
 
             <div class="resultaat oefeningDisplay" id="resultaat">

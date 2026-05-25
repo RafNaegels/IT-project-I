@@ -1,17 +1,44 @@
+.inhoud {
+    background-color: #f3e3d3;
+}
+
+.inhoud .instructie, .inhoud .resultaat {
+    background-color: #fdfaf6;
+    border: none;
+}
+
 .rooster {
     margin: 0 auto;
     display: grid;
     grid-template-columns: repeat(12, 1fr);
     grid-template-rows: repeat(12, 1fr);
-    gap: 2px;
-    background-color: black;
-    border: 2px solid black;
-    width: 350px;
-    height: 350px;
+    gap: 1px;
+    background-color: #9a9999;
+    border: 1px solid #9a9999;
+    width: 300px;
+    height: 300px;
 }
 
 .rooster:hover {
     cursor: pointer;
+}
+
+.onderbalkReactiesnelheid {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 12px;
+    color: white;
+    background-color: #bc7437;
+}
+
+.opgaveReactiesnelheid {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-width: 60%;
+    min-height: 50vh;
+    background-color: #e4c3a6;
 }
 
 .vakje {
