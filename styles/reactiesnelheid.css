@@ -1,0 +1,22 @@
+.rooster {
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: repeat(12, 1fr);
+    gap: 2px;
+    background-color: black;
+    border: 2px solid black;
+    width: 350px;
+    height: 350px;
+}
+
+.rooster:hover {
+    cursor: pointer;
+}
+
+.vakje {
+    background-color: white; /* De vakjes zelf zijn wit */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
