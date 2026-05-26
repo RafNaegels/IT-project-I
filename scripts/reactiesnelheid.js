@@ -53,8 +53,7 @@ const selecteerWillekeurigeVakjes = (vakjes) => {
 }
 
 const roosterInput = (e) => {
-    console.log("id vakje", e.target.id);
-    console.log("gemarkeerd ", e.target.classList.contains("gemarkeerd"));
+
 }
 
 const toonScherm = (id) => {
