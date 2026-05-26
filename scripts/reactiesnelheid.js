@@ -3,7 +3,7 @@ const global = {
     AANTAL_OPLICHTENDE_VAKJES: 25,
     AANTAL_FOUTEN: 0,
     GEMARKEERDE_VAKJES: null,
-    OPGELICHT_VAKJE: null,
+
     LAATST_AANGEKLIKT: null, //fouten bij snelle input voorkomen
     START_TIJD: null,
 }
@@ -61,7 +61,7 @@ const selecteerWillekeurigeVakjes = (vakjes) => {
 
     while (i < global.AANTAL_OPLICHTENDE_VAKJES) {
         let randomIndex = Math.floor(Math.random() * vakjes);
-        if (!geselecteerd.includes(randomIndex)) {
+        if (!geselecteerd.includes(randomIndex.toString())) {
             geselecteerd.push(randomIndex.toString());
             i++
         }
@@ -70,9 +70,11 @@ const selecteerWillekeurigeVakjes = (vakjes) => {
 }
 
 const roosterInput = (e) => {
+    if (!e.target.classList.contains("vakje")) return; //fouten door langs het vakje te klikken voorkomen
     let vakje = e.target
-    if(e.target.id === global.OPGELICHT_VAKJE && vakje.id !== global.LAATST_AANGEKLIKT) {
-        global.LAATST_AANGEKLIKT = vakje.id;
+    console.log(global.GEMARKEERDE_VAKJES)
+    if(e.target.id === global.OPGELICHT_VAKJE && !vakje.dataset.verwerkt) {
+        vakje.dataset.verwerkt = "true";
         vakje.className = "vakje";
         updateAantalHits();
         lichtVolgendeVakjeOp();
