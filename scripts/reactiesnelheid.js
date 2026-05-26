@@ -1,10 +1,11 @@
 const global = {
     GRID_DIMENSIE: 15,
-    AANTAL_OPLICHTENDE_VAKJES: 35,
+    AANTAL_OPLICHTENDE_VAKJES: 25,
     AANTAL_FOUTEN: 0,
     GEMARKEERDE_VAKJES: null,
     OPGELICHT_VAKJE: null,
     LAATST_AANGEKLIKT: null, //fouten bij snelle input voorkomen
+    START_TIJD: null,
 }
 
 const setup = () => {
@@ -14,19 +15,28 @@ const setup = () => {
 
 const startTest = () => {
     toonScherm("opgave");
+    resetGlobVars();
     gridSetup();
     document.getElementById("totaalVakjes").innerText = global.AANTAL_OPLICHTENDE_VAKJES.toString();
+    global.START_TIJD = Date.now();
     lichtVolgendeVakjeOp();
-    //stopwatch
 }
 
 const lichtVolgendeVakjeOp = () => {
     if(global.GEMARKEERDE_VAKJES.length === 0) {
-        verwerkResultaat();
+        verwerkResultaat(Date.now());
         return;
     }
     global.OPGELICHT_VAKJE = global.GEMARKEERDE_VAKJES.pop();
     document.getElementById(global.OPGELICHT_VAKJE).classList.add("opgelicht");
+}
+
+const resetGlobVars = () => {
+    global.AANTAL_FOUTEN = 0;
+    global.LAATST_AANGEKLIKT = null;
+    global.OPGELICHT_VAKJE = null;
+    global.GEMARKEERDE_VAKJES = null;
+    updateFoutDisplay();
 }
 
 const gridSetup = () => {
@@ -64,11 +74,24 @@ const roosterInput = (e) => {
     if(e.target.id === global.OPGELICHT_VAKJE && vakje.id !== global.LAATST_AANGEKLIKT) {
         global.LAATST_AANGEKLIKT = vakje.id;
         vakje.className = "vakje";
+        updateAantalHits();
         lichtVolgendeVakjeOp();
     } else {
         global.AANTAL_FOUTEN++
         updateFoutDisplay();
     }
+}
+
+const updateAantalHits = () => {
+    let aantalHits = document.getElementById("aantalHits");
+    aantalHits.innerHTML = (global.AANTAL_OPLICHTENDE_VAKJES - global.GEMARKEERDE_VAKJES.length).toString();
+}
+
+const verwerkResultaat = (eindTijd) => {
+    toonScherm("resultaat");
+    let duur = eindTijd - global.START_TIJD;
+    document.getElementById("tijdsduur").innerText = (duur / 1000).toFixed(2);
+    document.getElementById("aantalFouten").innerText = global.AANTAL_FOUTEN;
 }
 
 const updateFoutDisplay = () => {
