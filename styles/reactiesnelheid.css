@@ -23,6 +23,14 @@ main .sub-header-advanced {
     color: #f6e8dd
 }
 
+.feedback {
+    width: 100%;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    padding: 0 2em;
+}
+
 main .label {
     color: #c6bbb0
 }

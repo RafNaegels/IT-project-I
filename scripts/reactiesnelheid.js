@@ -1,8 +1,10 @@
 const global = {
     GRID_DIMENSIE: 15,
     AANTAL_OPLICHTENDE_VAKJES: 35,
+    AANTAL_FOUTEN: 0,
     GEMARKEERDE_VAKJES: null,
     OPGELICHT_VAKJE: null,
+    LAATST_AANGEKLIKT: null, //fouten bij snelle input voorkomen
 }
 
 const setup = () => {
@@ -13,11 +15,16 @@ const setup = () => {
 const startTest = () => {
     toonScherm("opgave");
     gridSetup();
+    document.getElementById("totaalVakjes").innerText = global.AANTAL_OPLICHTENDE_VAKJES.toString();
     lichtVolgendeVakjeOp();
     //stopwatch
 }
 
 const lichtVolgendeVakjeOp = () => {
+    if(global.GEMARKEERDE_VAKJES.length === 0) {
+        verwerkResultaat();
+        return;
+    }
     global.OPGELICHT_VAKJE = global.GEMARKEERDE_VAKJES.pop();
     document.getElementById(global.OPGELICHT_VAKJE).classList.add("opgelicht");
 }
@@ -53,7 +60,19 @@ const selecteerWillekeurigeVakjes = (vakjes) => {
 }
 
 const roosterInput = (e) => {
+    let vakje = e.target
+    if(e.target.id === global.OPGELICHT_VAKJE && vakje.id !== global.LAATST_AANGEKLIKT) {
+        global.LAATST_AANGEKLIKT = vakje.id;
+        vakje.className = "vakje";
+        lichtVolgendeVakjeOp();
+    } else {
+        global.AANTAL_FOUTEN++
+        updateFoutDisplay();
+    }
+}
 
+const updateFoutDisplay = () => {
+    document.getElementById("liveFeedbackFouten").innerText = global.AANTAL_FOUTEN;
 }
 
 const toonScherm = (id) => {
