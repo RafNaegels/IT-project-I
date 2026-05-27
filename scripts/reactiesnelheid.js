@@ -38,7 +38,7 @@ const resetGlobVars = () => {
     global.OPGELICHT_VAKJE = null;
     global.GEMARKEERDE_VAKJES = null;
     global.LIVE_KLOK = null;
-    document.getElementById("liveTijd").innerText = "0.00";
+    document.getElementById("liveTijd").innerText = "0";
     updateFoutDisplay();
 }
 
@@ -48,7 +48,7 @@ const startKlok = () => {
     global.LIVE_KLOK = setInterval(() => {
         let millisecondenSindsStart = Date.now() - global.START_TIJD;
         liveKlok.innerHTML = (millisecondenSindsStart/1000).toFixed(0);
-    }, 50);
+    }, 1000);
 
 }
 
@@ -85,7 +85,6 @@ const selecteerWillekeurigeVakjes = (vakjes) => {
 const roosterInput = (e) => {
     if (!e.target.classList.contains("vakje")) return; //fouten door langs het vakje te klikken voorkomen
     let vakje = e.target
-    console.log(global.GEMARKEERDE_VAKJES)
     if(e.target.id === global.OPGELICHT_VAKJE && !vakje.dataset.verwerkt) {
         vakje.dataset.verwerkt = "true";
         vakje.className = "vakje";

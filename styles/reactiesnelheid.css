@@ -28,7 +28,7 @@ main .sub-header-advanced {
     display: flex;
     flex-direction: row-reverse;
     justify-content: space-between;
-    padding: 0 2em;
+    padding: 0 0 0 1em;
 }
 
 main .label {
@@ -80,7 +80,7 @@ main .inhoud button {
 
 main .inhoud button:hover {
     background-color: #7d3f12;
-    box-shadow: 0 0px 1px 1px rgb(172, 79, 2);
+    box-shadow: 0 0 1px 1px rgb(172, 79, 2);
 }
 
 .vakje {
@@ -97,4 +97,32 @@ main .inhoud button:hover {
 
 .oefeningDisplay {
     margin: 5% ;
+}
+
+.seconden{
+    margin-right: 6px;
+}
+
+.liveTijd {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    width: 10em;
+    font-size: 16px;
+    font-family: Arial, Helvetica, sans-serif, monospace;
+    padding-left: 2.5em;
+    box-sizing: border-box;
+}
+
+.aantalFouten {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    padding-left: 7em;
+}
+
+.aantalFouten p {
+    width: 8em;
 }
