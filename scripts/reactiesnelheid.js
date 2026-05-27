@@ -3,9 +3,8 @@ const global = {
     AANTAL_OPLICHTENDE_VAKJES: 25,
     AANTAL_FOUTEN: 0,
     GEMARKEERDE_VAKJES: null,
-
-    LAATST_AANGEKLIKT: null, //fouten bij snelle input voorkomen
     START_TIJD: null,
+    LIVE_KLOK: null,
 }
 
 const setup = () => {
@@ -19,11 +18,13 @@ const startTest = () => {
     gridSetup();
     document.getElementById("totaalVakjes").innerText = global.AANTAL_OPLICHTENDE_VAKJES.toString();
     global.START_TIJD = Date.now();
+    startKlok();
     lichtVolgendeVakjeOp();
 }
 
 const lichtVolgendeVakjeOp = () => {
     if(global.GEMARKEERDE_VAKJES.length === 0) {
+        clearInterval(global.LIVE_KLOK);
         verwerkResultaat(Date.now());
         return;
     }
@@ -36,7 +37,19 @@ const resetGlobVars = () => {
     global.LAATST_AANGEKLIKT = null;
     global.OPGELICHT_VAKJE = null;
     global.GEMARKEERDE_VAKJES = null;
+    global.LIVE_KLOK = null;
+    document.getElementById("liveTijd").innerText = "0.00";
     updateFoutDisplay();
+}
+
+const startKlok = () => {
+    clearInterval(global.LIVE_KLOK);
+    let liveKlok = document.getElementById("liveTijd");
+    global.LIVE_KLOK = setInterval(() => {
+        let millisecondenSindsStart = Date.now() - global.START_TIJD;
+        liveKlok.innerHTML = (millisecondenSindsStart/1000).toFixed(0);
+    }, 50);
+
 }
 
 const gridSetup = () => {
