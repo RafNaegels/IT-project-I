@@ -6,14 +6,45 @@
 
 .strings {
     margin: 50px 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
 }
 
 .string {
     margin: 15px 0;
 }
 
+.opgave {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
 .opgaveVenster {
-    margin: 7em 0;
+    margin: auto 0;
+}
+
+.inhoud {
+    background-color: #ddd8e5;
+
+}
+
+.test {
+    background-color: #f4f1f8;
+    border: none;
+}
+
+.sub-header-advanced {
+    background-color: #42374e;;
+}
+
+.label {
+    color: #a79ab8;
+}
+
+.oefeningDisplay {
+    margin: 0;
 }
 
 .bedieningspaneel {
@@ -27,12 +58,20 @@
 }
 
 .bedieningspaneel button {
-    background-color: #5f7a8a;
+    background-color: #65497d;
     border-radius: 6px;
 }
 
 .bedieningspaneel button:hover {
-    background-color: #4c6675;
+    background-color: #7a5d95;
+}
+
+.test button {
+    background-color: #42374e;
+}
+
+.test button:hover {
+    background-color: #5c4d6a;
 }
 
 .WGResultaat {
@@ -47,7 +86,7 @@
 .woord {
     font-family: roboto, sans-serif;
     display: inline-block;
-    width: 10em;
+    width: 6em;
     font-size: 1.4em;
     font-weight: lighter;
     letter-spacing: 0.8px;

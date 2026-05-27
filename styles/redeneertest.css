@@ -5,18 +5,76 @@
     flex-direction: column;
 }
 
+.sub-header-advanced {
+    background-color: #2f5a3d; /* diepe donkergroen */
+    color: #f3f7f2;
+}
+
+.inhoud {
+    background-color: #d7e2d8;
+    min-height: 100vh;
+    align-items: center;
+}
+
+.inhoud .oefeningDisplay {
+    background-color: #f3fbf5;
+    color: #243328;
+}
+
+.volgendePagina {
+    display: flex;
+    align-items: center;
+    background-color: #355843;
+    color: #f4f7f3;
+    border: 1px solid #4d725b;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition:
+            background-color 0.15s ease,
+            border-color 0.15s ease;
+}
+
+.volgendePagina:hover, .volgende:hover {
+    background-color: #477056;
+    border-color: #5e8870;
+}
+
+.volgende {
+    background-color: #355843;
+    color: #f4f7f3;
+    border: 1px solid #4d725b;
+}
+
 .vraag {
     line-height: 1.6em;
     font-size: 1.2em;
     text-align: center;
+    color: #223128;
 }
+
+main .label {
+    color: #7e9384;
+}
+
+main .back-btn {
+    color: #f3f7f2;
+}
+
+.opgave .onderbalk {
+    background-color: #92ae9e;
+}
+
+.onderbalk {
+    border: none;
+}
+
 
 .beschrijvingRedeneertest {
-    border: solid 1px black;
-    border-bottom: none;
     min-height: 50vh;
+    border-bottom: none;
 }
-
 .antwoordBediening {
     margin-top: 5vh;
     margin-right: auto;
@@ -24,24 +82,27 @@
     width: 60%;
 }
 
+
+
 .antwoordBediening .antwoordKnop {
-    background-color: #d9f4ed;
-    color: #243845;
+    background-color: #d8e5db;
+    color: #264031;
     border: solid 4px transparent;
     cursor: pointer;
     font-weight: bold;
     transition: background-color 0.15s ease, color 0.15s ease;
 }
 
-.antwoordKnop:hover {
-    background-color: #6d96b1; /* Iets donkerder/voller blauw */
+.antwoordBediening .antwoordKnop:hover {
+    background-color: #6f8e79;
+    color: #f4f7f3;
 }
-
 
 .antwoordKnop.geselecteerd, .geselecteerd:hover {
-    background-color: #4b6475;
+    background-color: #355843;
     color: white;
 }
+
 
 .correctAntwoord {
     background-color: yellow;

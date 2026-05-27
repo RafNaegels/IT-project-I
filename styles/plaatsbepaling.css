@@ -4,6 +4,11 @@
     transform-origin: center;
 }
 
+.inhoud {
+    background-color: #c4d4df; /* zachte blauwgrijze tint */
+    min-height: calc(100vh - 70px);
+}
+
 .pijlPrentjes{
     display:grid;
     grid-template-columns:repeat(2, 1fr);
@@ -17,6 +22,11 @@
     text-align: center;
     line-height: 1.7em;
 
+}
+
+.oefeningDisplay {
+    background-color: #eef4f8;
+    border-radius: 5px;
 }
 
 .venster .beschrijving {
@@ -49,6 +59,11 @@
     transition: all 0.1s ease-in-out;
 }
 
+.startScherm {
+    margin: 0;
+    padding: 0 2em 2em 2em;
+}
+
 .venster .combo:hover{
     background-color: #afc7d5;
     box-shadow: 0 0 2px 1px rgba(126, 186, 209, 0.3);
@@ -62,6 +77,10 @@
 .combo.geselecteerd:hover {
     border-color: #406271;
     background-color: #4c6675;
+}
+
+.onderbalk {
+    background-color: #77919e;
 }
 
 .pijlen{

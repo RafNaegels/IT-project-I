@@ -12,7 +12,7 @@ const global = {
     AANTAL_OVEREENKOMSTEN: 0, // dit indiceert het juiste antwoord
     DUUR_OEFENING: 4*60*1000,
     TIMER: null,
-    DEBUGGING: true,
+    DEBUGGING: false,
 }
 
 const setup = () => {

@@ -4,10 +4,51 @@
     vertical-align: middle;
 }
 
+.inhoud {
+    background-color: #fbf6ce;
+    color: #3d3527;
+}
+
+.inhoud .oefeningDisplay {
+    background-color: #fffff3;
+}
+
+header.sub-header-advanced, header a.back-btn {
+    background-color: #c38e1f;
+    color: #f6f1e1;
+}
+
+header .label {
+    color: #f8e5bf;
+}
+
+main .inhoud button {
+    background-color: #8b5b24;
+    color: #fff8f3;
+}
+
+main .inhoud button:hover {
+    background-color: #b37434;
+}
 .progressie {
     display: flex;
     align-items: center;
-    color: #314257;
+    color: #fbd9b0;
+}
+
+.antwoordBediening {
+    width: 60%;
+
+}
+
+.venster {
+    border: 2px solid #d3c2b1;
+    border-bottom: none;
+}
+
+main .oefeningDisplay .onderbalk {
+    background-color: #e3b748;
+    color: #faf8f3;
 }
 
 #oefeningNummer {
