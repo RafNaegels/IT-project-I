@@ -6,10 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="ceb2d04b-09a3-43ab-ba7e-5bb568c96003" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/foutdetectie/foutdetectie.js" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/foutdetectie/foutdetectie.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/styles/foutdetectie.css" beforeDir="false" afterPath="$PROJECT_DIR$/styles/foutdetectie.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/styles/getalvaardigheid.css" beforeDir="false" afterPath="$PROJECT_DIR$/styles/getalvaardigheid.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/styles/oefenpaginas.css" beforeDir="false" afterPath="$PROJECT_DIR$/styles/oefenpaginas.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/styles/woordgeheugen.css" beforeDir="false" afterPath="$PROJECT_DIR$/styles/woordgeheugen.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/webpaginas/foutdetectie.html" beforeDir="false" afterPath="$PROJECT_DIR$/webpaginas/foutdetectie.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -106,7 +104,7 @@
       <workItem from="1779691091909" duration="20517000" />
       <workItem from="1779781770665" duration="9522000" />
       <workItem from="1779865089201" duration="13524000" />
-      <workItem from="1779956443838" duration="4097000" />
+      <workItem from="1779956443838" duration="8622000" />
     </task>
     <servers />
   </component>

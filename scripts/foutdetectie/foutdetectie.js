@@ -5,13 +5,16 @@ const global = {
     AANTAL_OEFENINGEN: 0,
     AANTAL_ANTWOORDEN: 5,
     TIMER_ID: 0,
+    VISUELE_TIMER: 0,
     DUUR_OEFENING: 4*60*1000,
+    RESTERENDE_TIJD: 240,
     DEBUGGING: false
 }
 
 const setup = () => {
     addEventListeners();
     toonScherm("startScherm");
+    document.getElementById("timer").classList.add("hidden");
 }
 
 const addEventListeners = () => {
@@ -32,6 +35,8 @@ const addEventListeners = () => {
 const startTest = () => {
     resetOefening();
     global.TIMER_ID = setTimeout(eindeOefening, global.DUUR_OEFENING);
+    document.getElementById("timer").classList.remove("hidden");
+    startTimer();
     nieuwOefening();
 }
 
@@ -44,10 +49,36 @@ const nieuwOefening = () => {
 }
 
 const eindeOefening = () => {
-    document.getElementById("aantalOefeningen").appendChild(document.createTextNode(global.AANTAL_OEFENINGEN));
-    document.getElementById("aantalFouten").appendChild(document.createTextNode(global.AANTAL_FOUTEN));
-    document.getElementById("aantalPunten").appendChild(document.createTextNode(global.AANTAL_PUNTEN));
+    document.getElementById("aantalOefeningen").textContent = global.AANTAL_OEFENINGEN;
+    document.getElementById("aantalFouten").textContent = global.AANTAL_FOUTEN;
+    document.getElementById("aantalPunten").textContent = global.AANTAL_PUNTEN;
+
+    document.getElementById("timer").classList.add("hidden");
     toonScherm("resultaat");
+
+}
+
+const startTimer = () => {
+    updateTimerDisplay();
+    global.VISUELE_TIMER = setInterval(updateResterendeTijd, 1000);
+}
+
+const updateResterendeTijd = () => {
+    global.RESTERENDE_TIJD--;
+    if(global.RESTERENDE_TIJD <= 0) {
+        clearInterval(global.VISUELE_TIMER);
+        clearTimeout(global.TIMER_ID);
+    }
+    updateTimerDisplay();
+}
+
+const updateTimerDisplay = () => {
+    let tijd = global.RESTERENDE_TIJD;
+    let min = Math.floor(tijd / 60);
+    let sec = tijd % 60;
+
+    document.getElementById("minuten").textContent = String(min).padStart(2, '0');
+    document.getElementById("seconden").textContent = String(sec).padStart(2, '0');
 }
 
 const verwerkAntwoord = (event) => {
@@ -108,6 +139,10 @@ const resetOefening = () => {
         global.AANTAL_OEFENINGEN = 0;
         global.AANTAL_PUNTEN = 0;
         global.AANTAL_FOUTEN = 0;
+        global.RESTERENDE_TIJD = 240;
+
+        clearInterval(global.VISUELE_TIMER);
+        clearTimeout(global.TIMER_ID);
 }
 
 const getPosities = (baseString) => { //risico op infinite-loop nakijken
