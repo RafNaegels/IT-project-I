@@ -2,15 +2,34 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: calc(100vh - 150px);
-
+    min-height: calc(100vh - 70px);
+    background-color: #d3e3e1;
 }
 
+header.sub-header-advanced {
+    background-color: #2d5b5a;
+}
+
+.sub-header-advanced .label {
+    color: #9fc3c2;
+}
+
+button.volgendePagina, div.bediening button {
+    background-color: #3a7371;;
+}
+
+button.volgendePagina:hover, div.bediening button:hover {
+    background-color: #4b8f8c;;
+}
+
+main div.oefeningDisplayFD {
+    background-color: #eef6f5;
+    border: none;
+}
 
 .oefeningDisplayFD h1 {
     text-align: center;
     font-size: 1.7em;
-
 }
 
 .oefeningInhoud {

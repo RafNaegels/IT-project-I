@@ -1,7 +1,7 @@
 .string {
     display: inline-flex;
     justify-content: space-evenly;
-    width: 75%;
+    width: auto;
 }
 
 .strings {
@@ -15,6 +15,16 @@
     margin: 15px 0;
 }
 
+.oefeningDisplay p,
+.oefeningDisplay h1,
+.oefeningDisplay h2{
+    overflow-wrap: break-word;
+}
+
+.test * {
+    min-width: 0;
+}
+
 .opgave {
     display: flex;
     flex-direction: column;
@@ -25,9 +35,8 @@
     margin: auto 0;
 }
 
-.inhoud {
+.inhoud, main {
     background-color: #ddd8e5;
-
 }
 
 .test {
@@ -46,6 +55,7 @@
 .oefeningDisplay {
     margin: 0;
 }
+
 
 .bedieningspaneel {
     padding-top: 5em;

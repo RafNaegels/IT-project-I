@@ -4,7 +4,7 @@
     vertical-align: middle;
 }
 
-.inhoud {
+.inhoud, main {
     background-color: #fbf6ce;
     color: #3d3527;
 }
