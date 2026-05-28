@@ -18,7 +18,7 @@ const addEventListeners = () => {
     document.getElementById("volgendePagina").addEventListener('click', () => {
         toonScherm("antwoordPaneel");
     });
-    document.querySelectorAll(".variant1 > button").forEach(el => {
+    document.querySelectorAll(".bediening button").forEach(el => {
         el.addEventListener('click', verwerkAntwoord);
     })
     document.getElementById("startOefening").addEventListener('click', () => {
@@ -53,7 +53,7 @@ const eindeOefening = () => {
 const verwerkAntwoord = (event) => {
     (event.target.classList.contains("correct")) ? global.AANTAL_PUNTEN++ : global.AANTAL_FOUTEN++;
     global.AANTAL_OEFENINGEN++;
-
+    console.log("klik")
     if(global.DEBUGGING) {
         console.log("geselecteerd antwoord: ", event.target.dataset.id);
         console.log("juiste antwoord: ", global.AANTAL_MUTATIES);
@@ -115,7 +115,7 @@ const getPosities = (baseString) => { //risico op infinite-loop nakijken
     while (posities.size < global.AANTAL_MUTATIES) {
         let positie = Math.floor(Math.random() * baseString.length);
         let char = baseString.charAt(positie);
-        if (!" :/.@".includes(char)) {
+        if (!" -:/.@".includes(char)) {
             posities.add(positie);
         }
     }
