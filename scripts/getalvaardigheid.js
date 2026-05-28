@@ -4,11 +4,15 @@ const global = {
     OPGAVE1: "",
     OPGAVE2: "",
     OEFENING_NUMMER: 0,
+    AANTAL_OEFENINGEN: 0,
     VOLGEND_SCHERM: "b",
     CORRECT_ANTWOORD: null,
     TIMER_ID: 0,
+    VISUELE_TIMER: 0,
+    RESTERENDE_TIJD: 240,
     DUUR_OEFENING: 4*60000,
-    AANTAL_FOUTEN: 0
+    AANTAL_FOUTEN: 0,
+    AANTAL_PUNTEN: 0,
 }
 
 const setup = () => {
@@ -26,9 +30,12 @@ const addEventListeners = () => {
 }
 
 const startTest = () => {
+    resetGlobVars();
     nieuwOefenreeks();
     clearTimeout(global.TIMER_ID);
+    clearInterval(global.VISUELE_TIMER);
     global.TIMER_ID = setTimeout(eindeOefening, global.DUUR_OEFENING);
+    startTimer();
 }
 
 
@@ -49,6 +56,29 @@ const nieuwOefening = () => {
     toonScherm("opgave");
 }
 
+startTimer = () => {
+    updateTimerDisplay();
+    global.VISUELE_TIMER = setInterval(updateResterendeTijd, 1000);
+}
+
+const updateResterendeTijd = () => {
+    global.RESTERENDE_TIJD--;
+    if(global.RESTERENDE_TIJD <= 0) {
+        clearInterval(global.VISUELE_TIMER);
+        clearTimeout(global.TIMER_ID);
+    }
+    updateTimerDisplay();
+}
+
+const updateTimerDisplay = () => {
+    let tijd = global.RESTERENDE_TIJD;
+    let min = Math.floor(tijd / 60);
+    let sec = tijd % 60;
+
+    document.getElementById("minuten").textContent = String(min).padStart(2, '0');
+    document.getElementById("seconden").textContent = String(sec).padStart(2, '0');
+}
+
 const weergeefOpgave = (venster, opgave) => {
     wisInhoudVensters();
     let vensterDiv = document.getElementById(venster);
@@ -67,23 +97,23 @@ const volgende = () => {
         toonScherm("antwoord");
         global.VOLGEND_SCHERM = "b";
     }
-
 };
 
 const eindeOefening = () => {
-    document.getElementById("aantalOefeningen").textContent = (global.OEFENING_NUMMER);
-    document.getElementById("aantalFouten").textContent = (global.AANTAL_FOUTEN);
-    document.getElementById("aantalPunten").textContent = (global.OEFENING_NUMMER - global.AANTAL_FOUTEN);
+    document.getElementById("aantalOefeningen").textContent = (global.AANTAL_OEFENINGEN).toString();
+    document.getElementById("aantalFouten").textContent = (global.AANTAL_FOUTEN).toString();
+    document.getElementById("aantalPunten").textContent = (global.AANTAL_PUNTEN.toString());
     toonScherm("resultaat");
 }
 
 const weergeefOefeningNummer = () => {
     let span = document.getElementById("oefeningNummer")
     let nummerWeergave = "";
-    if(global.OEFENING_NUMMER < 10) {
-        nummerWeergave = "0" + global.OEFENING_NUMMER;
+    let oefeningNummer = global.AANTAL_OEFENINGEN + 1;
+    if(oefeningNummer < 10) {
+        nummerWeergave = "0" + oefeningNummer;
     } else {
-        nummerWeergave = global.OEFENING_NUMMER;
+        nummerWeergave = oefeningNummer;
     }
     span.innerHTML = nummerWeergave;
 }
@@ -111,6 +141,11 @@ const resetGlobVars = () => {
     global.OEFENING_NUMMER = 0;
     global.VOLGEND_SCHERM = "o";
     global.TIMER_ID = 0;
+    global.VISUELE_TIMER = 0;
+    global.AANTAL_PUNTEN = 0;
+    global.AANTAL_FOUTEN = 0;
+    global.AANTAL_OEFENINGEN = 0;
+    global.RESTERENDE_TIJD = 240;
 }
 
 const verwerkAntwoord = (event) => {
@@ -118,12 +153,13 @@ const verwerkAntwoord = (event) => {
     let correct = global.CORRECT_ANTWOORD;
     wisInhoudVensters();
     global.VOLGEND_SCHERM = "b";
+    global.AANTAL_OEFENINGEN++;
     if (antwoord === correct) {
+        global.AANTAL_PUNTEN++;
         nieuwOefening();
     } else {
         global.AANTAL_FOUTEN++;
         nieuwOefening();
-
     }
 }
 
@@ -280,6 +316,8 @@ const toonScherm = (id) => {
     document.querySelectorAll(".oefeningDisplay").forEach(el => {
         el.classList.toggle("hidden", el.id !== id);
     });
+    let oefeningContainer = document.getElementById("oefeningContainer");
+    oefeningContainer.classList.toggle("hidden", id !== "antwoord" && id !== "opgave");
 };
 
 window.addEventListener("load", setup);

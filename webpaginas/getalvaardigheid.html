@@ -35,31 +35,40 @@
                 <button class="volgendePagina" id="startOefening">start oefening</button>
             </div>
 
-            <div class="opgave oefeningDisplay" id="opgave">
-                <div class="venster" id="bovenVenster">
+            <div class="oefeningContainer" id="oefeningContainer">
 
+                <div id="timer" class="timer">
+                    <span id="minuten">00</span>:<span id="seconden">00</span>
                 </div>
 
-                <div class="venster" id="onderVenster">
+                <div class="opgave oefeningDisplay" id="opgave">
+                    <div class="venster" id="bovenVenster">
 
-                </div>
-
-                <div class="onderbalk" id="onderbalk">
-                    <div class="progressie" id="progressie">
-                        <p>oefening <span id="oefeningNummer">01</span></p>
                     </div>
-                    <button class="volgende" id="volgende">volgende  ▶</button>
+
+                    <div class="venster" id="onderVenster">
+
+                    </div>
+
+                    <div class="onderbalk" id="onderbalk">
+                        <div class="progressie" id="progressie">
+                            <p>oefening <span id="oefeningNummer">01</span></p>
+                        </div>
+                        <button class="volgende" id="volgende">volgende ▶</button>
+                    </div>
+
                 </div>
 
-            </div>
-
-            <div class="antwoord oefeningDisplay" id="antwoord">
-                <div class="antwoordBediening">
-                    <button data-id="boven">B</button>
-                    <button data-id="gelijk">=</button>
-                    <button data-id="onder">O</button>
+                <div class="antwoord oefeningDisplay" id="antwoord">
+                    <div class="antwoordBediening">
+                        <button data-id="boven">B</button>
+                        <button data-id="gelijk">=</button>
+                        <button data-id="onder">O</button>
+                    </div>
                 </div>
-            </div>
+            </div> <!--oefeningcontainer-->
+
+
 
             <div class="resultaat oefeningDisplay" id="resultaat">
 

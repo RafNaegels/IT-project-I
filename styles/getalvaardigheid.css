@@ -9,6 +9,26 @@
     color: #3d3527;
 }
 
+.oefeningContainer {
+    position: relative;
+    width: 60%;
+    margin: 10% auto 25%;
+    min-height: 50vh;
+}
+
+.oefeningDisplay.antwoord, .oefeningDisplay.opgave {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+}
+
+
+.timer {
+    top: 0;
+    right: 0;
+    background-color: #af801c;
+}
+
 .inhoud .oefeningDisplay {
     background-color: #fffff3;
 }
@@ -36,9 +56,8 @@ main .inhoud button:hover {
     color: #fbd9b0;
 }
 
-.antwoordBediening {
+.antwoordBediening, .opgave {
     width: 60%;
-
 }
 
 .venster {
