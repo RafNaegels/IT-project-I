@@ -192,4 +192,15 @@ Implementatie info
 
 ## Reactiesnelheid
 
+Als enige oefening die niet beschreven is in het officiële oefenboekje van defensie, maak ik hier gebruik van mijn eigen ervaring om deze test na te bouwen.
+De kandidaat krijgt een grid te zien met een aantal gemarkeerde vakjes. Deze vakjes zullen beurtelings oplichten en de gebruiker dient zo snel mogelijk de oplichtende vakjes weg te klikken zonder fout.
+
+opbouw grid en werking van test:
+1) Een globale variabel wordt opgehaald om de grid dimensie (aantal rijen en kolommen) te bepalen. Deze dimensie kan in latere iteraties aangepast worden door de gebruiker via een 'moeilijkheidsgraad' samen met het aantal gemarkeerde vakjes.
+2) De gemarkeerde vakjes worden willekeurig gekozen en grijs gemarkeerd, op één na, dat is het vakje dat 'oplicht'.
+3) Bij het selecteren van een correct vakje wordt het aangeklikt vakje wit en komt het volgende vakje in de array aan de beurt om opgelicht te worden.
+4) Vakjes die opgelicht worden krijgen 'dataset=verwerkt' zodat snelle klik event geen dubbele punten opleveren.
+5) Dit is de enige test waarbij live feedback gegeven wordt bij Defensie. Daarom is ervoor gekozen dit hier ook te implementeren.
+6) De event-handler werkt op rooster niveau, zodat niet ieder vakje apart een eventlistener toegekend moet krijgen.
+7) De test stopt wanneer het laatste vakje is verwerkt. De speler krijgt de tijd en, indien van toepassing, het aantal fouten te zien.
 
