@@ -28,6 +28,9 @@ De applicatiecode
 HTML5 / CSS3 / JavaScript
 
 Projectstructuur 
+### Projectstructuur
+
+```text 
 Selectieproeven Defensie/
 │
 ├── webpaginas/
@@ -51,24 +54,27 @@ Selectieproeven Defensie/
 │   │   ├── foutdetectie.js
 │   │   └── stringPool.js
 │   ├── getalvaardigheid.js
-│   ├── plaatsbepaling.js
-│   │   ├── pijltjes.je
-│   │   └── plaatsbepaling.je
+│   ├── plaatsbepaling/
+│   │   ├── pijltjes.js
+│   │   └── plaatsbepaling.js
 │   ├── reactiesnelheid.js
-│   ├── redeneer.js
+│   ├── redeneer/
 │   │   ├── redeneertest.js
 │   │   └── vergelijkingen.js
-│   └── woordgeheugen.js
+│   └── woordgeheugen/
 │       ├── woordgeheugen.js
 │       └── categorieen.js
-└── README.md
+└── README.md 
+```
 
 
-<p align="center">    
-  # Programmalogica en Ontwerpkeuzes
-</p>
 
-## foutdetectie
+
+<h2 align="center">    
+  Programmalogica en Ontwerpkeuzes
+</h2>
+
+## Foutdetectietest
 Hier krijgt de gebruiker 2 Strings te zien, zoals (email adressen, woorden of willekeurige tekens) 
 en is het aan de gebruiker om zo snel mogelijk het aantal afwijkingen te selecteren. 
 De antwoorden gaan van 0 tot en met 4.
@@ -94,7 +100,7 @@ Nadat er is nagetrokken of het geretourneerde karakter weldegelijk verschilt van
 De gemuteerde string wordt geretouneerd als waarde voor string2
 De gebruiker krijgt string1 en string2 te zien.
 
-# woordgeheugen
+## Woordgeheugentest
 Deze test evalueert werkgeheugen. Er moeten drie categoriën onthouden worden en op het volgend scherm beoordeeld worden hoeveel woorden overeenkomen met de categorie op dezelfde positie. Volgorde is dus van belang.
 Het antwoord varieert van 0 tot en met 3.
 Ook hier is er gekozen om te vertrekken vanuit het aantal matches, om bias in de antwoorden te voorkomen. 
@@ -108,7 +114,7 @@ Het volgende scherm wordt bijgehouden in een globale variabel.
 In een latere sprint zou het Fisher-Yates algoritme toegepast moeten worden voor het schudden van de array met categorie-woord koppels.
 De dynamische debug mode zou later uitgebreid kunnen worden naar de UI.
 
-# getalvaardigheid
+## Getalvaardigheidstest
 Deze test meet zowel getalvaardigheid als werkgeheugen.
 De gebruiker krijgt twee schermen voorgeschoteld. In eerste instantie zal het bovenste scherm een wiskundige opgave bevatten. Wanneer de gebruiker op de knop 'volgende' drukt, verdwijnt de opgave en toont het onderste scherm een nieuwe opgave.
 De bedoeling is beide uitkomsten te onthouden en op een ander scherm te selecteren welke uitkomst het grootste was. De antwoorden zijn hier boven, onder, of is gelijk aan.
@@ -119,4 +125,71 @@ opgave aanmaken:
 4) Beide uitkomsten worden opgeslagen in een globale variabele
 5) de functie mark correct bepaalt het juiste antwoord door de twee uitkomsten te vergelijken.
 In een latere sprint zou de antwoordenbias zeker weggewerkt moeten worden. Momenteel is een gelijke uitkomst (antwoord '=') zeldzamer dan de andere twee antwoorden. Ook hier zou vertrokken moeten worden vanuit het correcte antwoord (Math.random < 0.33)
-  
+
+## Plaatsbepalingstest
+De kandidaat moet snel een beschrijving onthouden om vervolgens op een tweede scherm de pijlencombinatie te selecteren die past bij deze beschrijving. In deze oefening ligt de uitdaging in het voorkomen van repetitieve beschrijvingen door de stellingen te varieren, zonder dat de beschrijving gaat afwijken van het correcte antwoord.
+Alle pijlencombinaties staan in "pijltjes.js". De eigenschappen zijn kleur en orientatie. Één pijl is altijd zwart, de andere wit. beide pijlen kunnen naar links- of rechtboven en links- of rechtsonder wijzen. De beschrijving in de opgave is conform met die van de offiële selectieproeven. Zodat de gebruiker zich kan aanpassen aan deze stijl. 
+Stappen bij het maken van een opgave:
+1) Zes van de 32 unieke combinaties worden geselecteerd uit de verzameling in "pijltjes.js"
+2) Eén combinatie wordt als als juist gemarkeerd. De applicatie gebruikt een ID om het juiste antwoord op te slaan in een globale variabele
+3) De parameters van de correcte combinatie worden doorgegeven aan 'genereerWillekeurigeBeschrijving' die de beschrijving varieert door gebruik te maken van random selecties van patronen. 
+4) De zes antwoordopties worden visueel weergegeven door 'renderOpgave' met behulp van 'maakPijlPrentjes' door gebruik te maken van css klassen. De parameters van de pijtljes-objecten worden vertaald maar de juiste css klassen in deze functies.
+5) De applicatie controleert aan de hand van pijl-combinatie-id's het gegeven antwoord.
+
+Om te voorkomen dat kandidaten patronen kunnen herkennen, worden beschrijvingen telkens op verschillende manieren geformuleerd. 
+Er gelden immers meerdere correcte beschrijvingen. Patronen worden willekeurig geselecteerd om herhaling te voorkomen.
+
+Voorbeeld:
+
+Zwart BOVEN Wit
+Wit ONDER Zwart
+
+beschrijven dezelfde situatie.
+Hetzelfde is van toepassing op de ruimtelijke relaties tussen beide pijlen:
+
+Links Op BOVEN Rechts Neer
+Rechts Neer ONDER Links Op
+
+Implementatie info
+-Door gebruik te maken van een Set wordt gegarandeerd dat de antwoordopties verschillen van elkaar.
+-Een SVG-prent met dynamisch toegekende CSS klassen rendert de pijlen.
+-Weergeef is een object dat als Enum dient voor de verschillende schermen. Deze oplossing is robuuster dan de eerder gebruikte globale variabelen in de getalvaardigheidstest.
+-Het antwoordscherm is in de opgave gescheiden van het scherm met de beschrijving, net zoals bij de officiële testen van Defensie.
+
+## Redeneertest
+Deze oefening test het redeneervermogen aan de hand van een klassiek syllogisme.
+Een syllogisme is een stelling die bestaat uit 2 premissen en 1 conclusie. 
+
+Voorbeeld:
+
+Tram is vlugger dan Veerboot
+Veerboot is vlugger dan Helikopter
+
+Vraag:
+
+Wat is het vlugst?
+
+Antwoorden:
+
+Tram
+Veerboot
+Helikopter
+
+#### Opbouw van opgaves
+Ook hier worden oefeningen dynamisch gegenereerd met behulp van een dataset (vergelijkingen.js), die categorien, vergelijkingen en subjecten bevat.
+1) Als eerste wordt een categorie gekozen, niet iedere vergelijking leent zich uit voor een syllogisme met een gekozen categorie van subjecten. Zo kan de vergelijking 'Boot is droeviger dan Tram' niet toegestaan zijn.
+2) Op basis van de eigenschappen van de subjecten uit een gekozen categorie, kiest de applicatie een geschikte vergelijking. Het maakt hiervoor gebruik van categorieTags.
+3) Er worden drie unieke subjecten gekozen uit een pool die per categorie gegroepeerd is.
+4) De vier sjablonen bepalen hoe de premisses opgebouwd worden. Dit ten einde de variëtie in opgaves te maximaliseren.
+5) Het correcte antwoord wordt afgeleid uit de positie van het subject in de array.
+6) Antwoordopties worden eerst geschud voordat ze gerenderd worden.
+
+Implementatie info
+-De dynamische opbouw van oefeningen leent zich sterk toe tot uitbreidingen. Er hoeven enkel categoriën, subjecten of vergelijkingen toegevoegd te worden om de oefeningen uit te breiden. 
+-categoriën en tags garanderen betekenisvolle vergelijkingen binnen de opgave.
+-Door de variatie in de opbouw, ontstaat er geen patroon in het genereren van opgaven. 
+-Syllogismen zijn vergelijkbaar met die uit het oefenboekje en de werkelijke test van Defensie.
+
+## Reactiesnelheid
+
+
