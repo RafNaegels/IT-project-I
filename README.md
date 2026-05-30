@@ -64,9 +64,11 @@ Selectieproeven Defensie/
 └── README.md
 
 
-### Programmalogica en Ontwerpkeuzes ###
+<p align="center">    
+  #Programmalogica en Ontwerpkeuzes
+</p>
 
-# foutdetectie
+### # foutdetectie
 Hier krijgt de gebruiker 2 Strings te zien, zoals (email adressen, woorden of willekeurige tekens) 
 en is het aan de gebruiker om zo snel mogelijk het aantal afwijkingen te selecteren. 
 De antwoorden gaan van 0 tot en met 4.
@@ -92,7 +94,7 @@ Nadat er is nagetrokken of het geretourneerde karakter weldegelijk verschilt van
 De gemuteerde string wordt geretouneerd als waarde voor string2
 De gebruiker krijgt string1 en string2 te zien.
 
-# woordgeheugen
+### woordgeheugen
 Deze test evalueert werkgeheugen. Er moeten drie categoriën onthouden worden en op het volgend scherm beoordeeld worden hoeveel woorden overeenkomen met de categorie op dezelfde positie. Volgorde is dus van belang.
 Het antwoord varieert van 0 tot en met 3.
 Ook hier is er gekozen om te vertrekken vanuit het aantal matches, om bias in de antwoorden te voorkomen. 
