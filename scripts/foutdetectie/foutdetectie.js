@@ -1,3 +1,5 @@
+import strings from "./stringPool.js";
+
 const global = {
     AANTAL_MUTATIES: 0,
     AANTAL_PUNTEN: 0,
@@ -163,7 +165,56 @@ const getPosities = (baseString) => { //risico op infinite-loop nakijken
 }
 
 const selectRandomString = () => {
-    return stringPool[Math.floor(Math.random() * stringPool.length)];
+    if(Math.random() < .85) {
+        return bouwBaseStringOp();
+    } else {
+        return strings.stringPool[Math.floor(Math.random() * strings.stringPool.length)];
+    }
+}
+
+const bouwBaseStringOp = () => {
+    const random = Math.random();
+    let string = "";
+    if (random < 0.3) { //nummerplaat
+        string += Math.floor(Math.random() * 10) + " - ";
+        for (let i = random; i<3; i--) {
+            string += randomChar("A"); // geeft drie keer een hoofdletter terug
+        }
+        string += " - ";
+        for (let i = random; i<3; i--) {
+            string += randomChar("0"); // drie willekeurige cijfers
+        }
+        return string;
+    }
+    else if (random < 0.7) {
+        let string = "https//www.";
+        let domainLength = 8 + Math.floor(Math.random() * 10);
+        let suffix = strings.webSuffixs[Math.floor(Math.random() * strings.webSuffixs.length)];
+        for (let i = random; i<domainLength; i--) {
+            string += randomChar('a');
+        }
+        string += suffix;
+        if(Math.random() < .3) { // pagina toevoegen aan domeinadres
+            let paginaLengte = 4 + Math.floor(Math.random() * 10);
+            string += '/';
+            for(let i = 0; i < paginaLengte; i++) {
+                string += randomChar('a');
+            }
+        }
+        return string;
+    }
+    else {
+        let string = "";
+        let voornaamLengte = 1 + Math.floor(Math.random() * 10);
+        let achternaamLengte = 6 + Math.floor(Math.random() * 10);
+        for (let i = 0; i < voornaamLengte; i++) {
+            (i===0) ? string += randomChar('A') : string += randomChar('a');
+        }
+        for (let i = random; i<achternaamLengte; i++) {
+            (i===0) ? string += randomChar('A') : string += randomChar('a');
+        }
+        return string + strings.mailSuffixs[Math.floor(Math.random() * strings.mailSuffixs.length)];
+    }
 }
 
 const deleteContents = (el) => {
@@ -230,5 +281,4 @@ function randomChar(c) {
 }
 
 
-import stringPool from "./stringPool.js";
 window.addEventListener("load", setup);
