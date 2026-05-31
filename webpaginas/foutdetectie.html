@@ -18,9 +18,6 @@
 </header>
 
 <main>
-    <div id="timer" class="timer">
-        <span id="minuten">00</span>:<span id="seconden">00</span>
-    </div>
 
     <div class="oefeningDisplayFD flex" id="startScherm">
         <h1>
@@ -42,29 +39,34 @@
     </div>
 
 
-    <div class="oefeningDisplayFD flex" id="oefeningDisplayFD">
+    <div class="oefeningDisplayFD flex" id="oefenreeks">
 
-        <div class="oefeningInhoud" id="oefening">
-            <div class="strings">
-                <div class="string" id="string1"></div>
-                <div class="string" id="string2"></div>
+        <div id="timer" class="timer">
+            <span id="minuten">00</span>:<span id="seconden">00</span>
+        </div>
+
+        <div id="opgave" class="oefening">
+            <div class="oefeningInhoud" id="oefening">
+                <div class="strings">
+                    <div class="string" id="string1"></div>
+                    <div class="string" id="string2"></div>
+                </div>
+                <button class="volgendePagina" id="volgendePagina">volgende pagina <span>→</span></button>
             </div>
-            <button class="volgendePagina" id="volgendePagina">volgende pagina <span>→</span></button>
         </div>
 
-    </div>
 
-
-    <div class="oefeningDisplayFD flex" id="antwoordPaneel">
-
-        <div class="container bediening">
-            <button data-id="0">0</button>
-            <button data-id="1">1</button>
-            <button data-id="2">2</button>
-            <button data-id="3">3</button>
-            <button data-id="4">4</button>
+        <div id="antwoordPaneel" class="oefening">
+            <div class="container bediening">
+                <button data-id="0">0</button>
+                <button data-id="1">1</button>
+                <button data-id="2">2</button>
+                <button data-id="3">3</button>
+                <button data-id="4">4</button>
+            </div>
         </div>
     </div>
+
 
     <div class="oefeningDisplayFD resultaat" id="resultaat">
         <div class="resultaatDisplay">

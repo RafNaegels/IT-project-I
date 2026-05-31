@@ -8,7 +8,7 @@ const global = {
     VISUELE_TIMER: 0,
     DUUR_OEFENING: 4*60*1000,
     RESTERENDE_TIJD: 240,
-    DEBUGGING: false
+    DEBUGGING: true
 }
 
 const setup = () => {
@@ -19,7 +19,7 @@ const setup = () => {
 
 const addEventListeners = () => {
     document.getElementById("volgendePagina").addEventListener('click', () => {
-        toonScherm("antwoordPaneel");
+        toonScherm("oefenreeks", "antwoordPaneel");
     });
     document.querySelectorAll(".bediening button").forEach(el => {
         el.addEventListener('click', verwerkAntwoord);
@@ -43,7 +43,7 @@ const startTest = () => {
 const nieuwOefening = () => {
     global.AANTAL_MUTATIES = Math.floor(Math.random() * global.AANTAL_ANTWOORDEN);
     markCorrectAnswer();
-    toonScherm("oefeningDisplayFD");
+    toonScherm("oefenreeks", "opgave");
     let stringPaar = createStrings();
     displayStrings(stringPaar);
 }
@@ -109,14 +109,19 @@ const displayStrings = (stringPaar) => {
     string2.appendChild(mutatedString);
 }
 
-const toonScherm = (id) => {
+const toonScherm = (id, binnenscherm) => {
     document.querySelectorAll(".oefeningDisplayFD").forEach(el => {
         el.classList.toggle("hidden", el.id !== id);
     });
+    if (id === "oefenreeks") {
+        document.querySelectorAll(".oefening").forEach(el => {
+            el.classList.toggle("hidden", el.id !== binnenscherm);
+        })
+    }
 };
 
 const markCorrectAnswer = () => {
-    document.querySelectorAll(".variant1 > button").forEach(el => {
+    document.querySelectorAll(".bediening button").forEach(el => {
         const id = Number(el.dataset.id);
         el.classList.toggle("correct", id === global.AANTAL_MUTATIES);
     });
@@ -150,7 +155,7 @@ const getPosities = (baseString) => { //risico op infinite-loop nakijken
     while (posities.size < global.AANTAL_MUTATIES) {
         let positie = Math.floor(Math.random() * baseString.length);
         let char = baseString.charAt(positie);
-        if (!" -:/.@".includes(char)) {
+        if (!" ,-:/.@".includes(char)) {
             posities.add(positie);
         }
     }
