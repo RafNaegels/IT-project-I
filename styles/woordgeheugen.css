@@ -15,14 +15,20 @@
     margin: 15px 0;
 }
 
+.timer {
+    top: 0;
+    right: 0;
+    background-color: #42374e;
+}
+
 .oefeningDisplay p,
 .oefeningDisplay h1,
 .oefeningDisplay h2{
     overflow-wrap: break-word;
 }
 
-.test * {
-    min-width: 0;
+.test > * {
+    box-sizing: border-box;
 }
 
 .opgave {
@@ -37,11 +43,14 @@
 
 .inhoud, main {
     background-color: #ddd8e5;
+    height: 100%;
 }
 
 .test {
+    position: relative;
     background-color: #f4f1f8;
     border: none;
+    min-height: 50vh;
 }
 
 .sub-header-advanced {
@@ -55,7 +64,6 @@
 .oefeningDisplay {
     margin: 0;
 }
-
 
 .bedieningspaneel {
     padding-top: 5em;
@@ -103,9 +111,6 @@
 }
 
 .volgendeWoorden {
-    background-color: #233b55;
-    color: #e5e7eb;
-    border: 1px solid #3a5068;
     padding: 8px 16px;
     border-radius: 8px;
     font-size: 14px;

@@ -197,7 +197,7 @@ De kandidaat krijgt een grid te zien met een aantal gemarkeerde vakjes. Deze vak
 
 opbouw grid en werking van test:
 1) Een globale variabel wordt opgehaald om de grid dimensie (aantal rijen en kolommen) te bepalen. Deze dimensie kan in latere iteraties aangepast worden door de gebruiker via een 'moeilijkheidsgraad' samen met het aantal gemarkeerde vakjes.
-2) De gemarkeerde vakjes worden willekeurig gekozen en grijs gemarkeerd, op één na, dat is het vakje dat 'oplicht'.
+2) De gemarkeerde vakjes worden willekeurig gekozen en grijs gemarkeerd, op één na, dat is het vakje dat oplicht.
 3) Bij het selecteren van een correct vakje wordt het aangeklikt vakje wit en komt het volgende vakje in de array aan de beurt om opgelicht te worden.
 4) Vakjes die opgelicht worden krijgen 'dataset=verwerkt' zodat snelle klik event geen dubbele punten opleveren.
 5) Dit is de enige test waarbij live feedback gegeven wordt bij Defensie. Daarom is ervoor gekozen dit hier ook te implementeren.

@@ -56,7 +56,7 @@ const nieuwOefening = () => {
     toonScherm("opgave");
 }
 
-startTimer = () => {
+const startTimer = () => {
     updateTimerDisplay();
     global.VISUELE_TIMER = setInterval(updateResterendeTijd, 1000);
 }
@@ -141,7 +141,7 @@ const resetGlobVars = () => {
     global.OEFENING_NUMMER = 0;
     global.VOLGEND_SCHERM = "o";
     global.TIMER_ID = 0;
-    global.VISUELE_TIMER = 0;
+    global.VISUELE_TIMER = null;
     global.AANTAL_PUNTEN = 0;
     global.AANTAL_FOUTEN = 0;
     global.AANTAL_OEFENINGEN = 0;

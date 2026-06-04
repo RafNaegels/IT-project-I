@@ -11,6 +11,8 @@ const global = {
     VOLGEND_SCHERM: Weergeef.BESCHRIJVING,
     GEKOZEN_ANTWOORD_ID: null,
     CORRECT_ANTWOORD_ID: null,
+    VISUELE_TIMER: 0,
+    RESTERENDE_TIJD: 0,
     DUUR_OEFENING: 4*60*1000,
     TIMER: null,
 }
@@ -25,6 +27,8 @@ const startTest = () => {
     volgendeScherm();
     updateOefeningNummerDisplay();
     global.TIMER = setTimeout(verwerkResultaat, global.DUUR_OEFENING);
+    document.getElementById("timer").classList.remove("hidden");
+    startTimer();
 }
 
 const nieuwOefening = () => {
@@ -56,6 +60,29 @@ const volgendeScherm = () => {
     }
 }
 
+const startTimer = () => {
+    updateTimerDisplay();
+    global.VISUELE_TIMER = setInterval(updateResterendeTijd, 1000);
+}
+
+const updateResterendeTijd = () => {
+    global.RESTERENDE_TIJD--;
+    if(global.RESTERENDE_TIJD <= 0) {
+        clearInterval(global.VISUELE_TIMER);
+        clearTimeout(global.TIMER);
+    }
+    updateTimerDisplay();
+}
+
+const updateTimerDisplay = () => {
+    let tijd = global.RESTERENDE_TIJD;
+    let min = Math.floor(tijd / 60);
+    let sec = tijd % 60;
+
+    document.getElementById("minuten").textContent = String(min).padStart(2, '0');
+    document.getElementById("seconden").textContent = String(sec).padStart(2, '0');
+}
+
 const verwerkAntwoord = () => {
     global.GEKOZEN_ANTWOORD_ID === global.CORRECT_ANTWOORD_ID ? global.AANTAL_PUNTEN++ : global.AANTAL_FOUTEN++;
     global.AANTAL_GEMAAKTE_OEFENINGEN++;
@@ -64,6 +91,7 @@ const verwerkAntwoord = () => {
 const verwerkResultaat = () => {
     clearTimeout(global.TIMER);
     global.TIMER = null;
+    document.getElementById("timer").classList.add("hidden");
 
     let aantalOefeningen = document.getElementById("aantalOefeningen");
     let aantalFouten = document.getElementById("aantalFouten");
@@ -81,8 +109,12 @@ const resetGlobVars = () => {
     global.AANTAL_PUNTEN = 0;
     global.AANTAL_GEMAAKTE_OEFENINGEN = 0;
     global.VOLGEND_SCHERM = Weergeef.BESCHRIJVING;
-    clearTimeout(global.TIMER);
     global.TIMER = null;
+    global.VISUELE_TIMER = null;
+    global.RESTERENDE_TIJD = 240;
+
+    clearInterval(global.VISUELE_TIMER);
+    clearTimeout(global.TIMER);
 }
 
 const resetOefeningVars = () => {

@@ -83,6 +83,13 @@
     background-color: #77919e;
 }
 
+.timer {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: #95a2ac;
+}
+
 .pijlen{
     display: inline-flex;
     flex-direction:column;
@@ -112,6 +119,7 @@
 .opgavePlaatsbepaling {
     width: 60%;
     margin: auto;
+    position: relative;
 }
 
 .opgavePlaatsbepaling .venster {

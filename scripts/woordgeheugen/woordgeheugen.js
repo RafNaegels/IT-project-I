@@ -11,7 +11,9 @@ const global = {
     VOLGEND_SCHERM: Weergeef.CATEGORIE,
     AANTAL_OVEREENKOMSTEN: 0, // dit indiceert het juiste antwoord
     DUUR_OEFENING: 4*60*1000,
-    TIMER: null,
+    TIMER: 0,
+    VISUELE_TIMER: 0,
+    RESTERENDE_TIJD: 240,
     DEBUGGING: false,
 }
 
@@ -24,8 +26,11 @@ const startTest = () => {
     resetGlobVars()
     nieuwOefening();
     clearTimeout(global.TIMER);
+    document.getElementById("timer").classList.remove("hidden");
+    startTimer();
     if(global.DEBUGGING) {
-        global.TIMER = setTimeout(verwerkResultaat, 20*1000);
+        global.TIMER = setTimeout(verwerkResultaat, 30*1000);
+        global.RESTERENDE_TIJD = 30;
     } else {
         global.TIMER = setTimeout(verwerkResultaat, global.DUUR_OEFENING)
     }
@@ -36,9 +41,7 @@ const nieuwOefening = () => {
     let woordenKoppels = genereerOpgave();
     renderOpgave(woordenKoppels);
     if (global.DEBUGGING) {
-        console.log("woorden Koppels:");
-        console.log(woordenKoppels);
-        console.log(global.AANTAL_OVEREENKOMSTEN);
+        console.log("correct: ", global.AANTAL_OVEREENKOMSTEN);
     }
 }
 
@@ -70,9 +73,32 @@ const verwerkResultaat = () => {
     aantalFouten.appendChild(document.createTextNode(global.AANTAL_FOUTEN));
     punten.appendChild(document.createTextNode(global.AANTAL_PUNTEN));
 
+    document.getElementById("timer").classList.add("hidden");
     toonScherm("resultaat");
 }
 
+const startTimer = () => {
+    updateTimerDisplay();
+    global.VISUELE_TIMER = setInterval(updateResterendeTijd, 1000);
+}
+
+const updateResterendeTijd = () => {
+    global.RESTERENDE_TIJD--;
+    if(global.RESTERENDE_TIJD <= 0) {
+        clearInterval(global.VISUELE_TIMER);
+        clearTimeout(global.TIMER);
+    }
+    updateTimerDisplay();
+}
+
+const updateTimerDisplay = () => {
+    let tijd = global.RESTERENDE_TIJD;
+    let min = Math.floor(tijd / 60);
+    let sec = tijd % 60;
+
+    document.getElementById("minuten").textContent = String(min).padStart(2, '0');
+    document.getElementById("seconden").textContent = String(sec).padStart(2, '0');
+}
 
 const wisInhoud = (parent) => {
     while (parent.firstChild) {
@@ -147,25 +173,21 @@ const verwerkAntwoord = (e) => {
 const volgendeScherm = () => {
     switch (global.VOLGEND_SCHERM) {
         case Weergeef.CATEGORIE:
-            console.log("case categorie");
             toonScherm("opgave", "categorie");
             global.VOLGEND_SCHERM = Weergeef.WOORDEN;
             break;
 
         case Weergeef.WOORDEN:
-            console.log("case woorden");
             toonScherm("opgave", "woord");
             global.VOLGEND_SCHERM = Weergeef.ANTWOORD;
             break;
 
         case Weergeef.ANTWOORD:
-            console.log("case antwoord");
             toonScherm(global.VOLGEND_SCHERM);
             global.VOLGEND_SCHERM = Weergeef.CATEGORIE;
             break;
     }
 }
-
 
 const addEventListeners = () => {
     document.getElementById("startOefening").addEventListener("click", startTest);
@@ -175,7 +197,6 @@ const addEventListeners = () => {
     })
     document.getElementById("opnieuw").addEventListener("click", startTest);
 }
-
 
 const toonScherm = (id, binnenscherm) => {
     document.querySelectorAll(".oefeningDisplay").forEach(el => {
