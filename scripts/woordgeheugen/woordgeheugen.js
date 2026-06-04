@@ -161,6 +161,9 @@ const genereerOpgave = () => {
 }
 
 const verwerkAntwoord = (e) => {
+    console.log(global.AANTAL_OVEREENKOMSTEN);
+    console.log(e.target.dataset.id);
+    console.log(global.AANTAL_OVEREENKOMSTEN === parseInt(e.target.dataset.id));
     if (global.AANTAL_OVEREENKOMSTEN === parseInt(e.target.dataset.id)) {
         global.AANTAL_PUNTEN++;
     } else {

@@ -4,7 +4,7 @@ const global = {
     AANTAL_GEMAAKTE_OEFENINGEN: 0,
     GEKOZEN_ANTWOORD: null,
     CORRECT_ANTWOORD: null,
-    DUUR_OEFENING: 4*60*1000,
+    DUUR_OEFENING: 4*60*10,
     TIMER: null,
 }
 
@@ -15,9 +15,9 @@ const setup = () => {
 
 const startTest = () => {
     toonScherm("opgave");
+    resetOefeningVars();
     nieuwOpgave();
     global.TIMER = setTimeout(verwerkResultaat, global.DUUR_OEFENING);
-    resetOefeningVars();
 }
 
 const volgende = () => {
@@ -34,6 +34,9 @@ const verwerkAntwoord = () => {
     global.GEKOZEN_ANTWOORD === global.CORRECT_ANTWOORD ? global.AANTAL_PUNTEN++ : global.AANTAL_FOUTEN++;
     global.AANTAL_GEMAAKTE_OEFENINGEN++;
     resetOefeningVars();
+    console.log("gekozen antwoord ", global.GEKOZEN_ANTWOORD);
+    console.log("Correct antwoord ", global.CORRECT_ANTWOORD);
+    console.log("aantal punten " + global.AANTAL_PUNTEN);
 }
 
 const renderOpgave = (syllogisme) => {
@@ -59,6 +62,10 @@ const geselecteerdAntwoord = (e) => {
     });
     e.currentTarget.classList.add("geselecteerd");
     global.GEKOZEN_ANTWOORD = e.currentTarget.dataset.id;
+    console.log("gekozen antwoord ", global.GEKOZEN_ANTWOORD);
+    console.log("Correct antwoord ", global.CORRECT_ANTWOORD);
+    console.log("aantal punten " + global.AANTAL_PUNTEN);
+
 }
 
 const verwerkResultaat = () => {
@@ -89,7 +96,6 @@ const maakSyllogisme = () => {
     let vergelijking = selecteerGeschikteVergelijking(categorie); // bevat { positief: "vlugger dan", negatief: "trager dan" }
     let willekeurigeSubjecten = [];
     let subjectenVanCategorie = subjecten[categorie];
-    console.log(subjectenVanCategorie);
 
     let i = 0;
     while (i < 3) {
@@ -130,9 +136,10 @@ const maakSyllogisme = () => {
 
     if (vraagType === 'positief') {
         global.CORRECT_ANTWOORD = willekeurigeSubjecten[0]; // index 0 is altijd de overtreffende trap: grootste, verste, etc
+        console.log('CORRECT_ANTWOORD na toewijzing', global.CORRECT_ANTWOORD);
     } else {
         global.CORRECT_ANTWOORD = willekeurigeSubjecten[2]; // index 2 is altijd de omgekeerde overtreffende trap: kleinste, dichtste etc
-
+        console.log('CORRECT_ANTWOORD na toewijzing', global.CORRECT_ANTWOORD);
     }
 
     let zinnen = Math.random() < 0.5 ? [zin1, zin2] : [zin2, zin1];
@@ -167,10 +174,8 @@ const selecteerGeschikteVergelijking = (categorie) => {
     }
 
     if (geschikteLijst.length === 0) {
-        console.log("geschikteLijst niet gevuld");
         return vergelijkingen[Math.floor(Math.random() * vergelijkingen.length)];
     }
-    console.log("geschikteLijst is succesvol gevuld!");
     return geschikteLijst[Math.floor(Math.random() * geschikteLijst.length)];
 };
 
