@@ -4,7 +4,9 @@ const global = {
     AANTAL_GEMAAKTE_OEFENINGEN: 0,
     GEKOZEN_ANTWOORD: null,
     CORRECT_ANTWOORD: null,
-    DUUR_OEFENING: 4*60*10,
+    RESTERENDE_TIJD: 240,
+    VISUELE_TIMER: null,
+    DUUR_OEFENING: 4*60*1000,
     TIMER: null,
 }
 
@@ -18,6 +20,8 @@ const startTest = () => {
     resetOefeningVars();
     nieuwOpgave();
     global.TIMER = setTimeout(verwerkResultaat, global.DUUR_OEFENING);
+    document.getElementById("timer").classList.remove("hidden");
+    startTimer();
 }
 
 const volgende = () => {
@@ -54,6 +58,30 @@ const renderOpgave = (syllogisme) => {
         button.addEventListener("click", geselecteerdAntwoord);
         antwoordBediening.appendChild(button);
     })
+}
+
+
+const startTimer = () => {
+    updateTimerDisplay();
+    global.VISUELE_TIMER = setInterval(updateResterendeTijd, 1000);
+}
+
+const updateResterendeTijd = () => {
+    global.RESTERENDE_TIJD--;
+    if(global.RESTERENDE_TIJD <= 0) {
+        clearInterval(global.VISUELE_TIMER);
+        clearTimeout(global.TIMER_ID);
+    }
+    updateTimerDisplay();
+}
+
+const updateTimerDisplay = () => {
+    let tijd = global.RESTERENDE_TIJD;
+    let min = Math.floor(tijd / 60);
+    let sec = tijd % 60;
+
+    document.getElementById("minuten").textContent = String(min).padStart(2, '0');
+    document.getElementById("seconden").textContent = String(sec).padStart(2, '0');
 }
 
 const geselecteerdAntwoord = (e) => {
@@ -181,10 +209,13 @@ const selecteerGeschikteVergelijking = (categorie) => {
 
 const resetGlobalVars = () => {
     clearTimeout(global.TIMER);
+    clearInterval(global.VISUELE_TIMER);
     global.TIMER = null;
     global.AANTAL_FOUTEN = 0;
     global.AANTAL_PUNTEN = 0;
     global.AANTAL_GEMAAKTE_OEFENINGEN = 0;
+    global.VISUELE_TIMER = null;
+    global.RESTERENDE_TIJD = 240;
 }
 
 const resetOefeningVars = () => {

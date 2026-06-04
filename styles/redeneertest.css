@@ -62,6 +62,17 @@ main .back-btn {
     color: #f3f7f2;
 }
 
+.timer {
+    top: 0;
+    right: 0;
+    background-color: #32830f;
+}
+
+.inhoud .opgave {
+    position: relative;
+}
+
+
 .opgave .onderbalk {
     background-color: #92ae9e;
 }
