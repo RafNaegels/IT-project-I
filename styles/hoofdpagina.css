@@ -1,25 +1,98 @@
-.btn-military {
-    background-color: #556b2f;
-    color: white;
+.card.olijfgroen {
+    background-color: #004d3d;
+    color: #ffd700; /* Goudgele tekst voor de titel */
+}
+
+.card .olijfgroenknop {
+    background: linear-gradient(to bottom, #a3843b, #7d6227);
+    color: #000000;
+    border: 1px solid #614c1e;
+}
+
+.card.terracotta {
+    background-color: #b3592d;
+    color: #ffffff;
+}
+
+.card .terracottaknop {
+    background-color: #739374;
+    color: #ffffff;
     border: none;
 }
 
-.btn-military:hover {
-    background-color: #3e4f22;
+.card.marineblauw {
+    background-color: #2b3a67;
+    color: #a3b8cc;
+}
+
+.card .marineblauwknop {
+    background-color: #8f94cc;
+    color: #ffffff;
+    border: none;
+}
+
+.card.donkerblauw {
+    background-color: #2b3a67;
+    color: #a3b8cc;
+}
+
+.card .donkerblauwknop {
+    background-color: #00adb5;
+    color: #ffffff;
+    border: none;
+}
+
+.card.neutraal {
+    background-color: #69727d;
+    color: #ffffff;
+}
+
+.card .neutraalknop {
+    background-color: #a75d43;
+    color: #ffffff;
+    border: none;
+}
+
+.card.donkergrijs {
+    background-color: #2d3135;
+    color: #ffffff;
+}
+
+.card .donkergrijsknop {
+    background-color: #1d2a44;
+    color: #a4bcd3;
+    border: 1px solid #3b5a80;
+}
+
+.card.bourgondisch {
+    background-color: #8b001a;
+    color: #ffffff;
+}
+
+.card .bourgondischknop {
+    background: linear-gradient(to bottom, #cccccc, #999999);
+    color: #222222;
+    border: 1px solid #777777;
 }
 
 .hoofdpagina {
-    width: 80%;
+    width: 90%;
     margin: auto;
 }
 
+.kaartAfbeelding {
+    height: 180px;
+    object-fit: cover;
+}
+
 .hoofdpaginaHeader {
-    background-color: #0b1a12; /* donkergroen militair */
+    background-color: #0b1a12;
     color: #d4d4d4;
     text-align: center;
     padding: 30px 0;
     border-bottom: 2px solid #3a5f3a;
 }
+
 
 .hoofdpaginaHeader h1 {
     font-size: 28px;
@@ -28,10 +101,12 @@
 }
 
 .oefenpaginas {
+    padding: 5em 0;
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    align-items: center;
-    min-height: 100vh;
-    place-content: center;
+    gap: 20px;
+
+    justify-content: center;
+
+    grid-template-columns: repeat(auto-fit, minmax(280px, 400px));
 }
 

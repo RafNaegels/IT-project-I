@@ -84,15 +84,15 @@ main .inhoud button:hover {
 }
 
 .vakje {
-    background-color: white;
+    background-color: rgba(239, 239, 239, 0.95);
 }
 
 .vakje.opgelicht {
-    background-color: #fde804;
+    background-color: #f8ff2b;
 }
 
 .gemarkeerd {
-    background-color: lightgrey;
+    background-color: #c1c1c1;
 }
 
 .oefeningDisplay {
