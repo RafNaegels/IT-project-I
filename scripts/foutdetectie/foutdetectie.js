@@ -10,7 +10,7 @@ const global = {
     VISUELE_TIMER: 0,
     DUUR_OEFENING: 4*60*1000,
     RESTERENDE_TIJD: 240,
-    DEBUGGING: true
+    DEBUGGING: false
 }
 
 const setup = () => {
@@ -86,7 +86,7 @@ const updateTimerDisplay = () => {
 const verwerkAntwoord = (event) => {
     (event.target.classList.contains("correct")) ? global.AANTAL_PUNTEN++ : global.AANTAL_FOUTEN++;
     global.AANTAL_OEFENINGEN++;
-    console.log("klik")
+
     if(global.DEBUGGING) {
         console.log("geselecteerd antwoord: ", event.target.dataset.id);
         console.log("juiste antwoord: ", global.AANTAL_MUTATIES);
@@ -175,27 +175,29 @@ const selectRandomString = () => {
 const bouwBaseStringOp = () => {
     const random = Math.random();
     let string = "";
+
+
     if (random < 0.3) { //nummerplaat
         string += Math.floor(Math.random() * 10) + " - ";
-        for (let i = random; i<3; i--) {
+        for (let i = 0; i<3; i++) {
             string += randomChar("A"); // geeft drie keer een hoofdletter terug
         }
         string += " - ";
-        for (let i = random; i<3; i--) {
+        for (let i = 0; i<3; i++) {
             string += randomChar("0"); // drie willekeurige cijfers
         }
         return string;
     }
     else if (random < 0.7) {
         let string = "https//www.";
-        let domainLength = 8 + Math.floor(Math.random() * 10);
+        let domainLength = 6 + Math.floor(Math.random() * 6);
         let suffix = strings.webSuffixs[Math.floor(Math.random() * strings.webSuffixs.length)];
-        for (let i = random; i<domainLength; i--) {
+        for (let i = 0; i<domainLength; i++) {
             string += randomChar('a');
         }
         string += suffix;
         if(Math.random() < .3) { // pagina toevoegen aan domeinadres
-            let paginaLengte = 4 + Math.floor(Math.random() * 10);
+            let paginaLengte = 4 + Math.floor(Math.random() * 6);
             string += '/';
             for(let i = 0; i < paginaLengte; i++) {
                 string += randomChar('a');
@@ -205,12 +207,12 @@ const bouwBaseStringOp = () => {
     }
     else {
         let string = "";
-        let voornaamLengte = 1 + Math.floor(Math.random() * 10);
-        let achternaamLengte = 6 + Math.floor(Math.random() * 10);
+        let voornaamLengte = 1 + Math.floor(Math.random() * 8);
+        let achternaamLengte = 6 + Math.floor(Math.random() * 8);
         for (let i = 0; i < voornaamLengte; i++) {
             (i===0) ? string += randomChar('A') : string += randomChar('a');
         }
-        for (let i = random; i<achternaamLengte; i++) {
+        for (let i = 0; i<achternaamLengte; i++) {
             (i===0) ? string += randomChar('A') : string += randomChar('a');
         }
         return string + strings.mailSuffixs[Math.floor(Math.random() * strings.mailSuffixs.length)];
