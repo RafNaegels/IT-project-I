@@ -7,8 +7,6 @@
     <list default="true" id="ceb2d04b-09a3-43ab-ba7e-5bb568c96003" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/styles/hoofdpagina.css" beforeDir="false" afterPath="$PROJECT_DIR$/styles/hoofdpagina.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/styles/reactiesnelheid.css" beforeDir="false" afterPath="$PROJECT_DIR$/styles/reactiesnelheid.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webpaginas/Hoofdpagina.html" beforeDir="false" afterPath="$PROJECT_DIR$/webpaginas/Hoofdpagina.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,7 +46,7 @@
     "DefaultHtmlFileTemplate": "HTML File",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "NieuweLayoutHoofdpagina",
+    "git-widget-placeholder": "main",
     "last_opened_file_path": "C:/Users/rafNa/GitHub/IT-project-I",
     "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
@@ -115,6 +113,7 @@
       <workItem from="1780131490448" duration="17914000" />
       <workItem from="1780560307554" duration="13743000" />
       <workItem from="1780743395545" duration="11779000" />
+      <workItem from="1780818068477" duration="632000" />
     </task>
     <servers />
   </component>
