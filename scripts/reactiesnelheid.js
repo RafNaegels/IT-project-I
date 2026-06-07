@@ -129,6 +129,20 @@ const addEventListeners = () => {
     document.getElementById("startOefening").addEventListener("click", startTest);
     document.getElementById("rooster").addEventListener("click", (e) => roosterInput(e));
     document.getElementById("opnieuw").addEventListener("click", startTest);
+    document.getElementById("instellingenKnop").addEventListener('click', toggleMenu);
+    document.getElementById("moeilijkheidsgraad").addEventListener('change', spelduurInstellen);
 }
+
+const spelduurInstellen = () => {
+    let tijd = document.getElementById("duur").value;
+
+    global.DUUR_OEFENING = tijd * 60000;
+    global.RESTERENDE_TIJD = tijd * 60;
+}
+
+const toggleMenu = () => {
+    document.getElementById("instellingenMenu").classList.toggle('hidden');
+}
+
 
 window.addEventListener("load", setup);

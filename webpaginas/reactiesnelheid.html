@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="../styles/oefenpaginas.css">
     <link rel="stylesheet" href="../styles/reactiesnelheid.css">
+    <script type="module" charset="utf-8"
+            src="../scripts/oefeningenAlgemeen.js"></script>
     <script type="text/javascript" charset="utf-8"
             src="../scripts/reactiesnelheid.js"></script>
     <title>Title</title>
@@ -20,6 +22,26 @@
         </header>
         <div class="inhoud">
             <div class="oefeningDisplay flex instructie" id="startScherm">
+
+                <div class="instellingenContainer">
+                    <button id="instellingenKnop" class="instellingen" aria-label="Instellingen openen">
+                        <svg  viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none">
+                            <path stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/>
+                            <path stroke-linejoin="round" stroke-width="2" d="M10.47 4.32c.602-1.306 2.458-1.306 3.06 0l.218.473a1.684 1.684 0 0 0 2.112.875l.49-.18c1.348-.498 2.66.814 2.162 2.163l-.18.489a1.684 1.684 0 0 0 .875 2.112l.474.218c1.305.602 1.305 2.458 0 3.06l-.474.218a1.684 1.684 0 0 0-.875 2.112l.18.49c.498 1.348-.814 2.66-2.163 2.162l-.489-.18a1.684 1.684 0 0 0-2.112.875l-.218.473c-.602 1.306-2.458 1.306-3.06 0l-.218-.473a1.684 1.684 0 0 0-2.112-.875l-.49.18c-1.348.498-2.66-.814-2.163-2.163l.181-.489a1.684 1.684 0 0 0-.875-2.112l-.474-.218c-1.305-.602-1.305-2.458 0-3.06l.474-.218a1.684 1.684 0 0 0 .875-2.112l-.18-.49c-.498-1.348.814-2.66 2.163-2.163l.489.181a1.684 1.684 0 0 0 2.112-.875l.218-.474Z"/>
+                        </svg>
+                    </button>
+
+                    <div id="instellingenMenu" class="instellingen-menu hidden">
+                        <h4>Instellingen</h4>
+                        <label for="moeilijkheidsgraad">Oefening duur:</label>
+                        <select id="moeilijkheidsgraad" name="duur">
+                            <option value="1">makkelijk</option>
+                            <option value="2" selected>gemiddeld</option>
+                            <option value="3">moeilijk</option>
+                        </select>
+                    </div>
+                </div>
+
                 <div>
                     <h1>
                         Reactiesnelheid
