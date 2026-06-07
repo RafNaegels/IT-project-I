@@ -8,9 +8,9 @@ const global = {
     AANTAL_ANTWOORDEN: 5,
     TIMER_ID: 0,
     VISUELE_TIMER: 0,
-    DUUR_OEFENING: 4*60*1000,
+    DUUR_OEFENING: 0.5*60*1000,
     RESTERENDE_TIJD: 240,
-    DEBUGGING: false
+    DEBUGGING: true
 }
 
 const setup = () => {
@@ -132,13 +132,13 @@ const markCorrectAnswer = () => {
 const createStrings = () => {
     let baseString = selectRandomString();
 
-    let mutatedString = createMutatedString(baseString, global.AANTAL_MUTATIES);
+    let mutatedString = createMutatedString(baseString);
 
     return [baseString, mutatedString];
 }
 
 const createMutatedString = (baseString) => {
-    const posities = getPosities(baseString, global.AANTAL_MUTATIES);
+    const posities = getPosities(baseString);
     return mutate(baseString, posities);
 }
 
