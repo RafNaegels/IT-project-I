@@ -206,7 +206,7 @@ const genereerOpgaves = () => {
 const maakOptelling = () => {
     let uitkomstVerdeling = Math.random();
     global.BOVENSTE_UITKOMST =
-        uitkomstVerdeling < .85 ? Math.floor(5 + Math.random() * 51) :
+        uitkomstVerdeling < .90 ? Math.floor(5 + Math.random() * 51) :
             Math.floor(51 + Math.random() * 50);
     const term1 = Math.floor(Math.random() * (global.BOVENSTE_UITKOMST - 1)) + 1;
     const term2 = global.BOVENSTE_UITKOMST - term1;
@@ -216,7 +216,7 @@ const maakOptelling = () => {
 const maakVerschil = () => {
     let uitkomstVerdeling = Math.random();
     global.BOVENSTE_UITKOMST =
-        uitkomstVerdeling < .85 ? 5 + Math.floor(Math.random() * 61) :
+        uitkomstVerdeling < .90 ? 5 + Math.floor(Math.random() * 61) :
             66 + Math.floor(Math.random() * 50);
     const term1 = Math.floor(Math.random() * (global.BOVENSTE_UITKOMST - 1)) + 1;
     const term2 = global.BOVENSTE_UITKOMST + term1;
@@ -226,7 +226,7 @@ const maakVerschil = () => {
 const maakProduct = () => {
     const product1 = Math.floor(Math.random() * 9) + 2;
     const product2 = Math.random() < .9 ? Math.floor(Math.random() * 9) + 2 :
-        Math.floor(Math.random() * 5) + 11;
+        Math.floor(Math.random() * 3) + 11;
     global.BOVENSTE_UITKOMST = product1 * product2;
     return product1 + " x " + product2;
 }
@@ -280,8 +280,8 @@ const maakDeling2 = () => {
 }
 
 const genereerNabijgelegenUitkomst = () => {
-    const min = Math.max(1, global.BOVENSTE_UITKOMST - 5);
-    const max = global.BOVENSTE_UITKOMST + 5;
+    const min = Math.max(1, global.BOVENSTE_UITKOMST - 3);
+    const max = global.BOVENSTE_UITKOMST + 3;
 
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
@@ -298,8 +298,8 @@ const genereerFactor = (term1) => {
 }
 
 const genereerFactoren = () => {
-    const minQuotient = Math.max(2, global.BOVENSTE_UITKOMST - 5);
-    const maxQuotient = global.BOVENSTE_UITKOMST + 5;
+    const minQuotient = Math.max(2, global.BOVENSTE_UITKOMST - 3);
+    const maxQuotient = global.BOVENSTE_UITKOMST + 3;
 
     const quotient =
         Math.floor(Math.random() * (maxQuotient - minQuotient + 1)) + minQuotient;
