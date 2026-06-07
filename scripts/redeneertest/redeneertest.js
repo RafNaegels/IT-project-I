@@ -5,8 +5,8 @@ const global = {
     GEKOZEN_ANTWOORD: null,
     CORRECT_ANTWOORD: null,
     RESTERENDE_TIJD: 240,
-    VISUELE_TIMER: null,
     DUUR_OEFENING: 4*60*1000,
+    VISUELE_TIMER: null,
     TIMER: null,
 }
 
@@ -140,10 +140,8 @@ const maakSyllogisme = () => {
 
     if (vraagType === 'positief') {
         global.CORRECT_ANTWOORD = willekeurigeSubjecten[0]; // index 0 is altijd de overtreffende trap: grootste, verste, etc
-        console.log('CORRECT_ANTWOORD na toewijzing', global.CORRECT_ANTWOORD);
     } else {
         global.CORRECT_ANTWOORD = willekeurigeSubjecten[2]; // index 2 is altijd de omgekeerde overtreffende trap: kleinste, dichtste etc
-        console.log('CORRECT_ANTWOORD na toewijzing', global.CORRECT_ANTWOORD);
     }
 
     let zinnen = Math.random() < 0.5 ? [zin1, zin2] : [zin2, zin1];
@@ -237,7 +235,7 @@ const updateResterendeTijd = () => {
 const updateTimerDisplay = () => {
     let tijd = global.RESTERENDE_TIJD;
     let min = Math.floor(tijd / 60);
-    let sec = tijd / 60;
+    let sec = Math.floor(tijd % 60);
 
     document.getElementById("minuten").textContent = String(min).padStart(2, '0');
     document.getElementById("seconden").textContent = String(sec).padStart(2, '0');

@@ -267,7 +267,7 @@ const updateResterendeTijd = () => {
 const updateTimerDisplay = () => {
     let tijd = global.RESTERENDE_TIJD;
     let min = Math.floor(tijd / 60);
-    let sec = tijd / 60;
+    let sec = Math.floor(tijd % 60);
 
 
     document.getElementById("minuten").textContent = String(min).padStart(2, '0');
