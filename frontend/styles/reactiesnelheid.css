@@ -73,6 +73,22 @@ main .back-btn {
     background-color: #e4c3a6;
 }
 
+main .inhoud button.instellingen {
+    background-color: #fdf7ee;
+}
+
+main .inhoud button.instellingen:hover {
+    background-color: #fdf7ee;
+}
+
+button.instellingen svg {
+    stroke: #7d3f12
+}
+
+button.instellingen svg:hover {
+    stroke: #a35217;
+}
+
 main .inhoud button {
     background-color: #73461e;
     color: #fbf6f2;
@@ -80,7 +96,6 @@ main .inhoud button {
 
 main .inhoud button:hover {
     background-color: #7d3f12;
-    box-shadow: 0 0 1px 1px rgb(172, 79, 2);
 }
 
 .vakje {

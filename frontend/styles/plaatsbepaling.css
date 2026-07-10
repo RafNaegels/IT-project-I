@@ -64,6 +64,14 @@
     padding: 0 2em 2em 2em;
 }
 
+svg {
+    stroke: #3a5068;
+}
+
+svg:hover {
+    stroke: #50739a;
+}
+
 .venster .combo:hover{
     background-color: #afc7d5;
     box-shadow: 0 0 2px 1px rgba(126, 186, 209, 0.3);

@@ -1,6 +1,7 @@
 const global = {
     GRID_DIMENSIE: 15,
     AANTAL_OPLICHTENDE_VAKJES: 25,
+    VAKJE_PIXELS: 15,
     AANTAL_FOUTEN: 0,
     GEMARKEERDE_VAKJES: null,
     START_TIJD: null,
@@ -55,8 +56,8 @@ const startKlok = () => {
 const gridSetup = () => {
     let rooster = document.getElementById("rooster");
     rooster.innerHTML = "";
-    rooster.style.gridTemplateColumns = `repeat(${global.GRID_DIMENSIE}, 15px)`;
-    rooster.style.gridTemplateRows = `repeat(${global.GRID_DIMENSIE}, 15px)`
+    rooster.style.gridTemplateColumns = `repeat(${global.GRID_DIMENSIE}, ${global.VAKJE_PIXELS}px)`;
+    rooster.style.gridTemplateRows = `repeat(${global.GRID_DIMENSIE}, ${global.VAKJE_PIXELS}px)`
     let totaalAanVakjes = Math.pow(global.GRID_DIMENSIE, 2);
     global.GEMARKEERDE_VAKJES = selecteerWillekeurigeVakjes(totaalAanVakjes);
 
@@ -130,14 +131,34 @@ const addEventListeners = () => {
     document.getElementById("rooster").addEventListener("click", (e) => roosterInput(e));
     document.getElementById("opnieuw").addEventListener("click", startTest);
     document.getElementById("instellingenKnop").addEventListener('click', toggleMenu);
-    document.getElementById("moeilijkheidsgraad").addEventListener('change', spelduurInstellen);
+    document.getElementById("moeilijkheidsgraad").addEventListener('change', moeilijkheidsgraadInstellen);
 }
 
-const spelduurInstellen = () => {
-    let tijd = document.getElementById("duur").value;
+const moeilijkheidsgraadInstellen = () => {
+    let moeilijkheidsgraad = document.getElementById("moeilijkheidsgraad").value;
 
-    global.DUUR_OEFENING = tijd * 60000;
-    global.RESTERENDE_TIJD = tijd * 60;
+    switch (moeilijkheidsgraad) {
+        case "1" :
+            global.GRID_DIMENSIE = 10;
+            global.AANTAL_OPLICHTENDE_VAKJES = 12;
+            global.VAKJE_PIXELS = 22;
+            break;
+
+        case "2" :
+            global.GRID_DIMENSIE = 15;
+            global.AANTAL_OPLICHTENDE_VAKJES = 25;
+            global.VAKJE_PIXELS = 15;
+            break;
+
+        case "3" :
+            global.GRID_DIMENSIE = 20;
+            global.AANTAL_OPLICHTENDE_VAKJES = 35;
+            global.VAKJE_PIXELS = 11;
+            break;
+
+    }
+
+
 }
 
 const toggleMenu = () => {

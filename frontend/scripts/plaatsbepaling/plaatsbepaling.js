@@ -23,7 +23,6 @@ const setup = () => {
 }
 
 const startTest = () => {
-    resetGlobVars();
     volgendeScherm();
     updateOefeningNummerDisplay();
     global.TIMER = setTimeout(verwerkResultaat, global.DUUR_OEFENING);
@@ -78,6 +77,8 @@ const verwerkResultaat = () => {
     aantalOefeningen.textContent = global.AANTAL_GEMAAKTE_OEFENINGEN;
     aantalFouten.textContent = global.AANTAL_FOUTEN;
     punten.textContent = global.AANTAL_PUNTEN;
+
+    resetGlobVars();
 
     toonScherm("resultaat");
 }

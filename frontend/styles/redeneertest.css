@@ -10,6 +10,10 @@
     color: #f3f7f2;
 }
 
+svg {
+    stroke: #2f5a3d;
+}
+
 .inhoud {
     background-color: #d7e2d8;
     min-height: 100vh;

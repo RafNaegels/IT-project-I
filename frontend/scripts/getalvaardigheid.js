@@ -74,7 +74,6 @@ const startTest = () => {
     startTimer();
 }
 
-
 const nieuwOefenreeks = () => {
     resetGlobVars();
     nieuwOefening();
@@ -159,7 +158,6 @@ const resetGlobVars = () => {
     global.AANTAL_PUNTEN = 0;
     global.AANTAL_FOUTEN = 0;
     global.AANTAL_OEFENINGEN = 0;
-    global.RESTERENDE_TIJD = 240;
 }
 
 const verwerkAntwoord = (event) => {
