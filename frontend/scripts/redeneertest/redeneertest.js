@@ -5,8 +5,8 @@ const global = {
     GEKOZEN_ANTWOORD: null,
     CORRECT_ANTWOORD: null,
     RESTERENDE_TIJD: 240,
-    VISUELE_TIMER: null,
     DUUR_OEFENING: 4*60*1000,
+    VISUELE_TIMER: null,
     TIMER: null,
 }
 
@@ -58,30 +58,6 @@ const renderOpgave = (syllogisme) => {
         button.addEventListener("click", geselecteerdAntwoord);
         antwoordBediening.appendChild(button);
     })
-}
-
-
-const startTimer = () => {
-    updateTimerDisplay();
-    global.VISUELE_TIMER = setInterval(updateResterendeTijd, 1000);
-}
-
-const updateResterendeTijd = () => {
-    global.RESTERENDE_TIJD--;
-    if(global.RESTERENDE_TIJD <= 0) {
-        clearInterval(global.VISUELE_TIMER);
-        clearTimeout(global.TIMER_ID);
-    }
-    updateTimerDisplay();
-}
-
-const updateTimerDisplay = () => {
-    let tijd = global.RESTERENDE_TIJD;
-    let min = Math.floor(tijd / 60);
-    let sec = tijd % 60;
-
-    document.getElementById("minuten").textContent = String(min).padStart(2, '0');
-    document.getElementById("seconden").textContent = String(sec).padStart(2, '0');
 }
 
 const geselecteerdAntwoord = (e) => {
@@ -164,10 +140,8 @@ const maakSyllogisme = () => {
 
     if (vraagType === 'positief') {
         global.CORRECT_ANTWOORD = willekeurigeSubjecten[0]; // index 0 is altijd de overtreffende trap: grootste, verste, etc
-        console.log('CORRECT_ANTWOORD na toewijzing', global.CORRECT_ANTWOORD);
     } else {
         global.CORRECT_ANTWOORD = willekeurigeSubjecten[2]; // index 2 is altijd de omgekeerde overtreffende trap: kleinste, dichtste etc
-        console.log('CORRECT_ANTWOORD na toewijzing', global.CORRECT_ANTWOORD);
     }
 
     let zinnen = Math.random() < 0.5 ? [zin1, zin2] : [zin2, zin1];
@@ -240,6 +214,43 @@ const addEventListeners = () => {
     document.getElementById("startOefening").addEventListener("click", startTest);
     document.getElementById("volgende").addEventListener("click", volgende);
     document.getElementById("opnieuw").addEventListener("click", startTest);
+    document.getElementById("instellingenKnop").addEventListener('click', toggleMenu);
+    document.getElementById("duur").addEventListener('change', spelduurInstellen);
+}
+
+const startTimer = () => {
+    updateTimerDisplay();
+    global.VISUELE_TIMER = setInterval(updateResterendeTijd, 1000);
+}
+
+const updateResterendeTijd = () => {
+    global.RESTERENDE_TIJD--;
+    if(global.RESTERENDE_TIJD <= 0) {
+        clearInterval(global.VISUELE_TIMER);
+        clearTimeout(global.TIMER_ID);
+    }
+    updateTimerDisplay();
+}
+
+const updateTimerDisplay = () => {
+    let tijd = global.RESTERENDE_TIJD;
+    let min = Math.floor(tijd / 60);
+    let sec = Math.floor(tijd % 60);
+
+    document.getElementById("minuten").textContent = String(min).padStart(2, '0');
+    document.getElementById("seconden").textContent = String(sec).padStart(2, '0');
+}
+
+
+const spelduurInstellen = () => {
+    let tijd = document.getElementById("duur").value;
+
+    global.DUUR_OEFENING = tijd * 60000;
+    global.RESTERENDE_TIJD = tijd * 60;
+}
+
+const toggleMenu = () => {
+    document.getElementById("instellingenMenu").classList.toggle('hidden');
 }
 
 window.addEventListener("load", setup);

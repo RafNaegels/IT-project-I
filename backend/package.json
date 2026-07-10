@@ -1,0 +1,23 @@
+{
+  "name": "it-project-i",
+  "version": "1.0.0",
+  "description": "node.js IT-project",
+  "homepage": "https://github.com/RafNaegels/IT-project-I#readme",
+  "bugs": {
+    "url": "https://github.com/RafNaegels/IT-project-I/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RafNaegels/IT-project-I.git"
+  },
+  "license": "ISC",
+  "author": "Raf Naegels",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  }
+}

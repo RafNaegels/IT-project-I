@@ -42,12 +42,22 @@ header .label {
     color: #f8e5bf;
 }
 
-main .inhoud button {
+.inhoud .instellingenContainer .instellingen svg {
+    stroke: #8b5b24;
+}
+
+.inhoud .instellingenContainer .instellingen svg:hover {
+    cursor: pointer;
+    stroke: #a66d2a;
+}
+
+
+main .inhoud .antwoordBediening button,.inhoud .volgende, main .inhoud .resultaat button, main .volgendePagina {
     background-color: #8b5b24;
     color: #fff8f3;
 }
 
-main .inhoud button:hover {
+main .inhoud .antwoordBediening button:hover,.inhoud .volgende:hover, main .inhoud .resultaat button:hover, main .volgendePagina:hover {
     background-color: #b37434;
 }
 .progressie {

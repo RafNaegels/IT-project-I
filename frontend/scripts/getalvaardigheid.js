@@ -27,33 +27,8 @@ const addEventListeners = () => {
         button.addEventListener("click", verwerkAntwoord);
     });
     document.getElementById("opnieuw").addEventListener("click", startTest);
-}
-
-const startTest = () => {
-    resetGlobVars();
-    nieuwOefenreeks();
-    clearTimeout(global.TIMER_ID);
-    clearInterval(global.VISUELE_TIMER);
-    global.TIMER_ID = setTimeout(eindeOefening, global.DUUR_OEFENING);
-    startTimer();
-}
-
-
-const nieuwOefenreeks = () => {
-    resetGlobVars();
-    nieuwOefening();
-    weergeefOpgave("bovenVenster", global.OPGAVE1);
-}
-
-const nieuwOefening = () => {
-    global.OEFENING_NUMMER++;
-    resetOefeningVars();
-    genereerOpgaves();
-    markCorrect();
-    weergeefOefeningNummer();
-    weergeefOpgave("bovenVenster", global.OPGAVE1);
-    global.VOLGEND_SCHERM = "o";
-    toonScherm("opgave");
+    document.getElementById("instellingenKnop").addEventListener('click', toggleMenu);
+    document.getElementById("duur").addEventListener('change', spelduurInstellen);
 }
 
 const startTimer = () => {
@@ -73,10 +48,47 @@ const updateResterendeTijd = () => {
 const updateTimerDisplay = () => {
     let tijd = global.RESTERENDE_TIJD;
     let min = Math.floor(tijd / 60);
-    let sec = tijd % 60;
+    let sec = Math.floor(tijd % 60);
 
     document.getElementById("minuten").textContent = String(min).padStart(2, '0');
     document.getElementById("seconden").textContent = String(sec).padStart(2, '0');
+}
+
+
+const spelduurInstellen = () => {
+    let tijd = document.getElementById("duur").value;
+
+    global.DUUR_OEFENING = tijd * 60000;
+    global.RESTERENDE_TIJD = tijd * 60;
+}
+
+const toggleMenu = () => {
+    document.getElementById("instellingenMenu").classList.toggle('hidden');
+}
+
+const startTest = () => {
+    nieuwOefenreeks();
+    clearTimeout(global.TIMER_ID);
+    clearInterval(global.VISUELE_TIMER);
+    global.TIMER_ID = setTimeout(eindeOefening, global.DUUR_OEFENING);
+    startTimer();
+}
+
+const nieuwOefenreeks = () => {
+    resetGlobVars();
+    nieuwOefening();
+    weergeefOpgave("bovenVenster", global.OPGAVE1);
+}
+
+const nieuwOefening = () => {
+    global.OEFENING_NUMMER++;
+    resetOefeningVars();
+    genereerOpgaves();
+    markCorrect();
+    weergeefOefeningNummer();
+    weergeefOpgave("bovenVenster", global.OPGAVE1);
+    global.VOLGEND_SCHERM = "o";
+    toonScherm("opgave");
 }
 
 const weergeefOpgave = (venster, opgave) => {
@@ -100,6 +112,7 @@ const volgende = () => {
 };
 
 const eindeOefening = () => {
+    resetGlobVars();
     document.getElementById("aantalOefeningen").textContent = (global.AANTAL_OEFENINGEN).toString();
     document.getElementById("aantalFouten").textContent = (global.AANTAL_FOUTEN).toString();
     document.getElementById("aantalPunten").textContent = (global.AANTAL_PUNTEN.toString());
@@ -145,7 +158,6 @@ const resetGlobVars = () => {
     global.AANTAL_PUNTEN = 0;
     global.AANTAL_FOUTEN = 0;
     global.AANTAL_OEFENINGEN = 0;
-    global.RESTERENDE_TIJD = 240;
 }
 
 const verwerkAntwoord = (event) => {

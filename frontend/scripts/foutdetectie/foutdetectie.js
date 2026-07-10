@@ -1,5 +1,6 @@
 import strings from "./stringPool.js";
 
+
 const global = {
     AANTAL_MUTATIES: 0,
     AANTAL_PUNTEN: 0,
@@ -14,8 +15,8 @@ const global = {
 }
 
 const setup = () => {
-    addEventListeners();
     toonScherm("startScherm");
+    addEventListeners();
     document.getElementById("timer").classList.add("hidden");
 }
 
@@ -23,41 +24,18 @@ const addEventListeners = () => {
     document.getElementById("volgendePagina").addEventListener('click', () => {
         toonScherm("oefenreeks", "antwoordPaneel");
     });
-    document.querySelectorAll(".bediening button").forEach(el => {
-        el.addEventListener('click', verwerkAntwoord);
-    })
     document.getElementById("startOefening").addEventListener('click', () => {
         startTest();
     })
     document.getElementById("opnieuw").addEventListener('click', () => {
         startTest();
     })
-}
+    document.querySelectorAll(".bediening button").forEach(el => {
+        el.addEventListener('click', verwerkAntwoord);
+    })
 
-const startTest = () => {
-    resetOefening();
-    global.TIMER_ID = setTimeout(eindeOefening, global.DUUR_OEFENING);
-    document.getElementById("timer").classList.remove("hidden");
-    startTimer();
-    nieuwOefening();
-}
-
-const nieuwOefening = () => {
-    global.AANTAL_MUTATIES = Math.floor(Math.random() * global.AANTAL_ANTWOORDEN);
-    markCorrectAnswer();
-    toonScherm("oefenreeks", "opgave");
-    let stringPaar = createStrings();
-    displayStrings(stringPaar);
-}
-
-const eindeOefening = () => {
-    document.getElementById("aantalOefeningen").textContent = global.AANTAL_OEFENINGEN;
-    document.getElementById("aantalFouten").textContent = global.AANTAL_FOUTEN;
-    document.getElementById("aantalPunten").textContent = global.AANTAL_PUNTEN;
-
-    document.getElementById("timer").classList.add("hidden");
-    toonScherm("resultaat");
-
+    document.getElementById("instellingenKnop").addEventListener('click', toggleMenu);
+    document.getElementById("duur").addEventListener('change', spelduurInstellen);
 }
 
 const startTimer = () => {
@@ -77,10 +55,47 @@ const updateResterendeTijd = () => {
 const updateTimerDisplay = () => {
     let tijd = global.RESTERENDE_TIJD;
     let min = Math.floor(tijd / 60);
-    let sec = tijd % 60;
+    let sec = Math.floor(tijd % 60);
+
 
     document.getElementById("minuten").textContent = String(min).padStart(2, '0');
     document.getElementById("seconden").textContent = String(sec).padStart(2, '0');
+}
+
+
+const spelduurInstellen = () => {
+    let tijd = document.getElementById("duur").value;
+
+    global.DUUR_OEFENING = tijd * 60000;
+    global.RESTERENDE_TIJD = tijd * 60;
+}
+
+const toggleMenu = () => {
+    document.getElementById("instellingenMenu").classList.toggle('hidden');
+}
+
+const startTest = () => {
+    global.TIMER_ID = setTimeout(eindeOefening, global.DUUR_OEFENING);
+    document.getElementById("timer").classList.remove("hidden");
+    startTimer();
+    nieuwOefening();
+}
+
+const nieuwOefening = () => {
+    global.AANTAL_MUTATIES = Math.floor(Math.random() * global.AANTAL_ANTWOORDEN);
+    markCorrectAnswer();
+    toonScherm("oefenreeks", "opgave");
+    let stringPaar = createStrings();
+    displayStrings(stringPaar);
+}
+
+const eindeOefening = () => {
+    resetOefening();
+    document.getElementById("aantalOefeningen").textContent = global.AANTAL_OEFENINGEN;
+    document.getElementById("aantalFouten").textContent = global.AANTAL_FOUTEN;
+    document.getElementById("aantalPunten").textContent = global.AANTAL_PUNTEN;
+    document.getElementById("timer").classList.add("hidden");
+    toonScherm("resultaat");
 }
 
 const verwerkAntwoord = (event) => {
@@ -235,6 +250,8 @@ const createElement = (el, content, className) => {
     }
     return element;
 }
+
+
 
 
 const mutate = (baseString, posities) => {

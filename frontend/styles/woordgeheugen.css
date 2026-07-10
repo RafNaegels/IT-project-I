@@ -65,6 +65,14 @@
     margin: 0;
 }
 
+.test.flex {
+    padding: 0;
+}
+
+.oefeningBeschrijving {
+    padding: 50px 20px;
+}
+
 .bedieningspaneel {
     padding-top: 5em;
     padding-bottom: 2em;
@@ -80,15 +88,25 @@
     border-radius: 6px;
 }
 
+.inhoud .instellingenContainer .instellingen svg {
+    stroke: #65497d;
+}
+
+.inhoud .instellingenContainer .instellingen svg:hover {
+    cursor: pointer;
+    stroke: #7a5d95;
+}
+
+
 .bedieningspaneel button:hover {
     background-color: #7a5d95;
 }
 
-.test button {
+.test button.paars {
     background-color: #42374e;
 }
 
-.test button:hover {
+.test button.paars:hover {
     background-color: #5c4d6a;
 }
 
